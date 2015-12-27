@@ -1,0 +1,75 @@
+
+siluna-spritesheet.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+head
+  rotate: false
+  xy: 0, 0
+  size: 353, 621
+  orig: 353, 621
+  offset: 0, 0
+  index: -1
+rump
+  rotate: false
+  xy: 353, 0
+  size: 406, 859
+  orig: 406, 859
+  offset: 0, 0
+  index: -1
+right_upper_arm
+  rotate: false
+  xy: 759, 0
+  size: 267, 224
+  orig: 267, 224
+  offset: 0, 0
+  index: -1
+right_lower_arm
+  rotate: false
+  xy: 759, 224
+  size: 385, 313
+  orig: 385, 313
+  offset: 0, 0
+  index: -1
+left_upper_arm
+  rotate: false
+  xy: 1026, 0
+  size: 349, 146
+  orig: 349, 146
+  offset: 0, 0
+  index: -1
+left_lower_arm
+  rotate: false
+  xy: 1144, 146
+  size: 364, 155
+  orig: 364, 155
+  offset: 0, 0
+  index: -1
+tail1
+  rotate: false
+  xy: 759, 537
+  size: 431, 540
+  orig: 431, 540
+  offset: 0, 0
+  index: -1
+tail2
+  rotate: false
+  xy: 1190, 400
+  size: 486, 497
+  orig: 486, 497
+  offset: 0, 0
+  index: -1
+tail3
+  rotate: false
+  xy: 1676, 400
+  size: 489, 528
+  orig: 489, 528
+  offset: 0, 0
+  index: -1
+tail_end
+  rotate: false
+  xy: 1508, 0
+  size: 482, 400
+  orig:
+  offset: 0, 0
+  index: -1

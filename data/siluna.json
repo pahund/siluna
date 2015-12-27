@@ -1,0 +1,76 @@
+{
+  "bones": [
+    {
+      "name": "root",
+      "y": -200
+    },
+    {
+      "name": "COG",
+      "parent": "root",
+      "y": 200
+    },
+    {
+      "name": "neck",
+      "parent": "COG",
+      "length": 476.15,
+      "x": 714,
+      "y": 9,
+      "rotation": -91.4
+    },
+    {
+      "name": "spine",
+      "parent": "neck",
+      "length": 712.95,
+      "x": 703,
+      "y": 489,
+      "rotation": -79.5
+    }
+  ],
+  "slots": [
+    {
+      "name": "head",
+      "bone": "neck",
+      "attachment": "head"
+    },
+    {
+      "name": "rump",
+      "bone": "spine",
+      "attachment": "rump"
+    }
+  ],
+  "skins": {
+    "default": {
+      "head": {
+        "head": {
+          "x": 0,
+          "y": 0,
+          "rotation": 90,
+          "width": 353,
+          "height": 621
+        }
+      },
+      "rump": {
+        "rump": {
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "width": 406,
+          "height": 859
+        }
+      }
+    }
+  },
+  "animations": {
+    "tail_wagging": {
+      "bones": {
+        "spine": {
+          "rotate": [
+            { "time": 0, "angle": 0 },
+            { "time": 0.5, "angle": 5 },
+            { "time": 1, "angle": 0 }
+          ]
+        }
+      }
+    }
+  }
+}
