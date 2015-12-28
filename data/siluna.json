@@ -1,59 +1,53 @@
 {
   "bones": [
     {
-      "name": "root",
-      "y": -200
-    },
-    {
-      "name": "COG",
-      "parent": "root",
-      "y": 200
+      "name": "root"
     },
     {
       "name": "neck",
-      "parent": "COG",
-      "length": 476.15,
-      "x": 714,
-      "y": 9,
-      "rotation": -91.4
+      "parent": "root",
+      "length": 539,
+      "x": 0,
+      "y": 0,
+      "rotation": 449.4
     },
     {
       "name": "spine",
-      "parent": "neck",
-      "length": 712.95,
-      "x": 703,
-      "y": 489,
-      "rotation": -79.5
+      "parent": "root",
+      "length": 800,
+      "x": 0,
+      "y": 0,
+      "rotation": 276.6
     }
   ],
   "slots": [
     {
-      "name": "head",
-      "bone": "neck",
-      "attachment": "head"
-    },
-    {
       "name": "rump",
       "bone": "spine",
       "attachment": "rump"
+    },
+    {
+      "name": "head",
+      "bone": "neck",
+      "attachment": "head"
     }
   ],
   "skins": {
     "default": {
       "head": {
         "head": {
-          "x": 0,
-          "y": 0,
-          "rotation": 90,
+          "x": 15.35,
+          "y": 189.32,
+          "rotation": 272.63,
           "width": 353,
           "height": 621
         }
       },
       "rump": {
         "rump": {
-          "x": 0,
-          "y": 0,
-          "rotation": 0,
+          "x": 35.32,
+          "y": -346.97,
+          "rotation": 79.51,
           "width": 406,
           "height": 859
         }
@@ -74,3 +68,4 @@
     }
   }
 }
+
