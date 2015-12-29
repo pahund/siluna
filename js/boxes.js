@@ -5,59 +5,49 @@
  * @since 27 Dec 2015
  */
 
-var gameDimensions = {
-    w: 2880,
-    h: 1800
-};
+import configManager from "./lib/configManager";
+import rendererManager from "./lib/rendererManager";
+import stageManager from "./lib/stageManager";
+import resizeManager from "./lib/resizeManager";
 
-var renderer = PIXI.autoDetectRenderer(gameDimensions.w, gameDimensions.h, {
-    backgroundColor : 0x1099bb,
-    resolution: window.devicePixelRatio,
-    autoResize: true
-});
+configManager.init();
+rendererManager.init();
+stageManager.init();
+resizeManager.init();
 
-renderer.view.style.position = "absolute";
+const config = configManager.get(),
+    renderer = rendererManager.get(),
+    stage = stageManager.get(),
+    loader = new PIXI.loaders.Loader();
 
-// create the root of the scene graph
-var stage = new PIXI.Container();
-stage.interactive = true;
-
-resize();
-
-document.body.appendChild(renderer.view);
-
-PIXI.loader
-    .add("boxes", "data/boxes.json")
-    .load(onAssetsLoaded);
-
-window.addEventListener("resize", resize);
+loader.add("boxes", "./data/boxes.json").load(onAssetsLoaded);
 
 function onAssetsLoaded(loader, res) {
 
-    boxes = new PIXI.spine.Spine(res.boxes.spineData);
+    const boxes = new PIXI.spine.Spine(res.boxes.spineData);
     boxes.skeleton.setToSetupPose();
     boxes.update(0);
     boxes.autoUpdate = false;
 
     // create a container for the spine animation and add the animation to it
-    var boxesCage = new PIXI.Container();
+    const boxesCage = new PIXI.Container();
     boxesCage.addChild(boxes);
 
     // measure the spine animation and position it inside its container to align it to the origin
-    var localRect = boxes.getLocalBounds();
+    const localRect = boxes.getLocalBounds();
     boxes.position.set(-localRect.x, -localRect.y);
 
     // now we can scale, position and rotate the container as any other display object
-    var scale = Math.min((gameDimensions.w * 0.8) / boxesCage.width, (gameDimensions.h * 0.8) / boxesCage.height);
+    const scale = Math.min((config.gameDimensions.w * 0.8) / boxesCage.width, (config.gameDimensions.h * 0.8) / boxesCage.height);
     boxesCage.scale.set(scale, scale);
-    boxesCage.position.set((gameDimensions.w - boxesCage.width) * 0.5, (gameDimensions.h - boxesCage.height) * 0.5);
+    boxesCage.position.set((config.gameDimensions.w - boxesCage.width) * 0.5, (config.gameDimensions.h - boxesCage.height) * 0.5);
 
     // add the container to the stage
     stage.addChild(boxesCage);
 
     // once position and scaled, set the animation to play
-    var animations = ["wag", "twist", "coil", "wag2"];
-    var animationIndex = 0;
+    const animations = ["wag", "twist", "coil", "wag2"];
+    let animationIndex = 0;
 
     function switchAnimation() {
         boxes.state.setAnimationByName(0, animations[animationIndex], true);
@@ -66,7 +56,6 @@ function onAssetsLoaded(loader, res) {
 
     stage.touchstart = switchAnimation;
     stage.click = switchAnimation;
-    //stage.on("click", switchAnimation);
 
     animate();
     function animate() {
@@ -79,30 +68,3 @@ function onAssetsLoaded(loader, res) {
         renderer.render(stage);
     }
 }
-
-function resize() {
-    // Determine which screen dimension is most constrained
-    var ratio = Math.min(
-        window.innerWidth / gameDimensions.w,
-        window.innerHeight / gameDimensions.h
-    );
-
-    // Scale the view appropriately to fill that dimension
-    stage.scale.x = ratio;
-    stage.scale.y = ratio;
-
-    // Update the renderer dimensions
-    var rendererDimensions = {
-        w: Math.ceil(gameDimensions.w * ratio),
-        h: Math.ceil(gameDimensions.h * ratio)
-    };
-
-    renderer.resize(
-        rendererDimensions.w,
-        rendererDimensions.h
-    );
-
-    renderer.view.style.left = ((window.innerWidth - rendererDimensions.w) / 2) + "px";
-    renderer.view.style.top = ((window.innerHeight - rendererDimensions.h) / 2) + "px";
-}
-
