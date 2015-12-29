@@ -1,5 +1,5 @@
 /**
- * webpack.config.dist.js
+ * webpack.config.dev.js
  *
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 29 Dec 2015
@@ -10,10 +10,12 @@ var webpack = require("webpack");
 module.exports = {
     context: path.resolve(__dirname,"js"),
     entry: [
+        "webpack/hot/dev-server",
         "./boxes"
     ],
     output: {
         path: path.resolve(__dirname, "dist"),
+        publicPath: "/dist/",
         filename: "boxes.js"
     },
     module: {
@@ -25,10 +27,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
-    ]
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devtool: "#source-map"
 };
