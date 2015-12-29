@@ -9,12 +9,13 @@ var webpack = require("webpack");
 
 module.exports = {
     context: path.resolve(__dirname,"js"),
-    entry: [
-        "./boxes"
-    ],
+    entry: {
+        main: "./main",
+        boxes: "./boxes"
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "boxes.js"
+        filename: "[name].js"
     },
     module: {
         loaders: [
