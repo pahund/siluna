@@ -64,6 +64,7 @@ function onAssetsLoaded(loader, res) {
         animationIndex = animationIndex === animations.length - 1 ? 0 : animationIndex + 1;
     }
 
+    stage.on("touchStart", switchAnimation);
     stage.on("click", switchAnimation);
 
     animate();
