@@ -4,6 +4,8 @@
   "description": "Mermaid video game",
   "main": "index.js",
   "scripts": {
+    "postinstall": "node node_modules/webpack/bin/webpack.js",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config-dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
