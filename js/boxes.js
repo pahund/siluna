@@ -57,8 +57,7 @@ function onAssetsLoaded(loader, res) {
     stage.touchstart = switchAnimation;
     stage.click = switchAnimation;
 
-    animate();
-    function animate() {
+    (function animate() {
         requestAnimationFrame(animate);
 
         //boxes.update(0.01666666666667);
@@ -66,5 +65,5 @@ function onAssetsLoaded(loader, res) {
 
         // render the container
         renderer.render(stage);
-    }
+    }());
 }

@@ -9,14 +9,24 @@ var webpack = require("webpack");
 
 module.exports = {
     context: path.resolve(__dirname,"js"),
-    entry: [
-        "webpack/hot/dev-server",
-        "./boxes"
-    ],
+    entry: {
+        main: [
+            "webpack/hot/dev-server",
+            "./main"
+        ],
+        boxes: [
+            "webpack/hot/dev-server",
+            "./boxes"
+        ],
+        siluna: [
+            "webpack/hot/dev-server",
+            "./siluna"
+        ]
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "/dist/",
-        filename: "boxes.js"
+        filename: "[name].js"
     },
     module: {
         loaders: [
