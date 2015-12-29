@@ -48,7 +48,7 @@ function onAssetsLoaded(loader, res) {
     boxes.position.set(-localRect.x, -localRect.y);
 
     // now we can scale, position and rotate the container as any other display object
-    var scale = Math.min((gameDimensions.w * 0.4) / boxesCage.width, (gameDimensions.h * 0.4) / boxesCage.height);
+    var scale = Math.min((gameDimensions.w * 0.8) / boxesCage.width, (gameDimensions.h * 0.8) / boxesCage.height);
     boxesCage.scale.set(scale, scale);
     boxesCage.position.set((gameDimensions.w - boxesCage.width) * 0.5, (gameDimensions.h - boxesCage.height) * 0.5);
 
