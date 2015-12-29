@@ -50,7 +50,8 @@ sirena.anchor.x = 0.5;
 sirena.anchor.y = 0.1;
 sinalta.anchor.x = 0.5;
 sinalta.anchor.y = 0.1;
-sinalta.tint = Math.random() * 0xFFFFFF;
+
+setSinaltaTint();
 
 siluna.position.x = 0;
 siluna.position.y = 450;
@@ -62,6 +63,10 @@ sinalta.position.y = 450;
 stage.addChild(siluna);
 stage.addChild(sirena);
 stage.addChild(sinalta);
+
+sinalta.interactive = true;
+sinalta.click = setSinaltaTint;
+sinalta.touchstart = setSinaltaTint;
 
 (function animate() {
     requestAnimationFrame(animate);
@@ -100,5 +105,7 @@ stage.addChild(sinalta);
     renderer.render(stage);
 }());
 
-
+function setSinaltaTint() {
+    sinalta.tint = Math.random() * 0xFFFFFF;
+}
 

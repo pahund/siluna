@@ -17,6 +17,10 @@ module.exports = {
         boxes: [
             "webpack/hot/dev-server",
             "./boxes"
+        ],
+        siluna: [
+            "webpack/hot/dev-server",
+            "./siluna"
         ]
     },
     output: {

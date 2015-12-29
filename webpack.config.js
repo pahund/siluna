@@ -11,7 +11,8 @@ module.exports = {
     context: path.resolve(__dirname,"js"),
     entry: {
         main: "./main",
-        boxes: "./boxes"
+        boxes: "./boxes",
+        siluna: "./siluna"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
