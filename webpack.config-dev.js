@@ -10,9 +10,9 @@ var webpack = require("webpack");
 module.exports = {
     context: path.resolve(__dirname,"js"),
     entry: {
-        main: [
+        index: [
             "webpack/hot/dev-server",
-            "./main"
+            "./index"
         ],
         boxes: [
             "webpack/hot/dev-server",

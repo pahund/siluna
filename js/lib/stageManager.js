@@ -13,6 +13,7 @@ function init() {
     }
     stage = new PIXI.Container();
     stage.interactive = true;
+    return stage;
 }
 
 function get() {
