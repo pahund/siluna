@@ -12,6 +12,9 @@ import resizeManager from "./lib/resizeManager";
 import makeStore from "./lib/makeStore";
 import { move, rotate, tint } from "./actions";
 import reducers from "./reducers";
+import positioner from "./systems/positioner";
+import tinter from "./systems/tinter";
+import rotater from "./systems/rotater";
 
 const config = makeConfig(),
     renderer = makeRenderer({ config }),
@@ -26,48 +29,40 @@ const texture = {
     sinalta: PIXI.Texture.fromImage("images/sirena.png")
 };
 
-const siluna = new PIXI.Sprite(texture.siluna),
-    sirena = new PIXI.Sprite(texture.sirena),
-    sinalta = new PIXI.Sprite(texture.sinalta);
+const sprites = {
+    siluna: new PIXI.Sprite(texture.siluna),
+    sirena: new PIXI.Sprite(texture.sirena),
+    sinalta: new PIXI.Sprite(texture.sinalta)
+};
 
-siluna.anchor.x = 0.5;
-siluna.anchor.y = 0.1;
-sirena.anchor.x = 0.5;
-sirena.anchor.y = 0.1;
-sinalta.anchor.x = 0.5;
-sinalta.anchor.y = 0.1;
+[ "siluna", "sirena", "sinalta"].forEach(entity => {
+    const sprite = sprites[entity];
+    sprite.anchor.x = 0.5;
+    sprite.anchor.y = 0.1;
+    stage.addChild(sprite);
+});
+
 store.dispatch(tint("sinalta"));
-
-stage.addChild(siluna);
-stage.addChild(sirena);
-stage.addChild(sinalta);
-
-sinalta.interactive = true;
-sinalta.click = () => store.dispatch(tint("sinalta"));
-sinalta.touchstart = () => store.dispatch(tint("sinalta"));
+sprites.sinalta.interactive = true;
+sprites.sinalta.click = () => store.dispatch(tint("sinalta"));
+sprites.sinalta.touchstart = () => store.dispatch(tint("sinalta"));
 
 store.subscribe(() => {
     const state = store.getState();
-    siluna.position = state.entity.siluna.position;
-    siluna.rotation = state.entity.siluna.rotation;
-    siluna.tint = state.entity.siluna.tint;
-    sirena.position = state.entity.sirena.position;
-    sirena.rotation = state.entity.sirena.rotation;
-    sirena.tint = state.entity.sirena.tint;
-    sinalta.position = state.entity.sinalta.position;
-    sinalta.rotation = state.entity.sinalta.rotation;
-    sinalta.tint = state.entity.sinalta.tint;
+    [ "siluna", "sirena", "sinalta"].forEach(entity => {
+        positioner(state.entity[entity], sprites[entity]);
+        rotater(state.entity[entity], sprites[entity]);
+        tinter(state.entity[entity], sprites[entity]);
+    });
 });
 
 (function animate() {
     requestAnimationFrame(animate);
 
-    store.dispatch(move("siluna"));
-    store.dispatch(move("sirena"));
-    store.dispatch(move("sinalta"));
-    store.dispatch(rotate("siluna"));
-    store.dispatch(rotate("sirena"));
-    store.dispatch(rotate("sinalta"));
+    [ "siluna", "sirena", "sinalta"].forEach(entity => {
+        store.dispatch(move(entity));
+        store.dispatch(rotate(entity));
+    });
 
     renderer.render(stage);
 }());

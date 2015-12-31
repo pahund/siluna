@@ -4,32 +4,58 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 31 Dec 2015
  */
-import { MOVE, ROTATE, TINT } from "../actions";
+import { START_MOVING, MOVE, ROTATE, TINT } from "../actions";
+import hasPosition from "../components/hasPosition";
+import moves from "../components/moves";
+import hasTint from "../components/hasTint";
+import rotates from "../components/rotates";
+import hasRotation from "../components/hasRotation";
+
+function startMoving(state, action) {
+    const entity = state.entity[action.entity];
+    entity.moves = moves(action.dx, action.dy);
+}
 
 function move(state, action) {
     const entity = state.entity[action.entity];
-    entity.position.x += entity.increment.x;
-    entity.position.y += entity.increment.y;
-    if (entity.position.x > state.config.gameDimensions.w || entity.position.x < 0) {
-        entity.increment.x = entity.increment.x * -1;
+    if (!entity.moves || !entity.hasPosition) {
+        return;
     }
-    if (entity.position.y > state.config.gameDimensions.h || entity.position.y < 0) {
-        entity.increment.y = entity.increment.y * -1;
+    let dx = entity.moves.dx,
+        dy = entity.moves.dy;
+    const x = entity.hasPosition.x + dx,
+        y = entity.hasPosition.y + dy;
+    if (x > state.config.gameDimensions.w || x < 0) {
+        dx = dx * -1;
     }
+    if (y > state.config.gameDimensions.h || y < 0) {
+        dy = dy * -1;
+    }
+    entity.hasPosition = hasPosition(x ,y);
+    entity.moves = moves(dx, dy);
 }
 
 function rotate(state, action) {
     const entity = state.entity[action.entity];
-    entity.rotation += entity.increment.r;
+    if (!entity.rotates || !entity.hasRotation) {
+        return;
+    }
+    const dr = entity.rotates.dr,
+        r = entity.hasRotation.r + dr;
+
+    entity.hasRotation = hasRotation(r);
 }
 
 function tint(state, action) {
     const entity = state.entity[action.entity];
-    entity.tint = Math.random() * 0xFFFFFF;
+    entity.hasTint = hasTint(Math.random() * 0xFFFFFF);
 }
 
 export default (state, action = null) => {
     switch (action.type) {
+        case START_MOVING:
+            startMoving(state, action);
+            break;
         case MOVE:
             move(state, action);
             break;
@@ -41,5 +67,4 @@ export default (state, action = null) => {
             break;
     }
     return state;
-
 };
