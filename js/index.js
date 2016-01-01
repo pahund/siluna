@@ -22,13 +22,6 @@ const config = makeConfig(),
 resizeManager.init({ config, stage, renderer });
 spriteManager.init({ store, stage });
 
-const sinalta = spriteManager.get("sinalta");
-
-store.dispatch(tint("sinalta"));
-sinalta.interactive = true;
-sinalta.click = () => store.dispatch(tint("sinalta"));
-sinalta.touchstart = () => store.dispatch(tint("sinalta"));
-
 (function animate() {
     requestAnimationFrame(animate);
 

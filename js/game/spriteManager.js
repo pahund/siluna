@@ -5,17 +5,20 @@
  * @since 01 Jan 2016
  */
 
+import { getByType } from "../actions";
+
 let initialized = false,
     store = null,
     stage = null,
-    sprites = new Map();
+    sprites = null;
 
 function init(deps) {
     if (initialized) {
-        throw new Error("sprite manager is already initalized");
+        throw new Error("sprite manager is already initialized");
     }
     store = deps.store;
     stage = deps.stage;
+    sprites = new Map();
     update();
 }
 
@@ -23,7 +26,7 @@ function get(id) {
     return sprites.get(id);
 }
 
-function add(id, {
+function create({
     image,
     position,
     anchor,
@@ -35,6 +38,23 @@ function add(id, {
     sprite.anchor = anchor;
     sprite.rotation = rotation;
     sprite.tint = tint;
+    return sprite;
+}
+
+function makeTappable(sprite, {
+    actionType, args
+}) {
+    sprite.interactive = true;
+    const action = getByType(actionType);
+    sprite.click = () => store.dispatch(action(...args));
+    sprite.touchstart = () => store.dispatch(action(...args));
+}
+
+function add(id, spriteOptions, tapOptions) {
+    const sprite = create(spriteOptions);
+    if (tapOptions) {
+        makeTappable(sprite, tapOptions);
+    }
     stage.addChild(sprite);
     sprites.set(id, sprite);
     return sprite;
@@ -61,12 +81,12 @@ function update() {
     }
 
     Object.keys(state.entity).forEach(id => {
-        const hasSprite = state.entity[id].hasSprite;
+        const { hasSprite, respondsToTap } = state.entity[id];
         if (sprites.has(id) || !hasSprite) {
             return;
         }
         /* add sprite if there is an entity without corresponding sprite */
-        add(id, hasSprite);
+        add(id, hasSprite, respondsToTap);
     });
 }
 
