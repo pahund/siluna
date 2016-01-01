@@ -5,10 +5,10 @@
  * @since 27 Dec 2015
  */
 
-import makeConfig from "./lib/makeConfig";
-import makeRenderer from "./lib/makeRenderer";
-import makeStage from "./lib/makeStage";
-import resizeManager from "./lib/resizeManager";
+import makeConfig from "./setup/makeConfig";
+import makeRenderer from "./setup/makeRenderer";
+import makeStage from "./setup/makeStage";
+import resizeManager from "./game/resizeManager";
 
 const config = makeConfig(),
     renderer = makeRenderer({ config }),
