@@ -5,12 +5,9 @@
  * @since 29 Dec 2015
  */
 
-import configManager from "./configManager";
-
 let renderer = null;
 
-function init() {
-    const config = configManager.get();
+function init({ config }) {
     if (renderer) {
         throw new Error("renderer is already initialized");
     }
@@ -22,6 +19,7 @@ function init() {
 
     renderer.view.style.position = "absolute";
     document.body.appendChild(renderer.view);
+    return renderer;
 }
 
 function get() {

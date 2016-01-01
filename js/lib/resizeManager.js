@@ -5,16 +5,12 @@
  * @since 29 Dec 2015
  */
 
-import configManager from "./configManager";
-import stageManager from "./stageManager";
-import rendererManager from "./rendererManager";
-
-let initialized = false;
+let initialized = false,
+    config = null,
+    stage = null,
+    renderer = null;
 
 function resize() {
-    const config = configManager.get(),
-        stage = stageManager.get(),
-        renderer = rendererManager.get();
 
     // Determine which screen dimension is most constrained
     const ratio = Math.min(
@@ -41,10 +37,14 @@ function resize() {
     renderer.view.style.top = ((window.innerHeight - rendererDimensions.h) / 2) + "px";
 }
 
-function init() {
+function init(deps) {
     if (initialized) {
         throw new Error("resize is already initialized");
     }
+    config = deps.config;
+    stage = deps.stage;
+    renderer = deps.renderer;
+
     window.addEventListener("resize", resize);
     resize();
     initialized = true;

@@ -10,7 +10,7 @@ var webpack = require("webpack");
 module.exports = {
     context: path.resolve(__dirname,"js"),
     entry: {
-        main: "./main",
+        index: "./index",
         boxes: "./boxes",
         siluna: "./siluna"
     },
