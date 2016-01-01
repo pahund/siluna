@@ -6,7 +6,6 @@
  */
 
 export default (actionType, ...args) => ({
-    id: "respondsToTap",
     actionType,
     args
 });

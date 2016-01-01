@@ -15,7 +15,7 @@ export default ({ config, reducers }) => {
     const store = createStore(reducers, {
         entity: {
             siluna: {
-                hasSprite: hasSprite("siluna", "images/siluna.png", {
+                hasSprite: hasSprite("images/siluna.png", {
                     anchor: { x: 0.5, y: 0.1 },
                     position: {
                         x: config.gameDimensions.w / 2,
@@ -26,7 +26,7 @@ export default ({ config, reducers }) => {
                 rotates: rotates(0.05)
             },
             sirena: {
-                hasSprite: hasSprite("sirena", "images/sirena.png", {
+                hasSprite: hasSprite("images/sirena.png", {
                     anchor: { x: 0.5, y: 0.1 },
                     position: {
                         x: config.gameDimensions.w / 2,
@@ -37,7 +37,7 @@ export default ({ config, reducers }) => {
                 rotates: rotates(0.1)
             },
             sinalta: {
-                hasSprite: hasSprite("sinalta", "images/sirena.png", {
+                hasSprite: hasSprite("images/sirena.png", {
                     anchor: { x: 0.5, y: 0.1 },
                     position: {
                         x: config.gameDimensions.w / 2,
