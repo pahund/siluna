@@ -16,11 +16,25 @@ function init(deps) {
     }
     store = deps.store;
     stage = deps.stage;
+    update();
 }
 
-function add({ id, image, anchor }) {
+function get(id) {
+    return sprites.get(id);
+}
+
+function add(id, {
+    image,
+    position,
+    anchor,
+    rotation,
+    tint
+}) {
     const sprite = new PIXI.Sprite.fromImage(image);
+    sprite.position = position;
     sprite.anchor = anchor;
+    sprite.rotation = rotation;
+    sprite.tint = tint;
     stage.addChild(sprite);
     sprites.set(id, sprite);
     return sprite;
@@ -28,31 +42,34 @@ function add({ id, image, anchor }) {
 
 function update() {
     const state = store.getState();
-    for (const entry of sprites) {
-        const [ id, sprite ] = entry,
-            entity = state.entity[id];
+    for (const [ id, sprite ] of sprites) {
+        const entity = state.entity[id];
 
+        /* delete sprite if its entity was removed from the store */
         if (!entity) {
             sprites.delete(id);
             continue;
         }
 
-        if (entity.hasPosition) {
-            const { x, y } = entity.hasPosition;
-            sprite.position.x = x;
-            sprite.position.y = y;
-        }
-
-        if (entity.hasRotation) {
-            sprite.rotation = entity.hasRotation.r;
-        }
-
-        if (entity.hasTint) {
-            sprite.tint = entity.hasTint.tint;
+        /* update sprite */
+        if (entity.hasSprite) {
+            const { position, rotation, tint } = entity.hasSprite;
+            sprite.position = position;
+            sprite.rotation = rotation;
+            sprite.tint = tint;
         }
     }
+
+    Object.keys(state.entity).forEach(id => {
+        const hasSprite = state.entity[id].hasSprite;
+        if (sprites.has(id) || !hasSprite) {
+            return;
+        }
+        /* add sprite if there is an entity without corresponding sprite */
+        add(id, hasSprite);
+    });
 }
 
 export default {
-    init, add, update
+    init, update, get
 };

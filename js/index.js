@@ -13,9 +13,6 @@ import spriteManager from "./lib/spriteManager";
 import makeStore from "./lib/makeStore";
 import { move, rotate, tint } from "./actions";
 import reducers from "./reducers";
-import positioner from "./systems/positioner";
-import tinter from "./systems/tinter";
-import rotater from "./systems/rotater";
 
 const config = makeConfig(),
     renderer = makeRenderer({ config }),
@@ -25,23 +22,7 @@ const config = makeConfig(),
 resizeManager.init({ config, stage, renderer });
 spriteManager.init({ store, stage });
 
-spriteManager.add({
-    id: "siluna",
-    image: "images/siluna.png",
-    anchor: { x: 0.5, y: 0.1 }
-});
-
-spriteManager.add({
-    id: "sirena",
-    image: "images/sirena.png",
-    anchor: { x: 0.5, y: 0.1 }
-});
-
-const sinalta = spriteManager.add({
-    id: "sinalta",
-    image: "images/siluna.png",
-    anchor: { x: 0.5, y: 0.1 }
-});
+const sinalta = spriteManager.get("sinalta");
 
 store.dispatch(tint("sinalta"));
 sinalta.interactive = true;
