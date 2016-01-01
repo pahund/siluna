@@ -5,19 +5,9 @@
  * @since 31 Dec 2015
  */
 
-export const START_MOVING = "START_MOVING";
 export const MOVE = "MOVE";
 export const ROTATE = "ROTATE";
 export const TINT = "TINT";
-
-export function startMoving(entity, dx, dy) {
-    return {
-        type: START_MOVING,
-        entity,
-        dx,
-        dy
-    };
-}
 
 export function move(entity) {
     return {

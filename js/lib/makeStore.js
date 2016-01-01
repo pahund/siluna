@@ -5,30 +5,44 @@
  * @since 31 Dec 2015
  */
 import { createStore } from "redux";
-import hasPosition from "../components/hasPosition";
 import moves from "../components/moves";
-import hasRotation from "../components/hasRotation";
 import rotates from "../components/rotates";
+import hasSprite from "../components/hasSprite";
 
 export default ({ config, reducers }) => {
     const store = createStore(reducers, {
         entity: {
             siluna: {
-                hasPosition: hasPosition(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
-                moves: moves(10, 10),
-                hasRotation: hasRotation(0),
+                hasSprite: hasSprite("siluna", "images/siluna.png", {
+                    anchor: { x: 0.5, y: 0.1 },
+                    position: {
+                        x: config.gameDimensions.w / 2,
+                        y: config.gameDimensions.h / 2
+                    }
+                }),
+                moves: moves(-10, 10),
                 rotates: rotates(0.05)
             },
             sirena: {
-                hasPosition: hasPosition(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
+                hasSprite: hasSprite("sirena", "images/sirena.png", {
+                    anchor: { x: 0.5, y: 0.1 },
+                    position: {
+                        x: config.gameDimensions.w / 2,
+                        y: config.gameDimensions.h / 2
+                    }
+                }),
                 moves: moves(8, 12),
-                hasRotation: hasRotation(120),
                 rotates: rotates(0.01)
             },
             sinalta: {
-                hasPosition: hasPosition(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
+                hasSprite: hasSprite("sinalta", "images/siluna.png", {
+                    anchor: { x: 0.5, y: 0.1 },
+                    position: {
+                        x: config.gameDimensions.w / 2,
+                        y: config.gameDimensions.h / 2
+                    }
+                }),
                 moves: moves(13, 7),
-                hasRotation: hasRotation(240),
                 rotates: rotates(0.1)
             }
         },

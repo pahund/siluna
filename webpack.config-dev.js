@@ -1,5 +1,5 @@
 /**
- * webpack.config.dev.js
+ * webpack.config-dev.js
  *
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 29 Dec 2015
@@ -8,7 +8,7 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-    context: path.resolve(__dirname,"js"),
+    context: path.resolve(__dirname, "js"),
     entry: {
         index: [
             "webpack/hot/dev-server",
