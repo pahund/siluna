@@ -5,12 +5,12 @@
  * @since 27 Dec 2015
  */
 
-import makeConfig from "./lib/makeConfig";
-import makeRenderer from "./lib/makeRenderer";
-import makeStage from "./lib/makeStage";
-import resizeManager from "./lib/resizeManager";
-import spriteManager from "./lib/spriteManager";
-import makeStore from "./lib/makeStore";
+import makeConfig from "./setup/makeConfig";
+import makeRenderer from "./setup/makeRenderer";
+import makeStage from "./setup/makeStage";
+import makeStore from "./setup/makeStore";
+import resizeManager from "./game/resizeManager";
+import spriteManager from "./game/spriteManager";
 import { move, rotate, tint } from "./actions";
 import reducers from "./reducers";
 
