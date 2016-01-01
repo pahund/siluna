@@ -1,5 +1,8 @@
 /**
- * webpack.config.js
+ * webpack.config-debug.js
+ *
+ * Special webpack configuration for debugging with JetBrains IDEs. Used by npm script “dist-debug”.
+ * See README for details.
  *
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 29 Dec 2015
@@ -8,11 +11,11 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-    context: path.resolve(__dirname, "js"),
+    context: path.resolve(__dirname),
     entry: {
-        index: "./index",
-        boxes: "./boxes",
-        siluna: "./siluna"
+        index: "./js/index",
+        boxes: "./js/boxes",
+        siluna: "./js/siluna"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -29,11 +32,5 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
-    ]
+    devtool: "source-map"
 };
