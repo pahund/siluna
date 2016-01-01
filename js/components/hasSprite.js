@@ -17,13 +17,12 @@ const defaults = {
     tint: 0xFFFFFF
 };
 
-export default (entity, image, {
+export default (image, {
     position = defaults.position,
     anchor = defaults.anchor,
     rotation = defaults.rotation,
     tint = defaults.tint
 } = defaults) => ({
-    id: "hasSprite",
     image,
     position,
     anchor,

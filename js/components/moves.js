@@ -6,7 +6,6 @@
  */
 
 export default (dx, dy) => ({
-    id: "moves",
     dx,
     dy
 });

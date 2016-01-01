@@ -4,8 +4,8 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 29 Dec 2015
  */
-var path = require("path");
-var webpack = require("webpack");
+const path = require("path"),
+    webpack = require("webpack");
 
 module.exports = {
     context: path.resolve(__dirname, "js"),
@@ -27,6 +27,9 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         publicPath: "/dist/",
         filename: "[name].js"
+    },
+    externals: {
+        pixi: "PIXI"
     },
     module: {
         loaders: [

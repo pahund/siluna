@@ -5,6 +5,5 @@
  * @since 31 Dec 2015
  */
 export default dr => ({
-    id: "rotates",
     dr
 });
