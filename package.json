@@ -32,6 +32,5 @@
   },
   "dependencies": {
     "redux": "^3.0.5"
-  },
-  "pre-push": "postinstall"
+  }
 }
