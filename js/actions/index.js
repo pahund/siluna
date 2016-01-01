@@ -29,3 +29,11 @@ export function tint(entity) {
         entity
     }
 }
+
+export function getByType(type) {
+    switch (type) {
+        case MOVE: return move;
+        case ROTATE: return rotate;
+        case TINT: return tint;
+    }
+}
