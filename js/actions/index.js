@@ -5,9 +5,10 @@
  * @since 31 Dec 2015
  */
 
-export const MOVE = "MOVE";
-export const ROTATE = "ROTATE";
-export const TINT = "TINT";
+export const
+    MOVE = "MOVE",
+    ROTATE = "ROTATE",
+    TINT = "TINT";
 
 export function move(entity) {
     return {
@@ -27,7 +28,7 @@ export function tint(entity) {
     return {
         type: TINT,
         entity
-    }
+    };
 }
 
 export function getByType(type) {

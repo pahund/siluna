@@ -6,7 +6,6 @@
  */
 import { MOVE, ROTATE, TINT } from "../actions";
 import moves from "../components/moves";
-import rotates from "../components/rotates";
 
 function move(state, action) {
     const entity = state.entity[action.entity];

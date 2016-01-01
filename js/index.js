@@ -11,7 +11,7 @@ import makeStage from "./setup/makeStage";
 import makeStore from "./setup/makeStore";
 import resizeManager from "./game/resizeManager";
 import spriteManager from "./game/spriteManager";
-import { move, rotate, tint } from "./actions";
+import { move, rotate } from "./actions";
 import reducers from "./reducers";
 
 const config = makeConfig(),
@@ -25,7 +25,7 @@ spriteManager.init({ store, stage });
 (function animate() {
     requestAnimationFrame(animate);
 
-    [ "siluna", "sirena", "sinalta"].forEach(entity => {
+    [ "siluna", "sirena", "sinalta" ].forEach(entity => {
         store.dispatch(move(entity));
         store.dispatch(rotate(entity));
     });

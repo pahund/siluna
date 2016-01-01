@@ -5,6 +5,7 @@
  * @since 27 Dec 2015
  */
 
+import PIXI from "pixi";
 import makeConfig from "./setup/makeConfig";
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
@@ -19,7 +20,7 @@ resizeManager.init({ config, stage, renderer });
 
 loader.add("siluna", "./data/siluna.json").load(onAssetsLoaded);
 
-function onAssetsLoaded(loader, res) {
+function onAssetsLoaded(l, res) {
 
     const siluna = new PIXI.spine.Spine(res.siluna.spineData);
     siluna.skeleton.setToSetupPose();
@@ -43,7 +44,7 @@ function onAssetsLoaded(loader, res) {
     stage.addChild(silunaCage);
 
     // once position and scaled, set the animation to play
-    siluna.state.setAnimationByName(0, 'tail_wagging', true);
+    siluna.state.setAnimationByName(0, "tail_wagging", true);
 
     (function animate() {
         requestAnimationFrame(animate);

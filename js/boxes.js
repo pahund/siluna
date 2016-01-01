@@ -5,6 +5,7 @@
  * @since 27 Dec 2015
  */
 
+import PIXI from "pixi";
 import makeConfig from "./setup/makeConfig";
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
@@ -19,7 +20,7 @@ resizeManager.init({ config, stage, renderer });
 
 loader.add("boxes", "./data/boxes.json").load(onAssetsLoaded);
 
-function onAssetsLoaded(loader, res) {
+function onAssetsLoaded(l, res) {
 
     const boxes = new PIXI.spine.Spine(res.boxes.spineData);
     boxes.skeleton.setToSetupPose();
@@ -43,7 +44,7 @@ function onAssetsLoaded(loader, res) {
     stage.addChild(boxesCage);
 
     // once position and scaled, set the animation to play
-    const animations = ["wag", "twist", "coil", "wag2"];
+    const animations = [ "wag", "twist", "coil", "wag2" ];
     let animationIndex = 0;
 
     function switchAnimation() {

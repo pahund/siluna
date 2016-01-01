@@ -5,6 +5,7 @@
  * @since 01 Jan 2016
  */
 
+import PIXI from "pixi";
 import { getByType } from "../actions";
 
 let initialized = false,
