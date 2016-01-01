@@ -1,8 +1,8 @@
 /**
- * futureEventsSpec.js
+ * fooSpec.js
  *
- * @author <a href="https://github.com/pahund">Patrick Hund</a>
- * @since 30 Dec 2015
+ * @author <a href="mailto:pahund@team.mobile.de">Patrick Hund</a>
+ * @since 01 Jan 2016
  */
 import { should } from "chai";
 
