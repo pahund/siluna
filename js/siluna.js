@@ -5,20 +5,17 @@
  * @since 27 Dec 2015
  */
 
-import configManager from "./lib/configManager";
-import rendererManager from "./lib/rendererManager";
-import stageManager from "./lib/stageManager";
+import makeConfig from "./lib/makeConfig";
+import makeRenderer from "./lib/makeRenderer";
+import makeStage from "./lib/makeStage";
 import resizeManager from "./lib/resizeManager";
 
-configManager.init();
-rendererManager.init();
-stageManager.init();
-resizeManager.init();
-
-const config = configManager.get(),
-    renderer = rendererManager.get(),
-    stage = stageManager.get(),
+const config = makeConfig(),
+    renderer = makeRenderer({ config }),
+    stage = makeStage(),
     loader = new PIXI.loaders.Loader();
+
+resizeManager.init({ config, stage, renderer });
 
 loader.add("siluna", "./data/siluna.json").load(onAssetsLoaded);
 
