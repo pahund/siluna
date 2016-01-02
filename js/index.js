@@ -25,7 +25,7 @@ spriteManager.init({ store, stage });
 (function animate() {
     requestAnimationFrame(animate);
 
-    [ "siluna", "sirena", "sinalta" ].forEach(entity => {
+    Object.keys(store.getState().entity).forEach(entity => {
         store.dispatch(move(entity));
         store.dispatch(rotate(entity));
     });
