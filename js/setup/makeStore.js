@@ -12,7 +12,7 @@ import hasSprite from "../components/hasSprite";
 import respondsToTap from "../components/respondsToTap";
 import { TINT } from "../actions";
 
-const speed = 100,
+const speed = 10,
     margin = 250;
 
 export default ({ config, reducers }) => {
