@@ -4,6 +4,8 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 01 Jan 2016
  */
+import deepFreeze from "deep-freeze";
+
 const defaults = {
     position: {
         x: 0,
@@ -22,7 +24,7 @@ export default (image, {
     anchor = defaults.anchor,
     rotation = defaults.rotation,
     tint = defaults.tint
-} = defaults) => ({
+} = defaults) => deepFreeze({
     image,
     position,
     anchor,

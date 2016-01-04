@@ -6,6 +6,8 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 03 Jan 2016
  */
+import deepFreeze from "deep-freeze";
+
 function calculateRatio({ x, y }) {
     if (x === 0 || y === 0) {
         return 1;
@@ -33,13 +35,16 @@ function pickRatio(thisDelta, thatDelta, ratio) {
     return Math.abs(thisDelta) < Math.abs(thatDelta) ? ratio : 1;
 }
 
-export default entity => {
+export default (component, spriteComponent) => {
     const target = {
-            x: entity.movesTo.x,
-            y: entity.movesTo.y
+            x: component.x,
+            y: component.y
         },
-        speed = entity.movesTo.speed,
-        position = entity.hasSprite.position,
+        speed = component.speed,
+        position = {
+            x: spriteComponent.position.x,
+            y: spriteComponent.position.y
+        },
         delta = {
             x: target.x - position.x,
             y: target.y - position.y
@@ -48,9 +53,13 @@ export default entity => {
         increment = calculateIncrement(delta, ratio, speed);
     position.x += increment.x;
     position.y += increment.y;
-    if (position.x === target.x && position.y === target.y) {
-        delete entity.movesTo;
-    }
-    entity.hasSprite = Object.assign(entity.hasSprite, { position });
+    const retVal = [
+        position.x === target.x && position.y === target.y ? undefined : component,
+        deepFreeze({
+            ...spriteComponent,
+            position
+        })
+    ];
+    return retVal;
 }
 

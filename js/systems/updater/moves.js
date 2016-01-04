@@ -7,20 +7,29 @@
  * @since 03 Jan 2016
  */
 
+import config from "../../config";
 import moves from "../../components/moves";
+import deepFreeze from "deep-freeze";
 
-export default (entity, config) => {
-    let dx = entity.moves.dx,
-        dy = entity.moves.dy;
-    const x = entity.hasSprite.position.x + dx,
-        y = entity.hasSprite.position.y + dy;
+export default (component, spriteComponent) => {
+    let dx = component.dx,
+        dy = component.dy;
+    const x = spriteComponent.position.x + dx,
+        y = spriteComponent.position.y + dy;
     if (x > config.gameDimensions.w || x < 0) {
         dx = dx * -1;
     }
     if (y > config.gameDimensions.h || y < 0) {
         dy = dy * -1;
     }
-    entity.hasSprite = Object.assign(entity.hasSprite, { position: { x, y }});
-    entity.moves = moves(dx, dy);
+    return [
+        moves(dx, dy),
+        deepFreeze({
+            ...spriteComponent,
+            position: {
+                x, y
+            }
+        })
+    ]
 }
 

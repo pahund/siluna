@@ -10,12 +10,24 @@ import updater from "../systems/updater";
 import tinter from "../systems/tinter";
 
 export default (state, action = null) => {
-    const entity = state.entity[action.entity];
+    if (!action.entity) {
+        return state;
+    }
+    let entity = state.entity[action.entity];
     switch (action.type) {
         case UPDATE:
-            return updater(state, entity);
+            entity = updater(entity);
+            break;
         case TINT:
-            return tinter(state, entity);
+            entity = tinter(entity);
+            break;
     }
-    return state;
+    const retVal = {
+        ...state,
+        entity: {
+            ...state.entity,
+            [action.entity]: entity
+        }
+    };
+    return retVal;
 };

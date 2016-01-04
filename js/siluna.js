@@ -6,13 +6,12 @@
  */
 
 import PIXI from "pixi";
-import makeConfig from "./setup/makeConfig";
+import config from "./config";
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
 import resizeManager from "./game/resizeManager";
 
-const config = makeConfig(),
-    renderer = makeRenderer({ config }),
+const renderer = makeRenderer(),
     stage = makeStage(),
     loader = new PIXI.loaders.Loader();
 
