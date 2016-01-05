@@ -25,7 +25,7 @@ spriteManager.init({ store, stage });
     requestAnimationFrame(animate);
 
     const state = store.getState();
-    Object.keys(state.entity).forEach(entity => store.dispatch(update(entity)));
+    Object.keys(state.entities).forEach(entity => store.dispatch(update(entity)));
 
     spriteManager.update();
 

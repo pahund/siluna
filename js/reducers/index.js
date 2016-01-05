@@ -13,7 +13,7 @@ export default (state, action = null) => {
     if (!action.entity) {
         return state;
     }
-    let entity = state.entity[action.entity];
+    let entity = state.entities[action.entity];
     switch (action.type) {
         case UPDATE:
             entity = updater(entity);
@@ -24,8 +24,8 @@ export default (state, action = null) => {
     }
     const retVal = {
         ...state,
-        entity: {
-            ...state.entity,
+        entities: {
+            ...state.entities,
             [action.entity]: entity
         }
     };

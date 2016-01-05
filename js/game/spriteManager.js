@@ -64,7 +64,7 @@ function add(id, spriteOptions, tapOptions) {
 function update() {
     const state = store.getState();
     for (const [ id, sprite ] of sprites) {
-        const entity = state.entity[id];
+        const entity = state.entities[id];
 
         /* delete sprite if its entity was removed from the store */
         if (!entity) {
@@ -81,8 +81,8 @@ function update() {
         }
     }
 
-    Object.keys(state.entity).forEach(id => {
-        const { hasSprite, respondsToTap } = state.entity[id];
+    Object.keys(state.entities).forEach(id => {
+        const { hasSprite, respondsToTap } = state.entities[id];
         if (sprites.has(id) || !hasSprite) {
             return;
         }

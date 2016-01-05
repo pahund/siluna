@@ -19,7 +19,7 @@ const speed = 10,
 
 export default () => {
     const store = createStore(reducers, {
-        entity: {
+        entities: {
             siluna: {
                 hasSprite: hasSprite("images/siluna.png", {
                     anchor: { x: 0.5, y: 0.1 },
