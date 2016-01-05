@@ -4,11 +4,19 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 03 Jan 2016
  */
-export default entity => {
-    if (!entity.hasSprite) {
+import deepFreeze from "deep-freeze";
+
+export default prevEntity => {
+    let spriteComponent = prevEntity.hasSprite;
+    if (!spriteComponent) {
         return;
     }
-    entity.hasSprite = Object.assign(entity.hasSprite, { tint: Math.random() * 0xFFFFFF });
-    return entity;
+    return deepFreeze({
+        ...prevEntity,
+        hasSprite: {
+            ...spriteComponent,
+            tint: Math.random() * 0xFFFFFF
+        }
+    });
 }
 

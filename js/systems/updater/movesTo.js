@@ -53,13 +53,12 @@ export default (component, spriteComponent) => {
         increment = calculateIncrement(delta, ratio, speed);
     position.x += increment.x;
     position.y += increment.y;
-    const retVal = [
+    return [
         position.x === target.x && position.y === target.y ? undefined : component,
         deepFreeze({
             ...spriteComponent,
             position
         })
     ];
-    return retVal;
 }
 
