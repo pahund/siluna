@@ -11,11 +11,13 @@ import rotates from "../components/rotates";
 import hasSprite from "../components/hasSprite";
 import respondsToTap from "../components/respondsToTap";
 import { TINT } from "../actions";
+import config from "../config";
+import reducers from "../reducers";
 
-const speed = 100,
+const speed = 10,
     margin = 250;
 
-export default ({ config, reducers }) => {
+export default () => {
     const store = createStore(reducers, {
         entity: {
             siluna: {
@@ -109,8 +111,7 @@ export default ({ config, reducers }) => {
                 rotates: rotates(0.01),
                 respondsToTap: respondsToTap(TINT, "sinalta")
             }
-        },
-        config
+        }
     });
     return store;
 };

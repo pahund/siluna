@@ -35,7 +35,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loader: "babel?presets[]=es2015"
+                loader: "babel"
+                //loader: "babel?presets[]=es2015"
             }
         ]
     },

@@ -1,11 +1,15 @@
 /**
  * index.js
  *
- * @author <a href="mailto:pahund@team.mobile.de">Patrick Hund</a>
+ * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 31 Dec 2015
  */
 
+import update from "./update";
+import tint from "./tint";
+
 export const
+    UPDATE = "UPDATE",
     MOVE = "MOVE",
     ROTATE = "ROTATE",
     TINT = "TINT";
@@ -24,15 +28,9 @@ export function rotate(entity) {
     };
 }
 
-export function tint(entity) {
-    return {
-        type: TINT,
-        entity
-    };
-}
-
 export function getByType(type) {
     switch (type) {
+        case UPDATE: return update;
         case MOVE: return move;
         case ROTATE: return rotate;
         case TINT: return tint;
