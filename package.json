@@ -8,7 +8,7 @@
     "dist-debug": "node node_modules/webpack/bin/webpack.js --config webpack.config-debug.js",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config-dev.js",
     "lint": "node node_modules/eslint/bin/eslint.js *.js js test",
-    "test": "node node_modules/mocha/bin/mocha --compilers js:babel/register --recursive test/**/*Spec.js"
+    "test": "node node_modules/mocha/bin/mocha --compilers js:node_modules/babel-core/register --recursive test/**/*Spec.js"
   },
   "repository": {
     "type": "git",
