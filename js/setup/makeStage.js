@@ -11,6 +11,7 @@ import config from "../config";
 export default ({ renderer, store }) => {
     const stage = new PIXI.Container(),
         onTap = ({ data }) => store.dispatch(moveToTap(data.getLocalPosition(stage), config.speed));
+    stage.hitArea = new PIXI.Rectangle(0, 0, config.gameDimensions.w, config.gameDimensions.w);
     stage.interactive = true;
     stage.touchstart = onTap;
     stage.click = onTap;
