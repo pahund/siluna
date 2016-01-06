@@ -24,7 +24,9 @@ export default prevEntity => {
     if (!spriteComponent) {
         return prevEntity;
     }
-    let nextEntity = {};
+    let nextEntity = {
+        ...prevEntity
+    };
     Object.keys(prevEntity).filter(componentId => updaters[componentId] !== undefined).forEach(componentId => {
         let component = prevEntity[componentId];
         [ component, spriteComponent ] = updaters[componentId](component, spriteComponent);

@@ -5,7 +5,6 @@
  * @since 27 Dec 2015
  */
 
-import config from "./config";
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
 import makeStore from "./setup/makeStore";
@@ -15,10 +14,10 @@ import update from "./actions/update";
 import reducers from "./reducers";
 
 const renderer = makeRenderer(),
-    stage = makeStage(),
-    store = makeStore();
+    store = makeStore(),
+    stage = makeStage({ store, renderer });
 
-resizeManager.init({ config, stage, renderer });
+resizeManager.init({ stage, renderer });
 spriteManager.init({ store, stage });
 
 (function animate() {

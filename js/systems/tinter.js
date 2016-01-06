@@ -9,7 +9,7 @@ import deepFreeze from "deep-freeze";
 export default prevEntity => {
     let spriteComponent = prevEntity.hasSprite;
     if (!spriteComponent) {
-        return;
+        return prevEntity;
     }
     return deepFreeze({
         ...prevEntity,

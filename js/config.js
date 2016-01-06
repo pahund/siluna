@@ -10,6 +10,8 @@
 import deepFreeze from "deep-freeze";
 
 export default deepFreeze({
+    speed: 50,
+    margin: 250,
     gameDimensions: {
         w: 2880,
         h: 1800

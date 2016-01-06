@@ -10,29 +10,13 @@ import tint from "./tint";
 
 export const
     UPDATE = "UPDATE",
-    MOVE = "MOVE",
-    ROTATE = "ROTATE",
-    TINT = "TINT";
-
-export function move(entity) {
-    return {
-        type: MOVE,
-        entity
-    };
-}
-
-export function rotate(entity) {
-    return {
-        type: ROTATE,
-        entity
-    };
-}
+    TINT = "TINT",
+    MOVE_TO_TAP = "MOVE_TO_TAP";
 
 export function getByType(type) {
     switch (type) {
         case UPDATE: return update;
-        case MOVE: return move;
-        case ROTATE: return rotate;
         case TINT: return tint;
+        case MOVE_TO_TAP: return moveToTap;
     }
 }

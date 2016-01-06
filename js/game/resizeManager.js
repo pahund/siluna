@@ -4,9 +4,9 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 29 Dec 2015
  */
+import config from "../config";
 
 let initialized = false,
-    config = null,
     stage = null,
     renderer = null;
 
@@ -41,7 +41,6 @@ function init(deps) {
     if (initialized) {
         throw new Error("resize is already initialized");
     }
-    config = deps.config;
     stage = deps.stage;
     renderer = deps.renderer;
 

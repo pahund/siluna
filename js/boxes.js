@@ -15,7 +15,7 @@ const renderer = makeRenderer(),
     stage = makeStage(),
     loader = new PIXI.loaders.Loader();
 
-resizeManager.init({ config, stage, renderer });
+resizeManager.init({ stage, renderer });
 
 loader.add("boxes", "./data/boxes.json").load(onAssetsLoaded);
 

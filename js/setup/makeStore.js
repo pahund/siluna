@@ -7,15 +7,13 @@
 import { createStore } from "redux";
 import moves from "../components/moves";
 import movesTo from "../components/movesTo";
+import movesToTap from "../components/movesToTap";
 import rotates from "../components/rotates";
 import hasSprite from "../components/hasSprite";
 import respondsToTap from "../components/respondsToTap";
 import { TINT } from "../actions";
 import config from "../config";
 import reducers from "../reducers";
-
-const speed = 10,
-    margin = 250;
 
 export default () => {
     const store = createStore(reducers, {
@@ -33,7 +31,7 @@ export default () => {
             },
             sirena: {
                 hasSprite: hasSprite("images/sirena.png"),
-                movesTo: movesTo(config.gameDimensions.w - margin, config.gameDimensions.h - margin, speed)
+                movesTo: movesTo(config.gameDimensions.w - config.margin, config.gameDimensions.h - config.margin, config.speed)
                 //rotates: rotates(0.1)
             },
             sirena2: {
@@ -43,7 +41,8 @@ export default () => {
                         y: config.gameDimensions.h
                     }
                 }),
-                movesTo: movesTo(margin, margin, speed)
+                movesTo: movesTo(config.margin, config.margin, config.speed),
+                movesToTap: movesToTap(config.speed)
             },
             sirena3: {
                 hasSprite: hasSprite("images/sirena.png", {
@@ -52,7 +51,7 @@ export default () => {
                         y: config.gameDimensions.h
                     }
                 }),
-                movesTo: movesTo(config.gameDimensions.w - margin, margin, speed)
+                movesTo: movesTo(config.gameDimensions.w - config.margin, config.margin, config.speed)
             },
             sirena4: {
                 hasSprite: hasSprite("images/sirena.png", {
@@ -61,7 +60,7 @@ export default () => {
                         y: 0
                     }
                 }),
-                movesTo: movesTo(margin, config.gameDimensions.h - margin, speed)
+                movesTo: movesTo(config.margin, config.gameDimensions.h - config.margin, config.speed)
             },
             sirena5: {
                 hasSprite: hasSprite("images/sirena.png", {
@@ -70,7 +69,7 @@ export default () => {
                         y: 0
                     }
                 }),
-                movesTo: movesTo(config.gameDimensions.w / 2, config.gameDimensions.h - margin, speed)
+                movesTo: movesTo(config.gameDimensions.w / 2, config.gameDimensions.h - config.margin, config.speed)
             },
             sirena6: {
                 hasSprite: hasSprite("images/sirena.png", {
@@ -79,7 +78,7 @@ export default () => {
                         y: config.gameDimensions.h / 2
                     }
                 }),
-                movesTo: movesTo(config.gameDimensions.w - margin, config.gameDimensions.h / 2, speed)
+                movesTo: movesTo(config.gameDimensions.w - config.margin, config.gameDimensions.h / 2, config.speed)
             },
             sirena7: {
                 hasSprite: hasSprite("images/sirena.png", {
@@ -88,7 +87,7 @@ export default () => {
                         y: config.gameDimensions.h / 2
                     }
                 }),
-                movesTo: movesTo(margin, config.gameDimensions.h / 2, speed)
+                movesTo: movesTo(config.margin, config.gameDimensions.h / 2, config.speed)
             },
             sirena8: {
                 hasSprite: hasSprite("images/sirena.png", {
@@ -97,7 +96,7 @@ export default () => {
                         y: config.gameDimensions.h
                     }
                 }),
-                movesTo: movesTo(config.gameDimensions.w / 2, margin, speed)
+                movesTo: movesTo(config.gameDimensions.w / 2, config.margin, config.speed)
             },
             sinalta: {
                 hasSprite: hasSprite("images/sirena.png", {
