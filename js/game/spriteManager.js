@@ -7,10 +7,12 @@
 
 import PIXI from "pixi";
 import { getByType } from "../actions";
+import config from "../config";
 
 let initialized = false,
     store = null,
     stage = null,
+    resources = null,
     sprites = null;
 
 function init(deps) {
@@ -19,6 +21,7 @@ function init(deps) {
     }
     store = deps.store;
     stage = deps.stage;
+    resources = deps.resources;
     sprites = new Map();
     update();
 }
@@ -32,13 +35,34 @@ function create({
     position,
     anchor,
     rotation,
-    tint
+    tint,
+    scale
 }) {
     const sprite = new PIXI.Sprite.fromImage(image);
     sprite.position = position;
     sprite.anchor = anchor;
     sprite.rotation = rotation;
     sprite.tint = tint;
+    sprite.scale.set(scale);
+    return sprite;
+}
+
+function createWithSpine({
+    dataId,
+    position,
+    anchor,
+    rotation,
+    tint,
+    scale
+}) {
+    const sprite = new PIXI.spine.Spine(resources[dataId].spineData);
+    sprite.update(0);
+    sprite.autoUpdate = false;
+    sprite.position = position;
+    sprite.anchor = anchor;
+    sprite.rotation = rotation;
+    sprite.tint = tint;
+    sprite.scale.set(scale);
     return sprite;
 }
 
@@ -61,7 +85,20 @@ function add(id, spriteOptions, tapOptions) {
     return sprite;
 }
 
-function update() {
+function addWithSpine(id, spineOptions, tapOptions, animationOptions) {
+    const sprite = createWithSpine(spineOptions);
+    if (tapOptions) {
+        makeTappable(sprite, tapOptions);
+    }
+    if (animationOptions) {
+        sprite.state.setAnimationByName(0, animationOptions.animation, true);
+    }
+    stage.addChild(sprite);
+    sprites.set(id, sprite);
+    return sprite;
+}
+
+function update(timeDelta) {
     const state = store.getState();
     for (const [ id, sprite ] of sprites) {
         const entity = state.entities[id];
@@ -73,21 +110,30 @@ function update() {
         }
 
         /* update sprite */
-        if (entity.hasSprite) {
-            const { position, rotation, tint } = entity.hasSprite;
+        const spriteOptions = entity.hasSprite || entity.hasSpine;
+        if (spriteOptions) {
+            const { position, rotation, tint } = spriteOptions;
             sprite.position = position;
             sprite.rotation = rotation;
             sprite.tint = tint;
         }
+        if (entity.hasAnimation) {
+            sprite.update(timeDelta / 1000);
+        }
     }
 
     Object.keys(state.entities).forEach(id => {
-        const { hasSprite, respondsToTap } = state.entities[id];
-        if (sprites.has(id) || !hasSprite) {
+        const { hasSprite, hasSpine, respondsToTap, hasAnimation } = state.entities[id];
+        if (sprites.has(id) || (!hasSprite && !hasSpine)) {
             return;
         }
         /* add sprite if there is an entity without corresponding sprite */
-        add(id, hasSprite, respondsToTap);
+        if (hasSprite) {
+            add(id, hasSprite, respondsToTap);
+        }
+        if (hasSpine) {
+            addWithSpine(id, hasSpine, respondsToTap, hasAnimation);
+        }
     });
 }
 

@@ -7,5 +7,6 @@
 import deepFreeze from "deep-freeze";
 
 export default dr => deepFreeze({
+    id: "rotates",
     dr
 });

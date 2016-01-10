@@ -7,6 +7,7 @@
 import deepFreeze from "deep-freeze";
 
 export default (actionType, ...args) => deepFreeze({
+    id: "respondsToTap",
     actionType,
     args
 });
