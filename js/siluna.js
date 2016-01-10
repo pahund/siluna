@@ -37,13 +37,13 @@ function onAssetsLoaded(l, res) {
     // now we can scale, position and rotate the container as any other display object
     const scale = Math.min((config.gameDimensions.w * 0.8) / silunaCage.width, (config.gameDimensions.h * 0.8) / silunaCage.height);
     silunaCage.scale.set(scale, scale);
-    silunaCage.position.set((renderer.width - silunaCage.width) * 0.5, (renderer.height - silunaCage.height) * 0.5);
+    silunaCage.position.set((config.gameDimensions.w - silunaCage.width) * 0.5, (config.gameDimensions.h - silunaCage.height) * 0.5);
 
     // add the container to the stage
     stage.addChild(silunaCage);
 
     // once position and scaled, set the animation to play
-    siluna.state.setAnimationByName(0, "tail_wagging", true);
+    siluna.state.setAnimationByName(0, "treading-water", true);
 
     (function animate() {
         requestAnimationFrame(animate);
