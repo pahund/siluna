@@ -15,7 +15,7 @@ import reducers from "./reducers";
 
 const renderer = makeRenderer(),
     store = makeStore(),
-    stage = makeStage({ store, renderer });
+    stage = makeStage({ store });
 
 resizeManager.init({ stage, renderer });
 spriteManager.init({ store, stage });
