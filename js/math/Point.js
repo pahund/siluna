@@ -19,15 +19,22 @@ class Point {
     }
 
     subtractPoint(point) {
+        if (!(point instanceof Point)) {
+            throw new TypeError("Point argument passed to Vector.subtractPoint needs to be a point");
+        }
         return new Vector(this.x - point.x, this.y - point.y);
     }
 
     equals(point) {
-        return this.x === point.x && this.y === point.y;
+        return point instanceof Point && this.x === point.x && this.y === point.y;
     }
 
     clone() {
         return new Point(this.x, this.y);
+    }
+
+    static fromPixiPoint({ x, y }) {
+        return new Point(x, y);
     }
 }
 

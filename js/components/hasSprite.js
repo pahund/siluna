@@ -24,12 +24,17 @@ export default (image, {
     rotation = defaults.rotation,
     tint = defaults.tint,
     scale = defaults.scale
-} = defaults) => deepFreeze({
-    id: "hasSprite",
-    image,
-    position,
-    anchor,
-    rotation,
-    tint,
-    scale
-});
+} = defaults) => {
+    if (!(position instanceof Point)) {
+        throw new TypeError("Position argument passed to hasSprite component needs to be a point");
+    }
+    return deepFreeze({
+        id: "hasSprite",
+        image,
+        position,
+        anchor,
+        rotation,
+        tint,
+        scale
+    });
+}

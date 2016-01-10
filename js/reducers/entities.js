@@ -22,7 +22,7 @@ export default (state = {}, action = null) => {
                 [action.entity]: updater(getEntity(state, action))
             };
         case MOVE_TO_TAP:
-            return moverToTap(state, action.position, action.speed);
+            return moverToTap(state, action.target, action.speed);
         case TINT:
             return {
                 ...state,
