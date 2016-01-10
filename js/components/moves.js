@@ -7,6 +7,7 @@
 import deepFreeze from "deep-freeze";
 
 export default (dx, dy) => deepFreeze({
+    id: "moves",
     dx,
     dy
 });

@@ -10,10 +10,17 @@
 import deepFreeze from "deep-freeze";
 
 export default deepFreeze({
-    speed: 50,
+    speed: 20,
     margin: 250,
     gameDimensions: {
         w: 2880,
         h: 1800
-    }
+    },
+    assets: {
+        path: "./data/",
+        bundles: [
+            "siluna"
+        ]
+    },
+    maxTimeDelta: 100
 });

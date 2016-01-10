@@ -7,5 +7,6 @@
 import deepFreeze from "deep-freeze";
 
 export default (speed = 1) => deepFreeze({
+    id: "movesToTap",
     speed
 });

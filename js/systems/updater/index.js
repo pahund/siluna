@@ -20,7 +20,7 @@ const updaters = {
 };
 
 export default prevEntity => {
-    let spriteComponent = prevEntity.hasSprite;
+    let spriteComponent = prevEntity.hasSprite || prevEntity.hasSpine;
     if (!spriteComponent) {
         return prevEntity;
     }
@@ -35,7 +35,7 @@ export default prevEntity => {
         }
     });
     if (spriteComponent) {
-        nextEntity.hasSprite = spriteComponent;
+        nextEntity[spriteComponent.id] = spriteComponent;
     }
     return deepFreeze(nextEntity);
 }

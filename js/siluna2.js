@@ -9,7 +9,7 @@ import PIXI from "pixi";
 import config from "./config";
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
-import resizeManager from "./view/resizeManager";
+import resizeManager from "./game/resizeManager";
 
 const renderer = makeRenderer(),
     stage = makeStage(),
@@ -22,25 +22,15 @@ loader.add("siluna", "./data/siluna.json").load(onAssetsLoaded);
 function onAssetsLoaded(l, res) {
 
     const siluna = new PIXI.spine.Spine(res.siluna.spineData);
-    siluna.skeleton.setToSetupPose();
     siluna.update(0);
     siluna.autoUpdate = false;
 
-    // create a container for the spine animation and add the animation to it
-    const silunaCage = new PIXI.Container();
-    silunaCage.addChild(siluna);
+    siluna.position.set(config.gameDimensions.w * 0.5, config.gameDimensions.h * 0.3);
 
-    // measure the spine animation and position it inside its container to align it to the origin
-    const localRect = siluna.getLocalBounds();
-    siluna.position.set(-localRect.x, -localRect.y);
+    const scale = Math.min(config.gameDimensions.w * 0.8 / siluna.width, config.gameDimensions.h * 0.8 / siluna.height);
+    siluna.scale.set(scale, scale);
 
-    // now we can scale, position and rotate the container as any other display object
-    const scale = Math.min((config.gameDimensions.w * 0.8) / silunaCage.width, (config.gameDimensions.h * 0.8) / silunaCage.height);
-    silunaCage.scale.set(scale, scale);
-    silunaCage.position.set((config.gameDimensions.w - silunaCage.width) * 0.5, (config.gameDimensions.h - silunaCage.height) * 0.5);
-
-    // add the container to the stage
-    stage.addChild(silunaCage);
+    stage.addChild(siluna);
 
     // once position and scaled, set the animation to play
     siluna.state.setAnimationByName(0, "treading-water", true);

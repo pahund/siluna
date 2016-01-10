@@ -1,8 +1,10 @@
 /**
- * hasSprite.js
+ * hasSpine.js
+ *
+ * A special kind of sprite that uses animation data created with Spine.
  *
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
- * @since 01 Jan 2016
+ * @since 10 Jan 2016
  */
 import deepFreeze from "deep-freeze";
 
@@ -20,15 +22,15 @@ const defaults = {
     scale: 1
 };
 
-export default (image, {
+export default (dataId, {
     position = defaults.position,
     anchor = defaults.anchor,
     rotation = defaults.rotation,
     tint = defaults.tint,
     scale = defaults.scale
 } = defaults) => deepFreeze({
-    id: "hasSprite",
-    image,
+    id: "hasSpine",
+    dataId,
     position,
     anchor,
     rotation,

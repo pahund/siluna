@@ -21,6 +21,10 @@ module.exports = {
         siluna: [
             "webpack/hot/dev-server",
             "./siluna"
+        ],
+        siluna2: [
+            "webpack/hot/dev-server",
+            "./siluna2"
         ]
     },
     output: {

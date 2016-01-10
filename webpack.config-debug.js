@@ -15,7 +15,8 @@ module.exports = {
     entry: {
         index: "./js/index",
         boxes: "./js/boxes",
-        siluna: "./js/siluna"
+        siluna: "./js/siluna",
+        siluna2: "./js/siluna2"
     },
     output: {
         path: path.resolve(__dirname, "dist"),

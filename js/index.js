@@ -8,27 +8,37 @@
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
 import makeStore from "./setup/makeStore";
+import makeLoader from "./setup/makeLoader";
+import makeTimer from "./setup/makeTimer";
 import resizeManager from "./view/resizeManager";
 import spriteManager from "./view/spriteManager";
 import update from "./actions/update";
 import reducers from "./reducers";
 
-const renderer = makeRenderer(),
+const loader = makeLoader(),
+    renderer = makeRenderer(),
     store = makeStore(),
     stage = makeStage({ store });
 
-resizeManager.init({ stage, renderer });
-spriteManager.init({ store, stage });
+let timer;
 
-(function animate() {
+resizeManager.init({ stage, renderer });
+
+loader.load((l, resources) => {
+    spriteManager.init({ store, stage, resources });
+    timer = makeTimer();
+    animate();
+});
+
+function animate() {
     requestAnimationFrame(animate);
 
     const state = store.getState();
     Object.keys(state.entities).forEach(entity => store.dispatch(update(entity)));
 
-    spriteManager.update();
+    spriteManager.update(timer());
 
     renderer.render(stage);
-}());
+}
 
 

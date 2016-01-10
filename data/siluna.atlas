@@ -1,75 +1,88 @@
 
-siluna-spritesheet.png
+siluna.png
+size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-head
+images/Rumpf
   rotate: false
-  xy: 0, 0
-  size: 353, 621
-  orig: 353, 621
+  xy: 2, 131
+  size: 411, 884
+  orig: 411, 884
   offset: 0, 0
   index: -1
-rump
+images/Schwanz 2
   rotate: false
-  xy: 353, 0
-  size: 406, 859
-  orig: 406, 859
+  xy: 415, 2
+  size: 489, 501
+  orig: 489, 501
   offset: 0, 0
   index: -1
-right_upper_arm
-  rotate: false
-  xy: 759, 0
-  size: 267, 224
-  orig: 267, 224
+images/Schwanz 3
+  rotate: true
+  xy: 415, 505
+  size: 510, 530
+  orig: 510, 530
   offset: 0, 0
   index: -1
-right_lower_arm
+
+siluna2.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/Kopf
   rotate: false
-  xy: 759, 224
-  size: 385, 313
-  orig: 385, 313
+  xy: 2, 325
+  size: 423, 623
+  orig: 423, 623
   offset: 0, 0
   index: -1
-left_upper_arm
-  rotate: false
-  xy: 1026, 0
-  size: 349, 146
-  orig: 349, 146
+images/Linker Unterarm
+  rotate: true
+  xy: 862, 582
+  size: 366, 157
+  orig: 366, 157
   offset: 0, 0
   index: -1
-left_lower_arm
+images/Rechter Unterarm
   rotate: false
-  xy: 1144, 146
-  size: 364, 155
-  orig: 364, 155
+  xy: 2, 9
+  size: 382, 314
+  orig: 382, 314
   offset: 0, 0
   index: -1
-tail1
+images/Schwanz 1
   rotate: false
-  xy: 759, 537
-  size: 431, 540
-  orig: 431, 540
+  xy: 427, 406
+  size: 433, 542
+  orig: 433, 542
   offset: 0, 0
   index: -1
-tail2
+images/Schwanz Ende
   rotate: false
-  xy: 1190, 400
-  size: 486, 497
-  orig: 486, 497
+  xy: 427, 2
+  size: 484, 402
+  orig: 484, 402
   offset: 0, 0
   index: -1
-tail3
+
+siluna3.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/Linker Oberarm
   rotate: false
-  xy: 1676, 400
-  size: 489, 528
-  orig: 489, 528
+  xy: 2, 80
+  size: 351, 148
+  orig: 351, 148
   offset: 0, 0
   index: -1
-tail_end
+images/Rechter Oberarm
   rotate: false
-  xy: 1508, 0
-  size: 482, 400
-  orig:
+  xy: 355, 2
+  size: 264, 226
+  orig: 264, 226
   offset: 0, 0
   index: -1
