@@ -15,6 +15,7 @@ import respondsToTap from "../components/respondsToTap";
 import { TINT } from "../actions";
 import config from "../config";
 import reducers from "../reducers";
+import Point from "../math/Point";
 
 export default () => {
     const store = createStore(reducers, {
@@ -22,10 +23,7 @@ export default () => {
             siluna: {
                 hasSpine: hasSpine("siluna", {
                     anchor: { x: 0.5, y: 0.1 },
-                    position: {
-                        x: config.gameDimensions.w / 2,
-                        y: config.gameDimensions.h / 2
-                    },
+                    position: new Point(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
                     scale: 0.17
                 }),
                 hasAnimation: {

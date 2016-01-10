@@ -6,6 +6,7 @@
  */
 import deepFreeze from "deep-freeze";
 import movesTo from "../components/movesTo";
+import Point from "../math/Point";
 
 export default (prevEntities, position, speed) => {
     const newEntities = {};
@@ -14,7 +15,7 @@ export default (prevEntities, position, speed) => {
             component = entity.movesToTap;
         newEntities[entityId] = !component ? entity : deepFreeze({
             ...entity,
-            movesTo: movesTo(position.x, position.y, speed)
+            movesTo: movesTo(new Point(position.x, position.y), speed)
         });
 
     });

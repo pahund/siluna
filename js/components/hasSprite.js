@@ -5,12 +5,10 @@
  * @since 01 Jan 2016
  */
 import deepFreeze from "deep-freeze";
+import Point from "../math/Point";
 
 const defaults = {
-    position: {
-        x: 0,
-        y: 0
-    },
+    position: new Point(0, 0),
     anchor: {
         x: 0.5,
         y: 0.5

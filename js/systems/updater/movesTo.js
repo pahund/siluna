@@ -36,15 +36,9 @@ function pickRatio(thisDelta, thatDelta, ratio) {
 }
 
 export default (component, spriteComponent) => {
-    const target = {
-            x: component.x,
-            y: component.y
-        },
+    const target = component.target,
         speed = component.speed,
-        position = {
-            x: spriteComponent.position.x,
-            y: spriteComponent.position.y
-        },
+        position = spriteComponent.position.clone(),
         delta = {
             x: target.x - position.x,
             y: target.y - position.y

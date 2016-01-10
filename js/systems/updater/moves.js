@@ -10,6 +10,7 @@
 import config from "../../config";
 import moves from "../../components/moves";
 import deepFreeze from "deep-freeze";
+import Point from "../../math/Point";
 
 export default (component, spriteComponent) => {
     let dx = component.dx,
@@ -26,9 +27,7 @@ export default (component, spriteComponent) => {
         moves(dx, dy),
         deepFreeze({
             ...spriteComponent,
-            position: {
-                x, y
-            }
+            position: new Point(x, y)
         })
     ]
 }
