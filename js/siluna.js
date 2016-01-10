@@ -9,7 +9,7 @@ import PIXI from "pixi";
 import config from "./config";
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
-import resizeManager from "./game/resizeManager";
+import resizeManager from "./view/resizeManager";
 
 const renderer = makeRenderer(),
     stage = makeStage(),

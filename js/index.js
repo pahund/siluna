@@ -8,8 +8,8 @@
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
 import makeStore from "./setup/makeStore";
-import resizeManager from "./game/resizeManager";
-import spriteManager from "./game/spriteManager";
+import resizeManager from "./view/resizeManager";
+import spriteManager from "./view/spriteManager";
 import update from "./actions/update";
 import reducers from "./reducers";
 

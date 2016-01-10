@@ -6,6 +6,7 @@
  */
 
 import PIXI from "pixi";
+import Sprite from "./Sprite";
 import { getByType } from "../actions";
 
 let initialized = false,
@@ -34,7 +35,7 @@ function create({
     rotation,
     tint
 }) {
-    const sprite = new PIXI.Sprite.fromImage(image);
+    const sprite = Sprite.fromImage(image);
     sprite.position = position;
     sprite.anchor = anchor;
     sprite.rotation = rotation;
