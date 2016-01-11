@@ -44,6 +44,10 @@ class Vector {
         return this.x === vector.x && this.y === vector.y;
     }
 
+    clone() {
+        return new Vector(this.x, this.y);
+    }
+
     dotProduct(vector) {
         const a = this.normalized,
             b = vector.normalized;

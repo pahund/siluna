@@ -16,6 +16,7 @@ import { TINT } from "../actions";
 import config from "../config";
 import reducers from "../reducers";
 import Point from "../math/Point";
+import Vector from "../math/Vector";
 
 export default () => {
     const store = createStore(reducers, {
@@ -29,8 +30,8 @@ export default () => {
                 hasAnimation: {
                     animation: "treading-water"
                 },
-                movesToTap: movesToTap(config.speed)
-                //moves: moves(-10, 10),
+                //movesToTap: movesToTap(config.speed)
+                moves: moves(new Vector(-10, 10)),
                 //rotates: rotates(0.05)
             }
             //sirena: {
