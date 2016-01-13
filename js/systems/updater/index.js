@@ -9,6 +9,7 @@
  */
 import moves from "./moves";
 import movesTo from "./movesTo";
+import movesBy from "./movesBy";
 import rotates from "./rotates";
 import deepFreeze from "deep-freeze";
 
@@ -16,10 +17,11 @@ import deepFreeze from "deep-freeze";
 const updaters = {
     moves,
     movesTo,
+    movesBy,
     rotates
 };
 
-export default prevEntity => {
+export default (prevEntity, timeDelta) => {
     let spriteComponent = prevEntity.hasSprite || prevEntity.hasSpine;
     if (!spriteComponent) {
         return prevEntity;
@@ -29,9 +31,11 @@ export default prevEntity => {
     };
     Object.keys(prevEntity).filter(componentId => updaters[componentId] !== undefined).forEach(componentId => {
         let component = prevEntity[componentId];
-        [ component, spriteComponent ] = updaters[componentId](component, spriteComponent);
+        [ component, spriteComponent ] = updaters[componentId](component, spriteComponent, timeDelta);
         if (component) {
             nextEntity[componentId] = component;
+        } else {
+            delete nextEntity[componentId];
         }
     });
     if (spriteComponent) {

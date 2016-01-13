@@ -14,7 +14,7 @@ export default ({ store } = { store: null }) => {
     stage.interactive = true;
     stage.hitArea = new PIXI.Rectangle(0, 0, config.gameDimensions.w, config.gameDimensions.w);
     if (store) {
-        const onTap = ({ data }) => store.dispatch(moveToTap(Point.fromPixiPoint(data.getLocalPosition(stage)), config.speed));
+        const onTap = ({ data }) => store.dispatch(moveToTap(Point.fromPixiPoint(data.getLocalPosition(stage))));
         stage.touchstart = onTap;
         stage.click = onTap;
     }

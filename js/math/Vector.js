@@ -4,8 +4,6 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 08 Jan 2016
  */
-"use strict";
-
 class Vector {
     constructor(x, y) {
         this.x = x;
@@ -55,4 +53,4 @@ class Vector {
     }
 }
 
-module.exports = Vector;
+export default Vector;

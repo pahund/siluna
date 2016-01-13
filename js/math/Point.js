@@ -4,9 +4,7 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 08 Jan 2016
  */
-"use strict";
-
-const Vector = require("./Vector");
+import Vector from "./Vector";
 
 class Point {
     constructor(x, y) {
@@ -38,4 +36,4 @@ class Point {
     }
 }
 
-module.exports = Point;
+export default Point;

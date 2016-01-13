@@ -33,10 +33,11 @@ loader.load((l, resources) => {
 function animate() {
     requestAnimationFrame(animate);
 
-    const state = store.getState();
-    Object.keys(state.entities).forEach(entity => store.dispatch(update(entity)));
+    const state = store.getState(),
+        timeDelta = timer();
+    Object.keys(state.entities).forEach(entity => store.dispatch(update(entity, timeDelta)));
 
-    spriteManager.update(timer());
+    spriteManager.update(timeDelta);
 
     renderer.render(stage);
 }
