@@ -10,8 +10,8 @@ import makeStage from "./setup/makeStage";
 import makeStore from "./setup/makeStore";
 import makeLoader from "./setup/makeLoader";
 import makeTimer from "./setup/makeTimer";
-import resizeManager from "./game/resizeManager";
-import spriteManager from "./game/spriteManager";
+import resizeManager from "./view/resizeManager";
+import spriteManager from "./view/spriteManager";
 import update from "./actions/update";
 import reducers from "./reducers";
 
@@ -33,10 +33,11 @@ loader.load((l, resources) => {
 function animate() {
     requestAnimationFrame(animate);
 
-    const state = store.getState();
-    Object.keys(state.entities).forEach(entity => store.dispatch(update(entity)));
+    const state = store.getState(),
+        timeDelta = timer();
+    Object.keys(state.entities).forEach(entity => store.dispatch(update(entity, timeDelta)));
 
-    spriteManager.update(timer());
+    spriteManager.update(timeDelta);
 
     renderer.render(stage);
 }

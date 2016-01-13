@@ -6,7 +6,8 @@
  */
 import { UPDATE } from  ".";
 
-export default entity => ({
+export default (entity, timeDelta) => ({
     type: UPDATE,
-    entity
+    entity,
+    timeDelta
 });

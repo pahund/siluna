@@ -5,10 +5,16 @@
  * @since 02 Jan 2016
  */
 import deepFreeze from "deep-freeze";
+import Point from "../math/Point";
 
-export default (x, y, speed = 1) => deepFreeze({
-    id: "movesTo",
-    x,
-    y,
-    speed
-});
+export default (target, speed = 1000) => {
+    if (!(target instanceof Point)) {
+        throw new TypeError("Target argument passed to movesTo component needs to be a point");
+    }
+    return deepFreeze({
+        id: "movesTo",
+        target,
+        speed,
+        elapsed: 0
+    });
+}

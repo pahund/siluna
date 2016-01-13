@@ -10,25 +10,22 @@
 import config from "../../config";
 import moves from "../../components/moves";
 import deepFreeze from "deep-freeze";
+import Point from "../../math/Point";
 
 export default (component, spriteComponent) => {
-    let dx = component.dx,
-        dy = component.dy;
-    const x = spriteComponent.position.x + dx,
-        y = spriteComponent.position.y + dy;
-    if (x > config.gameDimensions.w || x < 0) {
-        dx = dx * -1;
+    const velocity = component.velocity.clone(),
+        position = spriteComponent.position.addVector(velocity);
+    if (position.x > config.gameDimensions.w || position.x < 0) {
+        velocity.x *= -1;
     }
-    if (y > config.gameDimensions.h || y < 0) {
-        dy = dy * -1;
+    if (position.y > config.gameDimensions.h || position.y < 0) {
+        velocity.y *= -1;
     }
     return [
-        moves(dx, dy),
+        moves(velocity),
         deepFreeze({
             ...spriteComponent,
-            position: {
-                x, y
-            }
+            position
         })
     ]
 }

@@ -5,12 +5,10 @@
  * @since 01 Jan 2016
  */
 import deepFreeze from "deep-freeze";
+import Point from "../math/Point";
 
 const defaults = {
-    position: {
-        x: 0,
-        y: 0
-    },
+    position: new Point(0, 0),
     anchor: {
         x: 0.5,
         y: 0.5
@@ -26,12 +24,17 @@ export default (image, {
     rotation = defaults.rotation,
     tint = defaults.tint,
     scale = defaults.scale
-} = defaults) => deepFreeze({
-    id: "hasSprite",
-    image,
-    position,
-    anchor,
-    rotation,
-    tint,
-    scale
-});
+} = defaults) => {
+    if (!(position instanceof Point)) {
+        throw new TypeError("Position argument passed to hasSprite component needs to be a point");
+    }
+    return deepFreeze({
+        id: "hasSprite",
+        image,
+        position,
+        anchor,
+        rotation,
+        tint,
+        scale
+    });
+}

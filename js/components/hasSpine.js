@@ -7,12 +7,10 @@
  * @since 10 Jan 2016
  */
 import deepFreeze from "deep-freeze";
+import Point from "../math/Point";
 
 const defaults = {
-    position: {
-        x: 0,
-        y: 0
-    },
+    position: new Point(0, 0),
     anchor: {
         x: 0.5,
         y: 0.5
@@ -28,12 +26,17 @@ export default (dataId, {
     rotation = defaults.rotation,
     tint = defaults.tint,
     scale = defaults.scale
-} = defaults) => deepFreeze({
-    id: "hasSpine",
-    dataId,
-    position,
-    anchor,
-    rotation,
-    tint,
-    scale
-});
+} = defaults) => {
+    if (!(position instanceof Point)) {
+        throw new TypeError("Position argument passed to hasSpine component needs to be a point");
+    }
+    return deepFreeze({
+        id: "hasSpine",
+        dataId,
+        position,
+        anchor,
+        rotation,
+        tint,
+        scale
+    });
+}

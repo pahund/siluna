@@ -6,6 +6,7 @@
  */
 
 import PIXI from "pixi";
+import Sprite from "./Sprite";
 import { getByType } from "../actions";
 import config from "../config";
 
@@ -38,12 +39,12 @@ function create({
     tint,
     scale
 }) {
-    const sprite = new PIXI.Sprite.fromImage(image);
+    const sprite = Sprite.fromImage(image);
     sprite.position = position;
     sprite.anchor = anchor;
     sprite.rotation = rotation;
     sprite.tint = tint;
-    sprite.scale.set(scale);
+    sprite.scale = scale;
     return sprite;
 }
 
@@ -55,14 +56,14 @@ function createWithSpine({
     tint,
     scale
 }) {
-    const sprite = new PIXI.spine.Spine(resources[dataId].spineData);
+    const sprite = Sprite.fromSpine(resources[dataId].spineData);
     sprite.update(0);
     sprite.autoUpdate = false;
     sprite.position = position;
     sprite.anchor = anchor;
     sprite.rotation = rotation;
     sprite.tint = tint;
-    sprite.scale.set(scale);
+    sprite.scale = scale;
     return sprite;
 }
 
@@ -80,7 +81,7 @@ function add(id, spriteOptions, tapOptions) {
     if (tapOptions) {
         makeTappable(sprite, tapOptions);
     }
-    stage.addChild(sprite);
+    sprite.appendTo(stage);
     sprites.set(id, sprite);
     return sprite;
 }
@@ -93,7 +94,7 @@ function addWithSpine(id, spineOptions, tapOptions, animationOptions) {
     if (animationOptions) {
         sprite.state.setAnimationByName(0, animationOptions.animation, true);
     }
-    stage.addChild(sprite);
+    sprite.appendTo(stage);
     sprites.set(id, sprite);
     return sprite;
 }
@@ -118,7 +119,7 @@ function update(timeDelta) {
             sprite.tint = tint;
         }
         if (entity.hasAnimation) {
-            sprite.update(timeDelta / 1000);
+            sprite.update(timeDelta);
         }
     }
 

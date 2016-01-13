@@ -19,10 +19,10 @@ export default (state = {}, action = null) => {
         case UPDATE:
             return {
                 ...state,
-                [action.entity]: updater(getEntity(state, action))
+                [action.entity]: updater(getEntity(state, action), action.timeDelta)
             };
         case MOVE_TO_TAP:
-            return moverToTap(state, action.position, action.speed);
+            return moverToTap(state, action.target);
         case TINT:
             return {
                 ...state,

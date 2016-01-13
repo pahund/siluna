@@ -5,9 +5,14 @@
  * @since 31 Dec 2015
  */
 import deepFreeze from "deep-freeze";
+import Vector from "../math/Vector";
 
-export default (dx, dy) => deepFreeze({
-    id: "moves",
-    dx,
-    dy
-});
+export default velocity => {
+    if (!(velocity instanceof Vector)) {
+        throw new TypeError("Velocity argument passed to moves component needs to be a vector");
+    }
+    return deepFreeze({
+        id: "moves",
+        velocity
+    });
+}
