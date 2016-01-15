@@ -11,7 +11,7 @@ import updatePosition from "./util/updatePosition";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
     let { target, velocity, speed, elapsed } = prevComponent,
-        position = spriteComponent.position;
+        { position } = spriteComponent;
 
     if (!velocity) {
         velocity = target.subtractPoint(position);

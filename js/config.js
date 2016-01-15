@@ -10,7 +10,10 @@
 import deepFreeze from "deep-freeze";
 
 export default deepFreeze({
-    speed: 2000,
+    speed: {
+        movement: 2000, // 2000 pixels per second
+        rotation: 360 // 360 degrees per second
+    },
     margin: 250,
     gameDimensions: {
         w: 2880,

@@ -4,11 +4,12 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 05 Jan 2016
  */
-import { UPDATE, TINT, MOVE_TO_TAP } from "../actions";
+import { UPDATE, TINT, MOVE_TO_TAP, ROTATE_TO_TAP } from "../actions";
 
 import updater from "../systems/updater";
 import tinter from "../systems/tinter";
 import moverToTap from "../systems/moverToTap";
+import rotaterToTap from "../systems/rotaterToTap";
 
 function getEntity(state, action) {
     return state[action.entity];
@@ -23,6 +24,8 @@ export default (state = {}, action = null) => {
             };
         case MOVE_TO_TAP:
             return moverToTap(state, action.target);
+        case ROTATE_TO_TAP:
+            return rotaterToTap(state, action.target);
         case TINT:
             return {
                 ...state,

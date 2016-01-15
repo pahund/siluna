@@ -9,6 +9,7 @@ import moves from "../components/moves";
 import movesTo from "../components/movesTo";
 import movesBy from "../components/movesBy";
 import movesToTap from "../components/movesToTap";
+import rotatesToTap from "../components/rotatesToTap";
 import rotates from "../components/rotates";
 import hasSprite from "../components/hasSprite";
 import hasSpine from "../components/hasSpine";
@@ -31,7 +32,8 @@ export default () => {
                 hasAnimation: {
                     animation: "treading-water"
                 },
-                movesToTap: movesToTap(config.speed)
+                movesToTap: movesToTap(config.speed.movement),
+                rotatesToTap: rotatesToTap(config.speed.rotation)
             }
         }
     });
