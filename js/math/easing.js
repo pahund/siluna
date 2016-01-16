@@ -8,6 +8,39 @@
  * @since 16 Jan 2016
  */
 
+export const
+    NO_EASING = "NO_EASING",
+    EASE_IN_QUAD = "EASE_IN_QUAD",
+    EASE_OUT_QUAD = "EASE_OUT_QUAD",
+    EASE_IN_OUT_QUAD = "EASE_IN_OUT_QUAD",
+    EASE_IN_CUBIC = "EASE_IN_CUBIC",
+    EASE_OUT_CUBIC = "EASE_OUT_CUBIC",
+    EASE_IN_OUT_CUBIC = "EASE_IN_OUT_CUBIC",
+    EASE_IN_QUART = "EASE_IN_QUART",
+    EASE_OUT_QUART = "EASE_OUT_QUART",
+    EASE_IN_OUT_QUART = "EASE_IN_OUT_QUART",
+    EASE_IN_QUINT = "EASE_IN_QUINT",
+    EASE_OUT_QUINT = "EASE_OUT_QUINT",
+    EASE_IN_OUT_QUINT = "EASE_IN_OUT_QUINT",
+    EASE_IN_SINE = "EASE_IN_SINE",
+    EASE_OUT_SINE = "EASE_OUT_SINE",
+    EASE_IN_OUT_SINE = "EASE_IN_OUT_SINE",
+    EASE_IN_EXPO = "EASE_IN_EXPO",
+    EASE_OUT_EXPO = "EASE_OUT_EXPO",
+    EASE_IN_OUT_EXPO = "EASE_IN_OUT_EXPO",
+    EASE_IN_CIRC = "EASE_IN_CIRC",
+    EASE_OUT_CIRC = "EASE_OUT_CIRC",
+    EASE_IN_OUT_CIRC = "EASE_IN_OUT_CIRC",
+    EASE_IN_ELASTIC = "EASE_IN_ELASTIC",
+    EASE_OUT_ELASTIC = "EASE_OUT_ELASTIC",
+    EASE_IN_OUT_ELASTIC = "EASE_IN_OUT_ELASTIC",
+    EASE_IN_BACK = "EASE_IN_BACK",
+    EASE_OUT_BACK = "EASE_OUT_BACK",
+    EASE_IN_OUT_BACK = "EASE_IN_OUT_BACK",
+    EASE_IN_BOUNCE = "EASE_IN_BOUNCE",
+    EASE_OUT_BOUNCE = "EASE_OUT_BOUNCE",
+    EASE_IN_OUT_BOUNCE = "EASE_IN_OUT_BOUNCE";
+
 export function noEasing(t, b, c, d) {
     return c * t / d + b;
 }
@@ -235,4 +268,41 @@ export function easeInOutBounce(t, b, c, d) {
         return easeInBounce(t * 2, 0, c, d) * .5 + b;
     }
     return easeOutBounce(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+}
+
+/* eslint complexity: [2, 32] */
+export function getByType(type) {
+    switch (type) {
+        case NO_EASING: return noEasing;
+        case EASE_IN_QUAD: return easeInQuad;
+        case EASE_OUT_QUAD: return easeOutQuad;
+        case EASE_IN_OUT_QUAD: return easeInOutQuad;
+        case EASE_IN_CUBIC: return easeInCubic;
+        case EASE_OUT_CUBIC: return easeOutCubic;
+        case EASE_IN_OUT_CUBIC: return easeInOutCubic;
+        case EASE_IN_QUART: return easeInQuart;
+        case EASE_OUT_QUART: return easeOutQuart;
+        case EASE_IN_OUT_QUART: return easeInOutQuart;
+        case EASE_IN_QUINT: return easeInQuint;
+        case EASE_OUT_QUINT: return easeOutQuint;
+        case EASE_IN_OUT_QUINT: return easeInOutQuint;
+        case EASE_IN_SINE: return easeInSine;
+        case EASE_OUT_SINE: return easeOutSine;
+        case EASE_IN_OUT_SINE: return easeInOutSine;
+        case EASE_IN_EXPO: return easeInExpo;
+        case EASE_OUT_EXPO: return easeOutExpo;
+        case EASE_IN_OUT_EXPO: return easeInOutExpo;
+        case EASE_IN_CIRC: return easeInCirc;
+        case EASE_OUT_CIRC: return easeOutCirc;
+        case EASE_IN_OUT_CIRC: return easeInOutCirc;
+        case EASE_IN_ELASTIC: return easeInElastic;
+        case EASE_OUT_ELASTIC: return easeOutElastic;
+        case EASE_IN_OUT_ELASTIC: return easeInOutElastic;
+        case EASE_IN_BACK: return easeInBack;
+        case EASE_OUT_BACK: return easeOutBack;
+        case EASE_IN_OUT_BACK: return easeInOutBack;
+        case EASE_IN_BOUNCE: return easeInBounce;
+        case EASE_OUT_BOUNCE: return easeOutBounce;
+        case EASE_IN_OUT_BOUNCE: return easeInOutBounce;
+    }
 }

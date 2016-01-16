@@ -8,15 +8,13 @@
  */
 import deepFreeze from "deep-freeze";
 import updatePosition from "./util/updatePosition";
-
-// additional scale to make sure that speed = 1 is equivalent to moving the sprite by 1px per second
-const PIXELS_PER_SECOND_FACTOR = 0.0010416666666667;
-
-let start = Date.now();
+import { getByType } from "../../math/easing";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
     let { velocity, speed, elapsed, startPosition, easing } = prevComponent,
         { position } = spriteComponent;
+
+    easing = getByType(easing);
 
     if (!startPosition) {
         startPosition = position.clone();

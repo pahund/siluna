@@ -5,8 +5,7 @@
  * @since 29 Dec 2015
  */
 import PIXI from "pixi";
-import moveToTap from "../actions/moveToTap";
-import rotateToTap from "../actions/rotateToTap";
+import tapOnScreen from "../actions/tapOnScreen";
 import config from "../config";
 import Point from "../math/Point";
 
@@ -16,8 +15,7 @@ export default ({ store } = { store: null }) => {
     stage.hitArea = new PIXI.Rectangle(0, 0, config.gameDimensions.w, config.gameDimensions.w);
     if (store) {
         const onTap = ({ data }) => {
-            store.dispatch(rotateToTap(Point.fromPixiPoint(data.getLocalPosition(stage))));
-            store.dispatch(moveToTap(Point.fromPixiPoint(data.getLocalPosition(stage))));
+            store.dispatch(tapOnScreen(Point.fromPixiPoint(data.getLocalPosition(stage))));
         };
         stage.touchstart = onTap;
         stage.click = onTap;

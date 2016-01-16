@@ -7,8 +7,10 @@
 
 import { combineReducers } from "redux";
 import entities from "./entities";
+import triggers from "./triggers";
 
 export default combineReducers({
+    triggers,
     entities
 });
 

@@ -93,6 +93,7 @@ function addWithSpine(id, spineOptions, tapOptions, animationOptions) {
     }
     if (animationOptions) {
         sprite.state.setAnimationByName(0, animationOptions.animation, true);
+        sprite.currentAnimation = animationOptions.animation;
     }
     sprite.appendTo(stage);
     sprites.set(id, sprite);
@@ -111,15 +112,21 @@ function update(timeDelta) {
         }
 
         /* update sprite */
-        const spriteOptions = entity.hasSprite || entity.hasSpine;
+        const spriteOptions = entity.hasSprite || entity.hasSpine,
+            animationOptions = entity.hasAnimation;
         if (spriteOptions) {
             const { position, rotation, tint } = spriteOptions;
             sprite.position = position;
             sprite.rotation = rotation;
             sprite.tint = tint;
         }
-        if (entity.hasAnimation) {
-            sprite.update(timeDelta);
+        if (animationOptions) {
+            if (sprite.currentAnimation === animationOptions.animation) {
+                sprite.update(timeDelta);
+            } else {
+                sprite.state.setAnimationByName(0, animationOptions.animation, true);
+                sprite.currentAnimation = animationOptions.animation;
+            }
         }
     }
 

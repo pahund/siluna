@@ -7,13 +7,14 @@
 import deepFreeze from "deep-freeze";
 
 export default prevEntity => {
-    let spriteComponent = prevEntity.hasSprite;
+    let spriteComponent = prevEntity.hasSprite; // spine entities can't be tinted, apparently
     if (!spriteComponent) {
         return prevEntity;
     }
+
     return deepFreeze({
         ...prevEntity,
-        hasSprite: {
+        [spriteComponent.id]: {
             ...spriteComponent,
             tint: Math.random() * 0xFFFFFF
         }

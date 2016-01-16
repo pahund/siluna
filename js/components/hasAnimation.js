@@ -10,6 +10,6 @@
 import deepFreeze from "deep-freeze";
 
 export default animation => deepFreeze({
-    id: "moves",
+    id: "hasAnimation",
     animation
 });

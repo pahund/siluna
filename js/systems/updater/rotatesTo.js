@@ -8,10 +8,6 @@ import deepFreeze from "deep-freeze";
 import updateRotation from "./util/updateRotation";
 import Vector from "../../math/Vector";
 
-function twoDec(n) {
-    return Math.round(n * 100) / 100;
-}
-
 export default (prevComponent, spriteComponent, timeDelta) => {
     let { target, velocity, speed, direction } = prevComponent,
         { position, rotation } = spriteComponent;

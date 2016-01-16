@@ -4,12 +4,13 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 05 Jan 2016
  */
-import { UPDATE, TINT, MOVE_TO_TAP, ROTATE_TO_TAP } from "../actions";
+import { ANIMATE, UPDATE, TINT, MOVE_TO_TAP, ROTATE_TO_TAP, ROTATE_TO_POINT, MOVE_TO_POINT } from "../actions";
 
 import updater from "../systems/updater";
+import animator from "../systems/animator";
 import tinter from "../systems/tinter";
-import moverToTap from "../systems/moverToTap";
-import rotaterToTap from "../systems/rotaterToTap";
+import rotaterToPoint from "../systems/rotaterToPoint";
+import moverToPoint from "../systems/moverToPoint";
 
 function getEntity(state, action) {
     return state[action.entity];
@@ -22,14 +23,25 @@ export default (state = {}, action = null) => {
                 ...state,
                 [action.entity]: updater(getEntity(state, action), action.timeDelta)
             };
-        case MOVE_TO_TAP:
-            return moverToTap(state, action.target);
-        case ROTATE_TO_TAP:
-            return rotaterToTap(state, action.target);
+        case MOVE_TO_POINT:
+            return {
+                ...state,
+                [action.entity]: moverToPoint(getEntity(state, action), action.target, action.speed, action.easing)
+            };
+        case ROTATE_TO_POINT:
+            return {
+                ...state,
+                [action.entity]: rotaterToPoint(getEntity(state, action), action.target, action.speed)
+            };
         case TINT:
             return {
                 ...state,
                 [action.entity]: tinter(getEntity(state, action))
+            };
+        case ANIMATE:
+            return {
+                ...state,
+                [action.entity]: animator(getEntity(state, action), action.animation)
             };
     }
     return state;

@@ -8,10 +8,13 @@
  */
 import deepFreeze from "deep-freeze";
 import updatePosition from "./util/updatePosition";
+import { getByType } from "../../math/easing";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
     let { target, velocity, speed, elapsed, startPosition, easing } = prevComponent,
         { position } = spriteComponent;
+
+    easing = getByType(easing);
 
     if (!velocity) {
         velocity = target.subtractPoint(position);
