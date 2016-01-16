@@ -13,12 +13,22 @@ class Point {
     }
 
     addVector(vector) {
+        if (!(vector instanceof Vector)) {
+            throw new TypeError("vector argument passed to Point.addVector needs to be a vector");
+        }
         return new Point(this.x + vector.x, this.y + vector.y);
+    }
+
+    subtractVector(vector) {
+        if (!(vector instanceof Vector)) {
+            throw new TypeError("vector argument passed to Point.subtractVector needs to be a vector");
+        }
+        return new Point(this.x - vector.x, this.y - vector.y);
     }
 
     subtractPoint(point) {
         if (!(point instanceof Point)) {
-            throw new TypeError("Point argument passed to Vector.subtractPoint needs to be a point");
+            throw new TypeError("Point argument passed to Point.subtractPoint needs to be a point");
         }
         return new Vector(this.x - point.x, this.y - point.y);
     }

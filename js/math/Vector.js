@@ -46,6 +46,13 @@ class Vector {
         return new Vector(this.x / scale, this.y / scale);
     }
 
+    approach(target, delta) {
+        return new Vector(
+            approach(target.x, this.x, delta),
+            approach(target.y, this.y, delta)
+        );
+    }
+
     equals(vector) {
         return this.x === vector.x && this.y === vector.y;
     }
@@ -67,6 +74,17 @@ class Vector {
     static fromRad(radians) {
         return new Vector(Math.sin(radians), Math.cos(radians));
     }
+}
+
+function approach(goal, current, dt) {
+    const difference = goal - current;
+    if (difference > dt) {
+        return current + dt;
+    }
+    if (difference < -dt) {
+        return current - dt;
+    }
+    return goal;
 }
 
 export default Vector;

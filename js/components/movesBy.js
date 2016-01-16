@@ -8,8 +8,9 @@
  */
 import deepFreeze from "deep-freeze";
 import Vector from "../math/Vector";
+import { noEasing } from "../math/easing";
 
-export default (velocity, speed = 1000) => {
+export default (velocity, speed = 1000, easing = noEasing) => {
     if (!(velocity instanceof Vector)) {
         throw new TypeError("Velocity argument passed to movesBy component needs to be a vector");
     }
@@ -17,6 +18,7 @@ export default (velocity, speed = 1000) => {
         id: "movesBy",
         velocity,
         speed,
-        elapsed: 0
+        elapsed: 0,
+        easing
     });
 }

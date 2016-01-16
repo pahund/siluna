@@ -50,3 +50,15 @@ step through and inspect variables.
 
 One limitation is that you cannot hot reload, i.e. when you make code changes, you need to execute the `dist-debug` script
 again and restart your debugging session.
+
+## Acknowledgements
+
+This software uses portions of the following software:
+
+### [jQuery Easing](https://github.com/danro/jquery-easing)
+    
+Open source under the BSD License. 
+
+Copyright © 2008 George McGinley Smith.
+
+All rights reserved.

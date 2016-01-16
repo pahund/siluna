@@ -15,15 +15,20 @@ const PIXELS_PER_SECOND_FACTOR = 0.0010416666666667;
 let start = Date.now();
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { velocity, speed, elapsed } = prevComponent,
-        position = spriteComponent.position;
+    let { velocity, speed, elapsed, startPosition, easing } = prevComponent,
+        { position } = spriteComponent;
 
-    [ position, elapsed ] = updatePosition(velocity, speed, timeDelta, position, elapsed);
+    if (!startPosition) {
+        startPosition = position.clone();
+    }
+
+    [ position, elapsed ] = updatePosition(velocity, speed, timeDelta, elapsed, startPosition, easing);
 
     return [
         elapsed < velocity.length ? deepFreeze({
             ...prevComponent,
-            elapsed
+            elapsed,
+            startPosition
         }) : undefined,
         deepFreeze({
             ...spriteComponent,

@@ -15,7 +15,7 @@ export default (prevEntities, target) => {
             component = entity.movesToTap;
         newEntities[entityId] = !component ? entity : deepFreeze({
             ...entity,
-            movesTo: movesTo(target, component.speed)
+            movesTo: movesTo(target, component.speed, component.easing)
         });
     });
     return newEntities;

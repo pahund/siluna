@@ -19,6 +19,7 @@ import config from "../config";
 import reducers from "../reducers";
 import Point from "../math/Point";
 import Vector from "../math/Vector";
+import { easeInOutSine } from "../math/easing";
 
 export default () => {
     const store = createStore(reducers, {
@@ -32,7 +33,7 @@ export default () => {
                 hasAnimation: {
                     animation: "treading-water"
                 },
-                movesToTap: movesToTap(config.speed.movement),
+                movesToTap: movesToTap(config.speed.movement, easeInOutSine),
                 rotatesToTap: rotatesToTap(config.speed.rotation)
             }
         }
