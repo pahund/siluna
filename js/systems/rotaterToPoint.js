@@ -8,9 +8,9 @@ import deepFreeze from "deep-freeze";
 import rotatesTo from "../components/rotatesTo";
 import Point from "../math/Point";
 
-export default (prevEntity, target, speed) => {
+export default (prevEntity, target, speed, sequenceIds) => {
     return deepFreeze({
         ...prevEntity,
-        rotatesTo: rotatesTo(target, speed)
+        rotatesTo: rotatesTo(target, speed, sequenceIds)
     });
 }

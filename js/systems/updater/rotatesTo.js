@@ -9,7 +9,7 @@ import updateRotation from "./util/updateRotation";
 import Vector from "../../math/Vector";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, velocity, speed, direction } = prevComponent,
+    let { target, velocity, speed, direction, sequenceIds } = prevComponent,
         { position, rotation } = spriteComponent;
 
     if (!velocity) {
@@ -22,8 +22,10 @@ export default (prevComponent, spriteComponent, timeDelta) => {
 
     rotation = updateRotation(velocity, speed, timeDelta, rotation, direction);
 
+    const isRunning = rotation !== velocity.rad ;
+
     return [
-        rotation !== velocity.rad ?
+        isRunning ?
             deepFreeze({
                 ...prevComponent,
                 velocity,
@@ -32,6 +34,7 @@ export default (prevComponent, spriteComponent, timeDelta) => {
         deepFreeze({
             ...spriteComponent,
             rotation
-        })
+        }),
+        isRunning ? undefined : sequenceIds
     ];
 }

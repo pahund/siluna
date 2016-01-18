@@ -10,6 +10,12 @@ import Point from "../math/Point";
 import config from "../config";
 
 export default (entity, target, speed = config.speed.movement, easing = NO_EASING) => {
+    if (!entity) {
+        throw new ReferenceError("Entity argument must be provided to moveToPoint action");
+    }
+    if (!target) {
+        throw new ReferenceError("Target argument must be provided to moveToPoint action");
+    }
     if (!(target instanceof Point)) {
         throw new TypeError("Target argument passed to moveToPoint action needs to be a point");
     }
@@ -18,7 +24,8 @@ export default (entity, target, speed = config.speed.movement, easing = NO_EASIN
         entity,
         target,
         speed,
-        easing
+        easing,
+        hasDuration: true
     }
 }
 

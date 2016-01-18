@@ -16,7 +16,8 @@ export default (entity, target, speed = config.speed.rotation) => {
         type: ROTATE_TO_POINT,
         entity,
         target,
-        speed
+        speed,
+        hasDuration: true
     }
 }
 

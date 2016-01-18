@@ -24,7 +24,8 @@ const updaters = {
 };
 
 export default (prevEntity, timeDelta) => {
-    let spriteComponent = prevEntity.hasSprite || prevEntity.hasSpine;
+    let spriteComponent = prevEntity.hasSprite || prevEntity.hasSpine,
+        sequenceIds = [];
     if (!spriteComponent) {
         return prevEntity;
     }
@@ -32,17 +33,21 @@ export default (prevEntity, timeDelta) => {
         ...prevEntity
     };
     Object.keys(prevEntity).filter(componentId => updaters[componentId] !== undefined).forEach(componentId => {
-        let component = prevEntity[componentId];
-        [ component, spriteComponent ] = updaters[componentId](component, spriteComponent, timeDelta);
+        let component = prevEntity[componentId],
+            sids;
+        [ component, spriteComponent, sids ] = updaters[componentId](component, spriteComponent, timeDelta);
         if (component) {
             nextEntity[componentId] = component;
         } else {
             delete nextEntity[componentId];
         }
+        if (sids) {
+            sequenceIds = sequenceIds.concat(sids);
+        }
     });
     if (spriteComponent) {
         nextEntity[spriteComponent.id] = spriteComponent;
     }
-    return deepFreeze(nextEntity);
+    return [ deepFreeze(nextEntity), sequenceIds ];
 }
 

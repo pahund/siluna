@@ -5,11 +5,17 @@
  * @since 16 Jan 2016
  */
 import update from "../actions/update";
+import clearDispatches from "../actions/clearDispatches";
+import resumeSequence from "../actions/resumeSequence";
 
 export default ({ store }) => {
     return function (timeDelta) {
         const state = store.getState();
         state.triggers.dispatches.forEach(action => store.dispatch(action));
+        store.dispatch(clearDispatches());
         Object.keys(state.entities).forEach(entity => store.dispatch(update(entity, timeDelta)));
+        if (state.finished) {
+            store.dispatch(resumeSequence(state.finished));
+        }
     };
 }

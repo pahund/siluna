@@ -11,7 +11,7 @@ import updatePosition from "./util/updatePosition";
 import { getByType } from "../../math/easing";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, velocity, speed, elapsed, startPosition, easing } = prevComponent,
+    let { target, velocity, speed, elapsed, startPosition, easing, sequenceIds } = prevComponent,
         { position } = spriteComponent;
 
     easing = getByType(easing);
@@ -26,8 +26,10 @@ export default (prevComponent, spriteComponent, timeDelta) => {
 
     [ position, elapsed ] = updatePosition(velocity, speed, timeDelta, elapsed, startPosition, easing);
 
+    const isRunning = elapsed < velocity.length;
+
     return [
-        elapsed < velocity.length ? deepFreeze({
+        isRunning ? deepFreeze({
             ...prevComponent,
             velocity,
             elapsed,
@@ -36,7 +38,8 @@ export default (prevComponent, spriteComponent, timeDelta) => {
         deepFreeze({
             ...spriteComponent,
             position
-        })
+        }),
+        isRunning ? undefined : sequenceIds
     ];
 }
 

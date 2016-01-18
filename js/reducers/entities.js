@@ -18,20 +18,15 @@ function getEntity(state, action) {
 
 export default (state = {}, action = null) => {
     switch (action.type) {
-        case UPDATE:
-            return {
-                ...state,
-                [action.entity]: updater(getEntity(state, action), action.timeDelta)
-            };
         case MOVE_TO_POINT:
             return {
                 ...state,
-                [action.entity]: moverToPoint(getEntity(state, action), action.target, action.speed, action.easing)
+                [action.entity]: moverToPoint(getEntity(state, action), action.target, action.speed, action.easing, action.sequenceIds)
             };
         case ROTATE_TO_POINT:
             return {
                 ...state,
-                [action.entity]: rotaterToPoint(getEntity(state, action), action.target, action.speed)
+                [action.entity]: rotaterToPoint(getEntity(state, action), action.target, action.speed, action.sequenceIds)
             };
         case TINT:
             return {
