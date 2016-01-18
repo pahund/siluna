@@ -9,7 +9,8 @@
  */
 import moves from "./moves";
 import movesTo from "./movesTo";
-import rotatesTo from "./rotatesTo";
+import rotatesToPoint from "./rotatesToPoint";
+import rotatesToVector from "./rotatesToVector";
 import movesBy from "./movesBy";
 import rotates from "./rotates";
 import deepFreeze from "deep-freeze";
@@ -18,7 +19,8 @@ import deepFreeze from "deep-freeze";
 const updaters = {
     moves,
     movesTo,
-    rotatesTo,
+    rotatesToPoint,
+    rotatesToVector,
     movesBy,
     rotates
 };

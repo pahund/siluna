@@ -1,5 +1,5 @@
 /**
- * rotatesTo.js
+ * rotatesToPoint.js
  *
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 13 Jan 2016
@@ -9,10 +9,10 @@ import Point from "../math/Point";
 
 export default (target, speed = 5, sequenceIds) => {
     if (!(target instanceof Point)) {
-        throw new TypeError("Target argument passed to rotatesTo component needs to be a point");
+        throw new TypeError("Target argument passed to rotatesToPoint component needs to be a point");
     }
     return deepFreeze({
-        id: "rotatesTo",
+        id: "rotatesToPoint",
         target,
         speed,
         elapsed: 0,

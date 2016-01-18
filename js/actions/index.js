@@ -11,6 +11,7 @@ import update from "./update";
 import tint from "./tint";
 import moveToPoint from "./moveToPoint";
 import rotateToPoint from "./rotateToPoint";
+import rotateToVector from "./rotateToVector";
 import resumeSequence from "./resumeSequence";
 import clearDispatches from "./clearDispatches";
 
@@ -26,6 +27,7 @@ export const
     TINT = "TINT",
     MOVE_TO_POINT = "MOVE_TO_POINT",
     ROTATE_TO_POINT = "ROTATE_TO_POINT",
+    ROTATE_TO_VECTOR = "ROTATE_TO_VECTOR",
 
     // actions used for trigger mechanics
     RESUME_SEQUENCE = "RESUME_SEQUENCE",
@@ -39,6 +41,7 @@ export function getByType(type) {
         case TINT: return tint;
         case MOVE_TO_POINT: return moveToPoint;
         case ROTATE_TO_POINT: return rotateToPoint;
+        case ROTATE_TO_VECTOR: return rotateToVector;
     }
     throw new ReferenceError(`Cannot get action of type “${type}”`);
 }

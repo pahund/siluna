@@ -1,5 +1,5 @@
 /**
- * rotatesTo.js
+ * rotatesToPoint.js
  *
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 13 Jan 2016

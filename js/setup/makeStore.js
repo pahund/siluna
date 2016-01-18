@@ -13,7 +13,14 @@ import rotates from "../components/rotates";
 import hasSprite from "../components/hasSprite";
 import hasSpine from "../components/hasSpine";
 import respondsToTap from "../components/respondsToTap";
-import { CURRENT_TAP, ANIMATE, TINT, ROTATE_TO_POINT, MOVE_TO_POINT } from "../actions";
+import {
+    CURRENT_TAP,
+    ANIMATE,
+    TINT,
+    ROTATE_TO_POINT,
+    ROTATE_TO_VECTOR,
+    MOVE_TO_POINT
+} from "../actions";
 import config from "../config";
 import reducers from "../reducers";
 import Point from "../math/Point";
@@ -31,6 +38,7 @@ export default () => {
                 new Action(ANIMATE, "siluna", "swimming"),
                 new Sequence(
                     new Action(MOVE_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, EASE_IN_OUT_SINE),
+                    new Action(ROTATE_TO_VECTOR, "siluna", new Vector(0, -1), config.speed.rotation / 3),
                     new Action(ANIMATE, "siluna", "treading-water")
                 )
             )

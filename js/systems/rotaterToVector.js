@@ -5,12 +5,12 @@
  * @since 16 Jan 2016
  */
 import deepFreeze from "deep-freeze";
-import rotatesToPoint from "../components/rotatesToPoint";
+import rotatesToVector from "../components/rotatesToVector";
 import Point from "../math/Point";
 
 export default (prevEntity, target, speed, sequenceIds) => {
     return deepFreeze({
         ...prevEntity,
-        rotatesToPoint: rotatesToPoint(target, speed, sequenceIds)
+        rotatesToVector: rotatesToVector(target, speed, sequenceIds)
     });
 }

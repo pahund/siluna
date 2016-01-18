@@ -4,12 +4,20 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 05 Jan 2016
  */
-import { ANIMATE, UPDATE, TINT, MOVE_TO_TAP, ROTATE_TO_TAP, ROTATE_TO_POINT, MOVE_TO_POINT } from "../actions";
+import {
+    ANIMATE,
+    UPDATE,
+    TINT,
+    ROTATE_TO_POINT,
+    ROTATE_TO_VECTOR,
+    MOVE_TO_POINT
+} from "../actions";
 
 import updater from "../systems/updater";
 import animator from "../systems/animator";
 import tinter from "../systems/tinter";
 import rotaterToPoint from "../systems/rotaterToPoint";
+import rotaterToVector from "../systems/rotaterToVector";
 import moverToPoint from "../systems/moverToPoint";
 
 function getEntity(state, action) {
@@ -27,6 +35,11 @@ export default (state = {}, action = null) => {
             return {
                 ...state,
                 [action.entity]: rotaterToPoint(getEntity(state, action), action.target, action.speed, action.sequenceIds)
+            };
+        case ROTATE_TO_VECTOR:
+            return {
+                ...state,
+                [action.entity]: rotaterToVector(getEntity(state, action), action.target, action.speed, action.sequenceIds)
             };
         case TINT:
             return {
