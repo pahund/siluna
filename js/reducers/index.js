@@ -21,7 +21,7 @@ export default (state = {}, action) => {
     switch (action.type) {
         case UPDATE:
             const entities = {};
-            let sequenceIds = state.sequenceIds || [];
+            let sequenceIds = state.triggers.sequenceIds || [];
             Object.keys(state.entities).forEach(entity => {
                 let sids;
                 [ entities[entity], sids ] = updater(state.entities[entity], action.timeDelta);
@@ -31,8 +31,11 @@ export default (state = {}, action) => {
             });
             return {
                 ...state,
-                entities,
-                sequenceIds
+                triggers: {
+                    ...state.triggers,
+                    sequenceIds
+                },
+                entities
             };
         default:
             return reducers(state, action);

@@ -10,7 +10,7 @@
 
 import { RESUME_SEQUENCE } from ".";
 
-export default ids => ({
+export default sequenceIds => ({
     type: RESUME_SEQUENCE,
-    ids
+    sequenceIds
 })

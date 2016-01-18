@@ -14,8 +14,8 @@ export default ({ store }) => {
         state.triggers.dispatches.forEach(action => store.dispatch(action));
         store.dispatch(clearDispatches());
         Object.keys(state.entities).forEach(entity => store.dispatch(update(entity, timeDelta)));
-        if (state.finished) {
-            store.dispatch(resumeSequence(state.finished));
+        if (state.triggers.sequenceIds.length > 0) {
+            store.dispatch(resumeSequence(state.triggers.sequenceIds));
         }
     };
 }
