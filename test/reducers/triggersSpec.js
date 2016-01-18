@@ -161,9 +161,6 @@ describe("[reducers/triggers]", () => {
                     it("is a dispatchable action of type “move to point”", () =>
                         result.dispatches[0].type.should.equal(MOVE_TO_POINT)
                     );
-                    it("has a “sequence ID” property with value “0”", () =>
-                        result.dispatches[0].sequenceId.should.equal(0)
-                    )
                 });
                 describe("the “pending” property of the result", () => {
                     it("exists", () => result.pending.should.exist);
