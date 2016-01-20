@@ -31,7 +31,8 @@ export const
 
     // actions used for trigger mechanics
     RESUME_SEQUENCE = "RESUME_SEQUENCE",
-    CLEAR_DISPATCHES = "CLEAR_DISPATCHES";
+    CLEAR_DISPATCHES = "CLEAR_DISPATCHES",
+    CLEAR_OBSOLETE_SEQUENCES = "CLEAR_OBSOLETE_SEQUENCES";
 
 export function getByType(type) {
     switch (type) {

@@ -7,7 +7,7 @@
 import deepFreeze from "deep-freeze";
 import Point from "../math/Point";
 
-export default (target, speed = 5, sequenceIds) => {
+export default (target, speed = 5, sequenceIds, obsoleteSequenceIds) => {
     if (!(target instanceof Point)) {
         throw new TypeError("Target argument passed to rotatesToPoint component needs to be a point");
     }
@@ -16,7 +16,8 @@ export default (target, speed = 5, sequenceIds) => {
         target,
         speed,
         elapsed: 0,
-        sequenceIds
+        sequenceIds,
+        obsoleteSequenceIds
     });
 }
 

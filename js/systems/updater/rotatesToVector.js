@@ -9,7 +9,7 @@ import updateRotation from "./util/updateRotation";
 import Vector from "../../math/Vector";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, speed, direction, sequenceIds } = prevComponent,
+    let { target, speed, direction, sequenceIds, obsoleteSequenceIds } = prevComponent,
         { position, rotation } = spriteComponent;
 
     if (!direction) {
@@ -30,6 +30,7 @@ export default (prevComponent, spriteComponent, timeDelta) => {
             ...spriteComponent,
             rotation
         }),
-        isRunning ? undefined : sequenceIds
+        isRunning ? undefined : sequenceIds,
+        obsoleteSequenceIds
     ];
 }

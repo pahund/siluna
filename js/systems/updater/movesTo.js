@@ -11,9 +11,12 @@ import updatePosition from "./util/updatePosition";
 import { getByType } from "../../math/easing";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, velocity, speed, elapsed, startPosition, easing, sequenceIds } = prevComponent,
+    let { target, velocity, speed, elapsed, startPosition, easing, sequenceIds, obsoleteSequenceIds } = prevComponent,
         { position } = spriteComponent;
 
+    if (obsoleteSequenceIds) {
+        console.log("movesTo component has obsids", obsoleteSequenceIds);
+    }
     easing = getByType(easing);
 
     if (!velocity) {
@@ -39,7 +42,8 @@ export default (prevComponent, spriteComponent, timeDelta) => {
             ...spriteComponent,
             position
         }),
-        isRunning ? undefined : sequenceIds
+        isRunning ? undefined : sequenceIds,
+        obsoleteSequenceIds
     ];
 }
 

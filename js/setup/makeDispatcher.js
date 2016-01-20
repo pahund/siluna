@@ -6,6 +6,7 @@
  */
 import update from "../actions/update";
 import clearDispatches from "../actions/clearDispatches";
+import clearObsoleteSequences from "../actions/clearObsoleteSequences";
 import resumeSequence from "../actions/resumeSequence";
 
 export default ({ store }) => {
@@ -13,6 +14,7 @@ export default ({ store }) => {
         const state = store.getState();
         state.triggers.dispatches.forEach(action => store.dispatch(action));
         store.dispatch(clearDispatches());
+        store.dispatch(clearObsoleteSequences());
         Object.keys(state.entities).forEach(entity => store.dispatch(update(entity, timeDelta)));
         if (state.triggers.sequenceIds.length > 0) {
             store.dispatch(resumeSequence(state.triggers.sequenceIds));

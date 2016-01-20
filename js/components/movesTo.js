@@ -8,7 +8,7 @@ import deepFreeze from "deep-freeze";
 import Point from "../math/Point";
 import { NO_EASING } from "../math/easing";
 
-export default (target, speed = 1000, easing = NO_EASING, sequenceIds) => {
+export default (target, speed = 1000, easing = NO_EASING, sequenceIds, obsoleteSequenceIds) => {
     if (!(target instanceof Point)) {
         throw new TypeError("Target argument passed to movesTo component needs to be a point");
     }
@@ -18,6 +18,7 @@ export default (target, speed = 1000, easing = NO_EASING, sequenceIds) => {
         speed,
         elapsed: 0,
         easing,
-        sequenceIds
+        sequenceIds,
+        obsoleteSequenceIds
     });
 }

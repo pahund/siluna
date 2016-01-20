@@ -13,27 +13,32 @@ import updater from "../systems/updater";
 
 const reducers = combineReducers({
     triggers,
-    entities,
-    sequenceIds: (state = [], action) => state
+    entities
 });
 
 export default (state = {}, action) => {
     switch (action.type) {
         case UPDATE:
             const entities = {};
-            let sequenceIds = state.triggers.sequenceIds || [];
+            let sequenceIds = state.triggers.sequenceIds || [],
+                obsoleteSequenceIds = state.triggers.obsoleteSequenceIds || [];
             Object.keys(state.entities).forEach(entity => {
-                let sids;
-                [ entities[entity], sids ] = updater(state.entities[entity], action.timeDelta);
+                let sids,
+                    obsids;
+                [ entities[entity], sids, obsids ] = updater(state.entities[entity], action.timeDelta);
                 if (sids) {
                     sequenceIds = sequenceIds.concat(sids);
+                }
+                if (obsids) {
+                    obsoleteSequenceIds = obsoleteSequenceIds.concat(obsids)
                 }
             });
             return {
                 ...state,
                 triggers: {
                     ...state.triggers,
-                    sequenceIds
+                    sequenceIds,
+                    obsoleteSequenceIds
                 },
                 entities
             };
