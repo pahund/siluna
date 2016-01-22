@@ -58,7 +58,6 @@ function collectSequence(iterator, currentTap, sequenceId) {
             iterator,
             currentTap
         });
-        console.log(`[PH_LOG] new pending created for sequence ${sequenceId}: `, pending[sequenceId]); // PH_TODO: REMOVE
     } else {
         let [ d, p ] = collectSequence(iterator, currentTap, sequenceId);
         dispatches = [
@@ -77,24 +76,20 @@ export default (state = {}, action = null) => {
         obsoleteSequenceIds = state.obsoleteSequenceIds || [];
     switch (action.type) {
         case TAP_ON_SCREEN:
-            let [ d, p ] = collect(state.tapOnScreen, action.target);
-            dispatches = [
-                ...dispatches,
-                ...d
-            ];
-            pending = Object.assign(pending, p);
+            //let [ d, p ] = collect(state.tapOnScreen, action.target);
+            //dispatches = [
+            //    ...dispatches,
+            //    ...d
+            //];
+            //pending = Object.assign(pending, p);
             break;
         case CLEAR_DISPATCHES:
             dispatches = [];
             break;
         case CLEAR_OBSOLETE_SEQUENCES:
             let nextP = { ...pending };
-            if (obsoleteSequenceIds.length > 0) {
-                console.log(`[PH_LOG] clear obsolete sequences`, obsoleteSequenceIds); // PH_TODO: REMOVE
-            }
             obsoleteSequenceIds.forEach(obsid => {
                 if (nextP[obsid]) {
-                    console.log(`[PH_LOG] deleting pending item for ${obsid} because it is obsolete`); // PH_TODO: REMOVE
                     delete nextP[obsid];
                 }
             });
@@ -107,12 +102,10 @@ export default (state = {}, action = null) => {
             action.sequenceIds.forEach(sequenceId => {
                 const prevPendingItem = pending[sequenceId];
                 if (!prevPendingItem) {
-                    console.warn(`[PH_LOG] no pending item for sequence ID ${sequenceId} found`); // PH_TODO: REMOVE
                     nextSequenceIds.push(sequenceId);
                     return;
                 }
                 if (prevPendingItem.waitingFor === 1) {
-                    console.log(`[PH_LOG] pending item for sequence ID ${sequenceId} resolved`); // PH_TODO: REMOVE
                     let [ d, p ] = collectSequence(prevPendingItem.iterator, prevPendingItem.currentTap, sequenceId);
                     dispatches = [
                         ...dispatches,
@@ -121,7 +114,6 @@ export default (state = {}, action = null) => {
                     if (Object.keys(p).length > 0) {
                         nextPending = Object.assign(nextPending, p);
                     } else {
-                        console.log(`[PH_LOG] deleting pending for sequence ID ${sequenceId}`);
                         delete nextPending[sequenceId];
                     }
                 } else {
@@ -129,11 +121,8 @@ export default (state = {}, action = null) => {
                         ...prevPendingItem,
                         waitingFor: prevPendingItem.waitingFor - 1
                     };
-                    console.log(`[PH_LOG] pending item for sequence ID ${sequenceId} not yet resolved, waiting for ${nextPendingItem.waitingFor} more resolution trigger`); // PH_TODO: REMOVE
-
                     nextPending[sequenceId] = nextPendingItem;
                 }
-                console.log(`[PH_LOG] we now have ${Object.keys(nextPending).length} pending items`, nextPending); // PH_TODO: REMOVE
             });
             sequenceIds = nextSequenceIds;
             pending = nextPending;

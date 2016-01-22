@@ -12,9 +12,10 @@ class Action {
     constructor(type, ...args) {
         this.type = type;
         this.args = args;
+        [ this.promise, this.resolve ] = makePromise();
     }
 
-    toDispatchable({ currentTap, currentEntity }) {
+    toDispatchable({ currentTap, currentEntity } = {}) {
         const args = this.args.map(arg => {
             if (arg === CURRENT_ENTITY) {
                 if (!currentEntity) {
@@ -30,9 +31,19 @@ class Action {
             }
             return arg;
         });
-        return getByType(this.type)(...args);
+        return getByType(this.type)(...args, this.resolve);
     }
+}
 
+function makePromise() {
+    let resolve = null;
+    const promise = new Promise(res => {
+        resolve = () => {
+            console.log("[PH_LOG] resolving promise"); // PH_TODO: REMOVE
+            res("done");
+        }
+    });
+    return [ promise, resolve ];
 }
 
 export default Action;

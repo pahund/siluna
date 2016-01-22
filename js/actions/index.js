@@ -12,8 +12,6 @@ import tint from "./tint";
 import moveToPoint from "./moveToPoint";
 import rotateToPoint from "./rotateToPoint";
 import rotateToVector from "./rotateToVector";
-import resumeSequence from "./resumeSequence";
-import clearDispatches from "./clearDispatches";
 
 export const
     // placeholders in instances of Action that are resolved by the triggers reducer
@@ -27,12 +25,7 @@ export const
     TINT = "TINT",
     MOVE_TO_POINT = "MOVE_TO_POINT",
     ROTATE_TO_POINT = "ROTATE_TO_POINT",
-    ROTATE_TO_VECTOR = "ROTATE_TO_VECTOR",
-
-    // actions used for trigger mechanics
-    RESUME_SEQUENCE = "RESUME_SEQUENCE",
-    CLEAR_DISPATCHES = "CLEAR_DISPATCHES",
-    CLEAR_OBSOLETE_SEQUENCES = "CLEAR_OBSOLETE_SEQUENCES";
+    ROTATE_TO_VECTOR = "ROTATE_TO_VECTOR";
 
 export function getByType(type) {
     switch (type) {

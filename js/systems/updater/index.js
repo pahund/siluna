@@ -49,7 +49,6 @@ export default (prevEntity, timeDelta) => {
             sequenceIds = sequenceIds.concat(sids);
         }
         if (obsids) {
-            console.log("[PH_LOG] updater got obsids", obsids); // PH_TODO: REMOVE
             obsoleteSequenceIds = obsoleteSequenceIds.concat(obsids);
         }
     });

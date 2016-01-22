@@ -5,21 +5,21 @@
  * @since 27 Dec 2015
  */
 
+import "babel-polyfill"
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
 import makeStore from "./setup/makeStore";
 import makeLoader from "./setup/makeLoader";
 import makeTimer from "./setup/makeTimer";
-import makeDispatcher from "./setup/makeDispatcher";
 import resizeManager from "./view/resizeManager";
 import spriteManager from "./view/spriteManager";
 import reducers from "./reducers";
+import update from "./actions/update";
 
 const loader = makeLoader(),
     renderer = makeRenderer(),
     store = makeStore(),
-    stage = makeStage({ store }),
-    dispatcher = makeDispatcher({ store });
+    stage = makeStage({ store });
 
 let timer;
 
@@ -34,9 +34,10 @@ loader.load((l, resources) => {
 function animate() {
     requestAnimationFrame(animate);
 
-    const timeDelta = timer();
+    const timeDelta = timer(),
+        state = store.getState();
 
-    dispatcher(timeDelta);
+    Object.keys(state.entities).forEach(entity => store.dispatch(update(entity, timeDelta)));
     spriteManager.update(timeDelta);
     renderer.render(stage);
 }

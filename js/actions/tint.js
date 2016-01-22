@@ -6,8 +6,9 @@
  */
 import { TINT } from  ".";
 
-export default entity => ({
+export default (entity, callback) => ({
     type: TINT,
-    entity
+    entity,
+    callback
 });
 

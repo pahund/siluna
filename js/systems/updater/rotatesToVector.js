@@ -9,7 +9,7 @@ import updateRotation from "./util/updateRotation";
 import Vector from "../../math/Vector";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, speed, direction, sequenceIds, obsoleteSequenceIds } = prevComponent,
+    let { target, speed, direction, callback } = prevComponent,
         { position, rotation } = spriteComponent;
 
     if (!direction) {
@@ -20,6 +20,11 @@ export default (prevComponent, spriteComponent, timeDelta) => {
 
     const isRunning = rotation !== target.rad ;
 
+    if (!isRunning) {
+        console.log("[PH_LOG] invoking callback from rotates to vector updater system"); // PH_TODO: REMOVE
+        callback();
+    }
+
     return [
         isRunning ?
             deepFreeze({
@@ -29,8 +34,6 @@ export default (prevComponent, spriteComponent, timeDelta) => {
         deepFreeze({
             ...spriteComponent,
             rotation
-        }),
-        isRunning ? undefined : sequenceIds,
-        obsoleteSequenceIds
+        })
     ];
 }

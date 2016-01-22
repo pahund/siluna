@@ -9,7 +9,7 @@ import { NO_EASING } from "../math/easing";
 import Point from "../math/Point";
 import config from "../config";
 
-export default (entity, target, speed = config.speed.movement, easing = NO_EASING) => {
+export default (entity, target, speed = config.speed.movement, easing = NO_EASING, callback) => {
     if (!entity) {
         throw new ReferenceError("Entity argument must be provided to moveToPoint action");
     }
@@ -25,7 +25,7 @@ export default (entity, target, speed = config.speed.movement, easing = NO_EASIN
         target,
         speed,
         easing,
-        hasDuration: true
+        callback
     }
 }
 

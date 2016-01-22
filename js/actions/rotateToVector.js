@@ -8,7 +8,7 @@ import { ROTATE_TO_VECTOR } from  ".";
 import Vector from "../math/Vector";
 import config from "../config";
 
-export default (entity, target, speed = config.speed.rotation) => {
+export default (entity, target, speed = config.speed.rotation, callback) => {
     if (!(target instanceof Vector)) {
         throw new TypeError("Target argument passed to rotateToVector action needs to be a vector");
     }
@@ -17,7 +17,7 @@ export default (entity, target, speed = config.speed.rotation) => {
         entity,
         target,
         speed,
-        hasDuration: true
+        callback
     }
 }
 

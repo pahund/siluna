@@ -6,9 +6,10 @@
  */
 import { ANIMATE } from  ".";
 
-export default (entity, animation) => ({
+export default (entity, animation, callback) => ({
     type: ANIMATE,
     entity,
-    animation
+    animation,
+    callback
 })
 
