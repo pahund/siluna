@@ -7,15 +7,15 @@
  * @since 16 Jan 2016
  */
 import { CURRENT_TAP, CURRENT_ENTITY, getByType } from ".";
+import { put } from "redux-saga";
 
 class Action {
     constructor(type, ...args) {
         this.type = type;
         this.args = args;
-        [ this.promise, this.resolve ] = makePromise();
     }
 
-    toDispatchable({ currentTap, currentEntity } = {}) {
+    toDispatchable(resolve, { currentTap, currentEntity } = {}) {
         const args = this.args.map(arg => {
             if (arg === CURRENT_ENTITY) {
                 if (!currentEntity) {
@@ -31,18 +31,22 @@ class Action {
             }
             return arg;
         });
-        return getByType(this.type)(...args, this.resolve);
+        return getByType(this.type)(...args, resolve);
+    }
+
+    get callable() {
+        const that = this;
+        return function *(config) {
+            const [ promise, resolve ] = makePromise();
+            yield put(that.toDispatchable(resolve, config));
+            return promise;
+        }
     }
 }
 
 function makePromise() {
     let resolve = null;
-    const promise = new Promise(res => {
-        resolve = () => {
-            console.log("[PH_LOG] resolving promise"); // PH_TODO: REMOVE
-            res("done");
-        }
-    });
+    const promise = new Promise(res => resolve = () => res("done"));
     return [ promise, resolve ];
 }
 

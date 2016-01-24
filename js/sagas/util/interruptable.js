@@ -17,7 +17,7 @@ export default function *(actionType, func, getState) {
         });
         if (winner.interruption) {
             console.log("[PH_LOG] interrupted"); // PH_TODO: REMOVE
-            yield *execute(winner.interruption);
+            yield execute(winner.interruption);
         }
     }
     while (true) {

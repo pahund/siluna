@@ -7,7 +7,7 @@
 import deepFreeze from "deep-freeze";
 import Vector from "../math/Vector";
 
-export default (target, speed = 5, sequenceIds, obsoleteSequenceIds) => {
+export default (target, speed = 5, callback) => {
     if (!(target instanceof Vector)) {
         throw new TypeError("Target argument passed to rotatesToVector component needs to be a vector");
     }
@@ -16,8 +16,7 @@ export default (target, speed = 5, sequenceIds, obsoleteSequenceIds) => {
         target,
         speed,
         elapsed: 0,
-        sequenceIds,
-        obsoleteSequenceIds
+        callback
     });
 }
 
