@@ -6,10 +6,9 @@
  */
 import deepFreeze from "deep-freeze";
 import updateRotation from "./util/updateRotation";
-import Vector from "../../math/Vector";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, velocity, speed, direction, sequenceIds, obsoleteSequenceIds } = prevComponent,
+    let { target, velocity, speed, direction, callback } = prevComponent,
         { position, rotation } = spriteComponent;
 
     if (!velocity) {
@@ -22,7 +21,13 @@ export default (prevComponent, spriteComponent, timeDelta) => {
 
     rotation = updateRotation(velocity, speed, timeDelta, rotation, direction);
 
-    const isRunning = rotation !== velocity.rad ;
+    const isRunning = rotation !== velocity.rad;
+
+    if (!isRunning) {
+        console.log("[PH_LOG] invoking callback from rotate to point updater system"); // PH_TODO: REMOVE
+        callback();
+    }
+
 
     return [
         isRunning ?
@@ -34,8 +39,6 @@ export default (prevComponent, spriteComponent, timeDelta) => {
         deepFreeze({
             ...spriteComponent,
             rotation
-        }),
-        isRunning ? undefined : sequenceIds,
-        obsoleteSequenceIds
+        })
     ];
 }

@@ -24,6 +24,14 @@ class Group {
             }
         };
     }
+
+    get callables() {
+        let callables = [];
+        for (let child of this.actions) {
+            callables = callables.concat(child.callables);
+        }
+        return callables;
+    }
 }
 
 export default Group;

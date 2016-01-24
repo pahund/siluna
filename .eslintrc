@@ -72,6 +72,8 @@
           "fromImage"
         ]
       }
-    ]
+    ],
+
+    "no-unused-vars": [ 2 ]
   }
 }

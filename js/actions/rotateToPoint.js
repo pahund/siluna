@@ -8,7 +8,7 @@ import { ROTATE_TO_POINT } from  ".";
 import Point from "../math/Point";
 import config from "../config";
 
-export default (entity, target, speed = config.speed.rotation) => {
+export default (entity, target, speed = config.speed.rotation, callback) => {
     if (!(target instanceof Point)) {
         throw new TypeError("Target argument passed to rotateToPoint action needs to be a point");
     }
@@ -17,7 +17,7 @@ export default (entity, target, speed = config.speed.rotation) => {
         entity,
         target,
         speed,
-        hasDuration: true
+        callback
     }
 }
 

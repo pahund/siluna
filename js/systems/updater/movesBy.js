@@ -11,7 +11,7 @@ import updatePosition from "./util/updatePosition";
 import { getByType } from "../../math/easing";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { velocity, speed, elapsed, startPosition, easing, sequenceIds, obsoleteSequenceIds } = prevComponent,
+    let { velocity, speed, elapsed, startPosition, easing, callback } = prevComponent,
         { position } = spriteComponent;
 
     easing = getByType(easing);
@@ -24,6 +24,11 @@ export default (prevComponent, spriteComponent, timeDelta) => {
 
     const isRunning = elapsed < velocity.length;
 
+    if (!isRunning) {
+        console.log("[PH_LOG] invoking callback from moves by updater system"); // PH_TODO: REMOVE
+        callback();
+    }
+
     return [
         isRunning ? deepFreeze({
             ...prevComponent,
@@ -33,9 +38,7 @@ export default (prevComponent, spriteComponent, timeDelta) => {
         deepFreeze({
             ...spriteComponent,
             position
-        }),
-        isRunning ? undefined : sequenceIds,
-        obsoleteSequenceIds
+        })
     ];
 }
 

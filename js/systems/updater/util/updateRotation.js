@@ -4,7 +4,6 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 14 Jan 2016
  */
-import Vector from "../../../math/Vector";
 
 // additional scale to make sure that speed = 1 is equivalent to rotating the sprite by 1° per second
 const DEGREE_PER_SECOND_FACTOR = 0.000017;
