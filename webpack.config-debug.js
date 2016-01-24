@@ -12,10 +12,7 @@ const path = require("path");
 module.exports = {
     context: path.resolve(__dirname),
     entry: {
-        index: "./js/index",
-        boxes: "./js/boxes",
-        siluna: "./js/siluna",
-        siluna2: "./js/siluna2"
+        index: "./js/index"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -29,7 +26,6 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: "babel"
-                //loader: "babel?presets[]=es2015"
             }
         ]
     },

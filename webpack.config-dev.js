@@ -13,18 +13,6 @@ module.exports = {
         index: [
             "webpack/hot/dev-server",
             "./index"
-        ],
-        boxes: [
-            "webpack/hot/dev-server",
-            "./boxes"
-        ],
-        siluna: [
-            "webpack/hot/dev-server",
-            "./siluna"
-        ],
-        siluna2: [
-            "webpack/hot/dev-server",
-            "./siluna2"
         ]
     },
     output: {
@@ -40,7 +28,6 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: "babel"
-                //loader: "babel?presets[]=es2015"
             }
         ]
     },

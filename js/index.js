@@ -5,7 +5,6 @@
  * @since 27 Dec 2015
  */
 
-import "babel-polyfill"
 import makeRenderer from "./setup/makeRenderer";
 import makeStage from "./setup/makeStage";
 import makeStore from "./setup/makeStore";

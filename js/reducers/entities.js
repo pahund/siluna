@@ -14,6 +14,9 @@ import {
 
 import animator from "../systems/animator";
 import moverToPoint from "../systems/moverToPoint";
+import rotaterToPoint from "../systems/rotaterToPoint";
+import rotaterToVector from "../systems/rotaterToVector";
+import tinter from "../systems/tinter";
 
 function getEntity(state, action) {
     return state[action.entity];
