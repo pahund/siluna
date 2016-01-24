@@ -40,6 +40,17 @@ function *execute(node, options) {
     throw new TypeError("Trigger components need to be actions, groups or sequences");
 }
 
+function *collect2(node) {
+    if (node instanceof Action) {
+    }
+
+    if (node instanceof Group) {
+    }
+
+    if (node instanceof Sequence) {
+    }
+}
+
 function collect(node) {
     if (node instanceof Action) {
         return [ node.callable ];
