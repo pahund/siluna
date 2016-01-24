@@ -5,10 +5,8 @@
  * @since 01 Jan 2016
  */
 
-import PIXI from "pixi";
 import Sprite from "./Sprite";
 import { getByType } from "../actions";
-import config from "../config";
 
 let initialized = false,
     store = null,

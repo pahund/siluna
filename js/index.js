@@ -13,7 +13,6 @@ import makeLoader from "./setup/makeLoader";
 import makeTimer from "./setup/makeTimer";
 import resizeManager from "./view/resizeManager";
 import spriteManager from "./view/spriteManager";
-import reducers from "./reducers";
 import update from "./actions/update";
 
 const loader = makeLoader(),

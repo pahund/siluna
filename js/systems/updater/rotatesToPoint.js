@@ -6,7 +6,6 @@
  */
 import deepFreeze from "deep-freeze";
 import updateRotation from "./util/updateRotation";
-import Vector from "../../math/Vector";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
     let { target, velocity, speed, direction, callback } = prevComponent,

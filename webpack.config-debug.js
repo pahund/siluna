@@ -7,8 +7,7 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 29 Dec 2015
  */
-const path = require("path"),
-    webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
     context: path.resolve(__dirname),

@@ -6,18 +6,11 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 20 Jan 2016
  */
-import moves from "../components/moves";
 import hasAnimation from "../components/hasAnimation";
-import movesTo from "../components/movesTo";
-import movesBy from "../components/movesBy";
-import rotates from "../components/rotates";
-import hasSprite from "../components/hasSprite";
 import hasSpine from "../components/hasSpine";
-import respondsToTap from "../components/respondsToTap";
 import {
     CURRENT_TAP,
     ANIMATE,
-    TINT,
     ROTATE_TO_POINT,
     ROTATE_TO_VECTOR,
     MOVE_TO_POINT

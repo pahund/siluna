@@ -6,7 +6,6 @@
  */
 import deepFreeze from "deep-freeze";
 import rotatesToVector from "../components/rotatesToVector";
-import Point from "../math/Point";
 
 export default (prevEntity, target, speed, callback) => {
     return deepFreeze({

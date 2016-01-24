@@ -6,7 +6,6 @@
  */
 
 import Point from "../../../math/Point";
-import easing from "../../../math/easing";
 
 // additional scale to make sure that speed = 1 is equivalent to moving the sprite by 1px per second
 const PIXELS_PER_SECOND_FACTOR = 0.0010416666666667;

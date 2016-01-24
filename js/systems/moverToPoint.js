@@ -6,7 +6,6 @@
  */
 import deepFreeze from "deep-freeze";
 import movesTo from "../components/movesTo";
-import Point from "../math/Point";
 
 export default (prevEntity, target, speed, easing, callback) => {
     return deepFreeze({

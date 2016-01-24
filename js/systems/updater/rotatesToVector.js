@@ -6,11 +6,10 @@
  */
 import deepFreeze from "deep-freeze";
 import updateRotation from "./util/updateRotation";
-import Vector from "../../math/Vector";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
     let { target, speed, direction, callback } = prevComponent,
-        { position, rotation } = spriteComponent;
+        { rotation } = spriteComponent;
 
     if (!direction) {
         direction = Math.sin(rotation - target.rad) < 0 ? "cw" : "ccw";

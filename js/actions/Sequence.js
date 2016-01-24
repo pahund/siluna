@@ -7,7 +7,6 @@
  * @since 16 Jan 2016
  */
 
-import Action from "./Action";
 import makePromise from "./util/makePromise";
 import { call } from "redux-saga";
 

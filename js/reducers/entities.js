@@ -6,18 +6,13 @@
  */
 import {
     ANIMATE,
-    UPDATE,
     TINT,
     ROTATE_TO_POINT,
     ROTATE_TO_VECTOR,
     MOVE_TO_POINT
 } from "../actions";
 
-import updater from "../systems/updater";
 import animator from "../systems/animator";
-import tinter from "../systems/tinter";
-import rotaterToPoint from "../systems/rotaterToPoint";
-import rotaterToVector from "../systems/rotaterToVector";
 import moverToPoint from "../systems/moverToPoint";
 
 function getEntity(state, action) {
