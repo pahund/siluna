@@ -8,6 +8,7 @@
  */
 import { CURRENT_TAP, CURRENT_ENTITY, getByType } from ".";
 import { put } from "redux-saga";
+import makePromise from "./util/makePromise";
 
 class Action {
     constructor(type, ...args) {
@@ -34,20 +35,14 @@ class Action {
         return getByType(this.type)(...args, resolve);
     }
 
-    get callable() {
+    get callables() {
         const that = this;
-        return function *(config) {
+        return [ function *(config) {
             const [ promise, resolve ] = makePromise();
             yield put(that.toDispatchable(resolve, config));
             return promise;
-        }
+        } ];
     }
-}
-
-function makePromise() {
-    let resolve = null;
-    const promise = new Promise(res => resolve = () => res("done"));
-    return [ promise, resolve ];
 }
 
 export default Action;
