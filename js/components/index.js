@@ -26,6 +26,7 @@ export const HAS_ANIMATION = Symbol("component “has animation”"),
     ROTATES_TO_POINT = Symbol("component “rotates to point”"),
     ROTATES_TO_VECTOR = Symbol("component “rotates to vector”");
 
+/* eslint complexity: [2, 12] */
 export function getByType(type) {
     switch (type) {
         case HAS_ANIMATION:

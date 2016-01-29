@@ -17,8 +17,6 @@ import Entity from "../../entities/Entity";
 
 import { MOVES, MOVES_TO, ROTATES_TO_POINT, ROTATES_TO_VECTOR, MOVES_BY, ROTATES, HAS_SPRITE, HAS_SPINE } from "../../components";
 
-import { getByType } from "../../components"
-
 // sub-systems corresponding to entity's components
 const updaters = {
     [MOVES]: moves,
