@@ -6,6 +6,7 @@
  */
 import deepFreeze from "deep-freeze";
 import Point from "../math/Point";
+import { HAS_SPRITE } from ".";
 
 const defaults = {
     position: new Point(0, 0),
@@ -29,7 +30,7 @@ export default (image, {
         throw new TypeError("Position argument passed to hasSprite component needs to be a point");
     }
     return deepFreeze({
-        id: "hasSprite",
+        id: HAS_SPRITE,
         image,
         position,
         anchor,

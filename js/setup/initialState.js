@@ -15,6 +15,10 @@ import {
     ROTATE_TO_VECTOR,
     MOVE_TO_POINT
 } from "../actions";
+import {
+    HAS_SPINE,
+    HAS_ANIMATION
+} from "../components";
 import config from "../config";
 import Point from "../math/Point";
 import Vector from "../math/Vector";
@@ -68,12 +72,12 @@ export default {
     },
     entities: new Map([
         [ "siluna", new Map([
-            [ "hasSpine", hasSpine("siluna", {
+            [ HAS_SPINE, hasSpine("siluna", {
                 anchor: { x: 0.5, y: 0.1 },
                 position: new Point(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
                 scale: 0.17
             }) ],
-            [ "hasAnimation", hasAnimation("treading-water") ]
+            [ HAS_ANIMATION, hasAnimation("treading-water") ]
         ]) ]
     ])
 };

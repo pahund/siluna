@@ -6,13 +6,14 @@
  */
 import deepFreeze from "deep-freeze";
 import Point from "../math/Point";
+import { ROTATES_TO_POINT } from ".";
 
 export default (target, speed = 5, callback) => {
     if (!(target instanceof Point)) {
         throw new TypeError("Target argument passed to rotatesToPoint component needs to be a point");
     }
     return deepFreeze({
-        id: "rotatesToPoint",
+        id: ROTATES_TO_POINT,
         target,
         speed,
         elapsed: 0,

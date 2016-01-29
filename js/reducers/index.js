@@ -19,9 +19,6 @@ const reducers = combineReducers({
 export default (state = {}, action) => {
     switch (action.type) {
         case UPDATE:
-            //if (state.entities.get("siluna").get("rotatesToPoint")) {
-            //    debugger;
-            //}
             const entities = new Map();
             for (const [ entity ] of state.entities) {
                 entities.set(entity, updater(state.entities.get(entity), action.timeDelta));

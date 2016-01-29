@@ -8,8 +8,9 @@
  * @since 10 Jan 2016
  */
 import deepFreeze from "deep-freeze";
+import{ HAS_ANIMATION } from ".";
 
 export default animation => deepFreeze({
-    id: "hasAnimation",
+    id: HAS_ANIMATION,
     animation
 });

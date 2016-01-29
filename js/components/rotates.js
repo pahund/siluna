@@ -5,8 +5,9 @@
  * @since 31 Dec 2015
  */
 import deepFreeze from "deep-freeze";
+import { ROTATES } from ".";
 
 export default dr => deepFreeze({
-    id: "rotates",
+    id: ROTATES,
     dr
 });

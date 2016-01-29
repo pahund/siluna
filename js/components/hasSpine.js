@@ -8,6 +8,7 @@
  */
 import deepFreeze from "deep-freeze";
 import Point from "../math/Point";
+import { HAS_SPINE } from ".";
 
 const defaults = {
     position: new Point(0, 0),
@@ -31,7 +32,7 @@ export default (dataId, {
         throw new TypeError("Position argument passed to hasSpine component needs to be a point");
     }
     return deepFreeze({
-        id: "hasSpine",
+        id: HAS_SPINE,
         dataId,
         position,
         anchor,

@@ -13,19 +13,22 @@ import rotatesToPoint from "./rotatesToPoint";
 import rotatesToVector from "./rotatesToVector";
 import movesBy from "./movesBy";
 import rotates from "./rotates";
+import { MOVES, MOVES_TO, ROTATES_TO_POINT, ROTATES_TO_VECTOR, MOVES_BY, ROTATES, HAS_SPRITE, HAS_SPINE } from "../../components";
+
+import { getByType } from "../../components"
 
 // sub-systems corresponding to entity's components
 const updaters = {
-    moves,
-    movesTo,
-    rotatesToPoint,
-    rotatesToVector,
-    movesBy,
-    rotates
+    [MOVES]: moves,
+    [MOVES_TO]: movesTo,
+    [ROTATES_TO_POINT]: rotatesToPoint,
+    [ROTATES_TO_VECTOR]: rotatesToVector,
+    [MOVES_BY]: movesBy,
+    [ROTATES]: rotates
 };
 
 export default (prevEntity, timeDelta) => {
-    let spriteComponent = prevEntity.get("hasSprite") || prevEntity.get("hasSpine");
+    let spriteComponent = prevEntity.get(HAS_SPRITE) || prevEntity.get(HAS_SPINE);
     if (!spriteComponent) {
         return prevEntity;
     }

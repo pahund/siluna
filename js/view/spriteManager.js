@@ -7,6 +7,7 @@
 
 import Sprite from "./Sprite";
 import { getByType } from "../actions";
+import { HAS_SPRITE, HAS_SPINE, HAS_ANIMATION, RESPONDS_TO_TAP } from "../components";
 
 let initialized = false,
     store = null,
@@ -116,8 +117,8 @@ function updateExistingSprites(state, timeDelta) {
         }
 
         /* update sprite */
-        const spriteOptions = entity.get("hasSprite") || entity.get("hasSpine"),
-            animationOptions = entity.get("hasAnimation");
+        const spriteOptions = entity.get(HAS_SPRITE) || entity.get(HAS_SPINE),
+            animationOptions = entity.get(HAS_ANIMATION);
         if (spriteOptions) {
             const { position, rotation, tint } = spriteOptions;
             sprite.position = position;
@@ -137,10 +138,10 @@ function updateExistingSprites(state, timeDelta) {
 
 function addNewSprites(state) {
     for (const [ id, entity ] of state.entities) {
-        const hasSprite = entity.get("hasSprite"),
-            hasSpine = entity.get("hasSpine"),
-            respondsToTap = entity.get("respondsToTap"),
-            hasAnimation = entity.get("hasAnimation");
+        const hasSprite = entity.get(HAS_SPRITE),
+            hasSpine = entity.get(HAS_SPINE),
+            respondsToTap = entity.get(RESPONDS_TO_TAP),
+            hasAnimation = entity.get(HAS_ANIMATION);
         if (sprites.has(id) || (!hasSprite && !hasSpine)) {
             return;
         }

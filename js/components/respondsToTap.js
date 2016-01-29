@@ -5,9 +5,10 @@
  * @since 01 Jan 2016
  */
 import deepFreeze from "deep-freeze";
+import { RESPONDS_TO_TAP } from ".";
 
 export default (actionType, ...args) => deepFreeze({
-    id: "respondsToTap",
+    id: RESPONDS_TO_TAP,
     actionType,
     args
 });
