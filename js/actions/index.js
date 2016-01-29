@@ -15,17 +15,17 @@ import rotateToVector from "./rotateToVector";
 
 export const
     // placeholders in instances of Action that are resolved by the triggers reducer
-    CURRENT_TAP = "CURRENT_TAP",
-    CURRENT_ENTITY = "CURRENT_ENTITY",
+    CURRENT_TAP = Symbol("current tap placeholder for actions"),
+    CURRENT_ENTITY = Symbol("current entity placeholder for actions"),
 
     // actions that affect entities
-    TAP_ON_SCREEN = "TAP_ON_SCREEN",
-    ANIMATE = "ANIMATE",
-    UPDATE = "UPDATE",
-    TINT = "TINT",
-    MOVE_TO_POINT = "MOVE_TO_POINT",
-    ROTATE_TO_POINT = "ROTATE_TO_POINT",
-    ROTATE_TO_VECTOR = "ROTATE_TO_VECTOR";
+    TAP_ON_SCREEN = Symbol("“tap on screen” action"),
+    ANIMATE = Symbol("“animate” action"),
+    UPDATE = Symbol("“update” action"),
+    TINT = Symbol("“tint” action"),
+    MOVE_TO_POINT = Symbol("“move to point” action"),
+    ROTATE_TO_POINT = Symbol("“rotate to point” action"),
+    ROTATE_TO_VECTOR = Symbol("“rotate to vector” action");
 
 export function getByType(type) {
     switch (type) {
