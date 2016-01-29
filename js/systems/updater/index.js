@@ -13,6 +13,8 @@ import rotatesToPoint from "./rotatesToPoint";
 import rotatesToVector from "./rotatesToVector";
 import movesBy from "./movesBy";
 import rotates from "./rotates";
+import Entity from "../../entities/Entity";
+
 import { MOVES, MOVES_TO, ROTATES_TO_POINT, ROTATES_TO_VECTOR, MOVES_BY, ROTATES, HAS_SPRITE, HAS_SPINE } from "../../components";
 
 import { getByType } from "../../components"
@@ -32,20 +34,18 @@ export default (prevEntity, timeDelta) => {
     if (!spriteComponent) {
         return prevEntity;
     }
-    let nextEntity = new Map([
-        ...prevEntity
-    ]);
+    let nextEntity = new Entity(prevEntity.id, ...prevEntity.values());
     [ ...prevEntity.keys() ].filter(componentId => updaters[componentId] !== undefined).forEach(componentId => {
         let component = prevEntity.get(componentId);
         [ component, spriteComponent ] = updaters[componentId](component, spriteComponent, timeDelta);
         if (component) {
-            nextEntity.set(componentId, component);
+            nextEntity.set(component);
         } else {
             nextEntity.delete(componentId);
         }
     });
     if (spriteComponent) {
-        nextEntity.set(spriteComponent.id, spriteComponent);
+        nextEntity.set(spriteComponent);
     }
     return nextEntity;
 }

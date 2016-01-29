@@ -5,7 +5,7 @@
  * @since 16 Jan 2016
  */
 import hasAnimation from "../components/hasAnimation";
-import { HAS_SPINE, HAS_ANIMATION } from "../components";
+import { HAS_SPINE } from "../components";
 
 export default (prevEntity, animation, callback) => {
     let spriteComponent = prevEntity.get(HAS_SPINE);
@@ -13,8 +13,5 @@ export default (prevEntity, animation, callback) => {
         throw new TypeError("cannot animate entity, it does not have a spine");
     }
     callback();
-    return new Map([
-        ...prevEntity,
-        [ HAS_ANIMATION, hasAnimation(animation) ]
-    ]);
+    return prevEntity.update(hasAnimation(animation));
 }

@@ -12,12 +12,9 @@ export default (prevEntity, callback) => {
         throw new TypeError("cannot animate entity, it does not have a sprite (spine entities can't be tinted)");
     }
     callback();
-    return new Map([
-        ...prevEntity,
-        [ HAS_SPRITE, {
-            ...spriteComponent,
-            tint: Math.random() * 0xFFFFFF
-        }]
-    ]);
+    return prevEntity.update({
+        ...spriteComponent,
+        tint: Math.random() * 0xFFFFFF
+    });
 }
 

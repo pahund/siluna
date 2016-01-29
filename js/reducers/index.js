@@ -10,6 +10,7 @@ import { combineReducers } from "redux";
 import entities from "./entities";
 import triggers from "./triggers";
 import updater from "../systems/updater";
+import Entities from "../entities/Entities";
 
 const reducers = combineReducers({
     triggers,
@@ -19,9 +20,9 @@ const reducers = combineReducers({
 export default (state = {}, action) => {
     switch (action.type) {
         case UPDATE:
-            const entities = new Map();
+            const entities = new Entities();
             for (const [ entity ] of state.entities) {
-                entities.set(entity, updater(state.entities.get(entity), action.timeDelta));
+                entities.set(updater(state.entities.get(entity), action.timeDelta));
             }
             return {
                 ...state,

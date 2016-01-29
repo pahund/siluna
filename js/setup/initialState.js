@@ -6,6 +6,8 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 20 Jan 2016
  */
+import Entities from "../entities/Entities";
+import Entity from "../entities/Entity";
 import hasAnimation from "../components/hasAnimation";
 import hasSpine from "../components/hasSpine";
 import {
@@ -70,14 +72,14 @@ export default {
             )
         )
     },
-    entities: new Map([
-        [ "siluna", new Map([
-            [ HAS_SPINE, hasSpine("siluna", {
+    entities: new Entities(
+        new Entity("siluna",
+            hasSpine("siluna", {
                 anchor: { x: 0.5, y: 0.1 },
                 position: new Point(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
                 scale: 0.17
-            }) ],
-            [ HAS_ANIMATION, hasAnimation("treading-water") ]
-        ]) ]
-    ])
+            }),
+            hasAnimation("treading-water")
+        )
+    )
 };
