@@ -35,7 +35,9 @@ function animate() {
     const timeDelta = timer(),
         state = store.getState();
 
-    Object.keys(state.entities).forEach(entity => store.dispatch(update(entity, timeDelta)));
+    for (const [ entity ] of state.entities) {
+        store.dispatch(update(entity, timeDelta));
+    }
     spriteManager.update(timeDelta);
     renderer.render(stage);
 }

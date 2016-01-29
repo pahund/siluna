@@ -100,8 +100,14 @@ function addWithSpine(id, spineOptions, tapOptions, animationOptions) {
 
 function update(timeDelta) {
     const state = store.getState();
+    updateExistingSprites(state, timeDelta);
+    addNewSprites(state);
+
+}
+
+function updateExistingSprites(state, timeDelta) {
     for (const [ id, sprite ] of sprites) {
-        const entity = state.entities[id];
+        const entity = state.entities.get(id);
 
         /* delete sprite if its entity was removed from the store */
         if (!entity) {
@@ -110,8 +116,8 @@ function update(timeDelta) {
         }
 
         /* update sprite */
-        const spriteOptions = entity.hasSprite || entity.hasSpine,
-            animationOptions = entity.hasAnimation;
+        const spriteOptions = entity.get("hasSprite") || entity.get("hasSpine"),
+            animationOptions = entity.get("hasAnimation");
         if (spriteOptions) {
             const { position, rotation, tint } = spriteOptions;
             sprite.position = position;
@@ -127,9 +133,14 @@ function update(timeDelta) {
             }
         }
     }
+}
 
-    Object.keys(state.entities).forEach(id => {
-        const { hasSprite, hasSpine, respondsToTap, hasAnimation } = state.entities[id];
+function addNewSprites(state) {
+    for (const [ id, entity ] of state.entities) {
+        const hasSprite = entity.get("hasSprite"),
+            hasSpine = entity.get("hasSpine"),
+            respondsToTap = entity.get("respondsToTap"),
+            hasAnimation = entity.get("hasAnimation");
         if (sprites.has(id) || (!hasSprite && !hasSpine)) {
             return;
         }
@@ -140,7 +151,7 @@ function update(timeDelta) {
         if (hasSpine) {
             addWithSpine(id, hasSpine, respondsToTap, hasAnimation);
         }
-    });
+    }
 }
 
 export default {

@@ -25,7 +25,6 @@ export default (prevComponent, spriteComponent, timeDelta) => {
     const isRunning = elapsed < velocity.length;
 
     if (!isRunning) {
-        console.log("[PH_LOG] invoking callback from moves by updater system"); // PH_TODO: REMOVE
         callback();
     }
 

@@ -16,7 +16,6 @@ export default function *(actionType, func, getState) {
             payload: call(func, action, getState)
         });
         if (winner.interruption) {
-            console.log("[PH_LOG] interrupted"); // PH_TODO: REMOVE
             yield execute(winner.interruption);
         }
     }

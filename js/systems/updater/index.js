@@ -13,7 +13,6 @@ import rotatesToPoint from "./rotatesToPoint";
 import rotatesToVector from "./rotatesToVector";
 import movesBy from "./movesBy";
 import rotates from "./rotates";
-import deepFreeze from "deep-freeze";
 
 // sub-systems corresponding to entity's components
 const updaters = {
@@ -26,35 +25,25 @@ const updaters = {
 };
 
 export default (prevEntity, timeDelta) => {
-    let spriteComponent = prevEntity.hasSprite || prevEntity.hasSpine,
-        sequenceIds = [],
-        obsoleteSequenceIds = [];
+    let spriteComponent = prevEntity.get("hasSprite") || prevEntity.get("hasSpine");
     if (!spriteComponent) {
         return prevEntity;
     }
-    let nextEntity = {
+    let nextEntity = new Map([
         ...prevEntity
-    };
-    Object.keys(prevEntity).filter(componentId => updaters[componentId] !== undefined).forEach(componentId => {
-        let component = prevEntity[componentId],
-            sids,
-            obsids;
-        [ component, spriteComponent, sids, obsids ] = updaters[componentId](component, spriteComponent, timeDelta);
+    ]);
+    [ ...prevEntity.keys() ].filter(componentId => updaters[componentId] !== undefined).forEach(componentId => {
+        let component = prevEntity.get(componentId);
+        [ component, spriteComponent ] = updaters[componentId](component, spriteComponent, timeDelta);
         if (component) {
-            nextEntity[componentId] = component;
+            nextEntity.set(componentId, component);
         } else {
-            delete nextEntity[componentId];
-        }
-        if (sids) {
-            sequenceIds = sequenceIds.concat(sids);
-        }
-        if (obsids) {
-            obsoleteSequenceIds = obsoleteSequenceIds.concat(obsids);
+            nextEntity.delete(componentId);
         }
     });
     if (spriteComponent) {
-        nextEntity[spriteComponent.id] = spriteComponent;
+        nextEntity.set(spriteComponent.id, spriteComponent);
     }
-    return [ deepFreeze(nextEntity), sequenceIds, obsoleteSequenceIds ];
+    return nextEntity;
 }
 

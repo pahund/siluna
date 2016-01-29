@@ -24,7 +24,6 @@ export default (prevComponent, spriteComponent, timeDelta) => {
     const isRunning = rotation !== velocity.rad;
 
     if (!isRunning) {
-        console.log("[PH_LOG] invoking callback from rotate to point updater system"); // PH_TODO: REMOVE
         callback();
     }
 

@@ -66,14 +66,14 @@ export default {
             )
         )
     },
-    entities: {
-        siluna: {
-            hasSpine: hasSpine("siluna", {
+    entities: new Map([
+        [ "siluna", new Map([
+            [ "hasSpine", hasSpine("siluna", {
                 anchor: { x: 0.5, y: 0.1 },
                 position: new Point(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
                 scale: 0.17
-            }),
-            hasAnimation: hasAnimation("treading-water")
-        }
-    }
+            }) ],
+            [ "hasAnimation", hasAnimation("treading-water") ]
+        ]) ]
+    ])
 };

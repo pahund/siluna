@@ -19,36 +19,36 @@ import rotaterToVector from "../systems/rotaterToVector";
 import tinter from "../systems/tinter";
 
 function getEntity(state, action) {
-    return state[action.entity];
+    return state.get(action.entity);
 }
 
 export default (state = {}, action = null) => {
     switch (action.type) {
         case MOVE_TO_POINT:
-            return {
+            return new Map([
                 ...state,
-                [action.entity]: moverToPoint(getEntity(state, action), action.target, action.speed, action.easing, action.callback)
-            };
+                [ action.entity, moverToPoint(getEntity(state, action), action.target, action.speed, action.easing, action.callback) ]
+            ]);
         case ROTATE_TO_POINT:
-            return {
+            return new Map([
                 ...state,
-                [action.entity]: rotaterToPoint(getEntity(state, action), action.target, action.speed, action.callback)
-            };
+                [ action.entity, rotaterToPoint(getEntity(state, action), action.target, action.speed, action.callback) ]
+            ]);
         case ROTATE_TO_VECTOR:
-            return {
+            return new Map([
                 ...state,
-                [action.entity]: rotaterToVector(getEntity(state, action), action.target, action.speed, action.callback)
-            };
+                [ action.entity, rotaterToVector(getEntity(state, action), action.target, action.speed, action.callback) ]
+            ]);
         case TINT:
-            return {
+            return new Map([
                 ...state,
-                [action.entity]: tinter(getEntity(state, action), action.callback)
-            };
+                [ action.entity, tinter(getEntity(state, action), action.callback) ]
+            ]);
         case ANIMATE:
-            return {
+            return new Map([
                 ...state,
-                [action.entity]: animator(getEntity(state, action), action.animation, action.callback)
-            };
+                [ action.entity, animator(getEntity(state, action), action.animation, action.callback) ]
+            ]);
     }
     return state;
 };

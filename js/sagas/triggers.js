@@ -13,7 +13,6 @@ function *tapOnScreen(action, getState) {
         currentTap = action.target;
 
     yield node.callables.map(callable => call(callable, { currentTap }));
-    console.log("[PH_LOG] trigger tap on screen done"); // PH_TODO: REMOVE
 }
 
 export default function *(getState) {

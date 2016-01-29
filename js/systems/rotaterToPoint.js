@@ -4,12 +4,11 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 16 Jan 2016
  */
-import deepFreeze from "deep-freeze";
 import rotatesToPoint from "../components/rotatesToPoint";
 
-export default (prevEntity, target, speed, callback) => {
-    return deepFreeze({
+export default (prevEntity, target, speed, callback) => (
+    new Map([
         ...prevEntity,
-        rotatesToPoint: rotatesToPoint(target, speed, callback)
-    });
-}
+        [ "rotatesToPoint", rotatesToPoint(target, speed, callback) ]
+    ])
+)

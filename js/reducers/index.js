@@ -19,27 +19,15 @@ const reducers = combineReducers({
 export default (state = {}, action) => {
     switch (action.type) {
         case UPDATE:
-            const entities = {};
-            let sequenceIds = state.triggers.sequenceIds || [],
-                obsoleteSequenceIds = state.triggers.obsoleteSequenceIds || [];
-            Object.keys(state.entities).forEach(entity => {
-                let sids,
-                    obsids;
-                [ entities[entity], sids, obsids ] = updater(state.entities[entity], action.timeDelta);
-                if (sids) {
-                    sequenceIds = sequenceIds.concat(sids);
-                }
-                if (obsids) {
-                    obsoleteSequenceIds = obsoleteSequenceIds.concat(obsids)
-                }
-            });
+            //if (state.entities.get("siluna").get("rotatesToPoint")) {
+            //    debugger;
+            //}
+            const entities = new Map();
+            for (const [ entity ] of state.entities) {
+                entities.set(entity, updater(state.entities.get(entity), action.timeDelta));
+            }
             return {
                 ...state,
-                triggers: {
-                    ...state.triggers,
-                    sequenceIds,
-                    obsoleteSequenceIds
-                },
                 entities
             };
         default:

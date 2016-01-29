@@ -20,7 +20,6 @@ export default (prevComponent, spriteComponent, timeDelta) => {
     const isRunning = rotation !== target.rad ;
 
     if (!isRunning) {
-        console.log("[PH_LOG] invoking callback from rotates to vector updater system"); // PH_TODO: REMOVE
         callback();
     }
 

@@ -4,12 +4,11 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 16 Jan 2016
  */
-import deepFreeze from "deep-freeze";
 import movesTo from "../components/movesTo";
 
-export default (prevEntity, target, speed, easing, callback) => {
-    return deepFreeze({
+export default (prevEntity, target, speed, easing, callback) => (
+    new Map([
         ...prevEntity,
-        movesTo: movesTo(target, speed, easing, callback)
-    });
-}
+        [ "movesTo", movesTo(target, speed, easing, callback) ]
+    ])
+)
