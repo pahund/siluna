@@ -12,22 +12,15 @@ class Group {
         this.actions = actions;
     }
 
-    [Symbol.iterator]() {
-        const actions = this.actions;
-        let index = 0;
-        return {
-            next() {
-                return {
-                    value: actions[index++],
-                    done: index > actions.length
-                };
-            }
-        };
+    *[Symbol.iterator]() {
+        for (const action of this.actions) {
+            yield action;
+        }
     }
 
     get callables() {
         let callables = [];
-        for (let child of this.actions) {
+        for (let child of this) {
             callables = callables.concat(child.callables);
         }
         return callables;

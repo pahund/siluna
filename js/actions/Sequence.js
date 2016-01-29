@@ -15,37 +15,17 @@ class Sequence {
         this.actions = actions;
     }
 
-    [Symbol.iterator]() {
-        const actions = this.actions;
-        let index = 0;
-        return {
-            next() {
-                return {
-                    value: actions[index++],
-                    done: index > actions.length
-                };
-            },
-            nextIsType(type) {
-                return actions[index].type === type;
-            },
-            peek() {
-                return {
-                    value: actions[index],
-                    done: index + 1 > actions.length
-                }
-            }
-        };
-    }
-
-    get iterator() {
-        return this[Symbol.iterator]();
+    *[Symbol.iterator]() {
+        for (const action of this.actions) {
+            yield action;
+        }
     }
 
     get callables() {
         const that = this;
         return [ function *(config) {
             let [ promise, resolve ] = makePromise();
-            for (let child of that.actions) {
+            for (let child of that) {
                 const p = yield child.callables.map(callable => call(callable, config));
                 promise = promise.then(p);
             }
