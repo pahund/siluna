@@ -9,7 +9,6 @@
 
 import config from "../../config";
 import moves from "../../components/moves";
-import deepFreeze from "deep-freeze";
 
 export default (component, spriteComponent) => {
     const velocity = component.velocity.clone(),
@@ -22,10 +21,10 @@ export default (component, spriteComponent) => {
     }
     return [
         moves(velocity),
-        deepFreeze({
+        {
             ...spriteComponent,
             position
-        })
+        }
     ]
 }
 

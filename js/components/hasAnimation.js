@@ -7,10 +7,9 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 10 Jan 2016
  */
-import deepFreeze from "deep-freeze";
 import{ HAS_ANIMATION } from ".";
 
-export default animation => deepFreeze({
+export default animation => ({
     id: HAS_ANIMATION,
     animation
 });

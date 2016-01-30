@@ -6,7 +6,6 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 13 Jan 2016
  */
-import deepFreeze from "deep-freeze";
 import Vector from "../math/Vector";
 import { NO_EASING } from "../math/easing";
 import { MOVES_BY } from ".";
@@ -15,7 +14,7 @@ export default (velocity, speed = 1000, easing = NO_EASING, sequenceIds, obsolet
     if (!(velocity instanceof Vector)) {
         throw new TypeError("Velocity argument passed to movesBy component needs to be a vector");
     }
-    return deepFreeze({
+    return {
         id: MOVES_BY,
         velocity,
         speed,
@@ -23,5 +22,5 @@ export default (velocity, speed = 1000, easing = NO_EASING, sequenceIds, obsolet
         easing,
         sequenceIds,
         obsoleteSequenceIds
-    });
+    };
 }

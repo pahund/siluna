@@ -6,7 +6,6 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 13 Jan 2016
  */
-import deepFreeze from "deep-freeze";
 import updatePosition from "./util/updatePosition";
 import { getByType } from "../../math/easing";
 
@@ -29,15 +28,15 @@ export default (prevComponent, spriteComponent, timeDelta) => {
     }
 
     return [
-        isRunning ? deepFreeze({
+        isRunning ? {
             ...prevComponent,
             elapsed,
             startPosition
-        }) : undefined,
-        deepFreeze({
+        } : undefined,
+        {
             ...spriteComponent,
             position
-        })
+        }
     ];
 }
 

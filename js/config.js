@@ -7,9 +7,7 @@
  * @since 29 Dec 2015
  */
 
-import deepFreeze from "deep-freeze";
-
-export default deepFreeze({
+export default {
     speed: {
         movement: 1000, // pixels per second
         rotation: 360 // degrees per second
@@ -26,4 +24,4 @@ export default deepFreeze({
         ]
     },
     maxTimeDelta: 100
-});
+};

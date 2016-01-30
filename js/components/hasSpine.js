@@ -6,7 +6,6 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 10 Jan 2016
  */
-import deepFreeze from "deep-freeze";
 import Point from "../math/Point";
 import { HAS_SPINE } from ".";
 
@@ -31,7 +30,7 @@ export default (dataId, {
     if (!(position instanceof Point)) {
         throw new TypeError("Position argument passed to hasSpine component needs to be a point");
     }
-    return deepFreeze({
+    return {
         id: HAS_SPINE,
         dataId,
         position,
@@ -39,5 +38,5 @@ export default (dataId, {
         rotation,
         tint,
         scale
-    });
+    };
 }

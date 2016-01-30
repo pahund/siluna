@@ -4,7 +4,6 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 01 Jan 2016
  */
-import deepFreeze from "deep-freeze";
 import Point from "../math/Point";
 import { HAS_SPRITE } from ".";
 
@@ -29,7 +28,7 @@ export default (image, {
     if (!(position instanceof Point)) {
         throw new TypeError("Position argument passed to hasSprite component needs to be a point");
     }
-    return deepFreeze({
+    return {
         id: HAS_SPRITE,
         image,
         position,
@@ -37,5 +36,5 @@ export default (image, {
         rotation,
         tint,
         scale
-    });
+    };
 }

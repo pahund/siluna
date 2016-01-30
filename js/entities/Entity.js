@@ -41,7 +41,6 @@ export default class Entity {
     update(component) {
         const newComponents = new Map([ ...this.componentMap ]);
         newComponents.set(component.id, component);
-        const retVal = new Entity(this.id, ...newComponents.values());
-        return retVal;
+        return new Entity(this.id, ...newComponents.values());
     }
 }
