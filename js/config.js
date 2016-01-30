@@ -24,5 +24,8 @@ export default {
         ]
     },
     maxTimeDelta: 100,
-    touchDelay: 100
+    touchDelay: {
+        start: 100,
+        move: 300
+    }
 };

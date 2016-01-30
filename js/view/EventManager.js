@@ -15,7 +15,8 @@ export default class EventManager {
     constructor(store) {
         this.container = null;
         this.store = store;
-        this.touchTime = null;
+        this.touchStartTime = null;
+        this.touchMoveTime = null;
         this.timeoutHandle = null;
         this.touchData = null;
     }
@@ -31,19 +32,21 @@ export default class EventManager {
 
     touchStart(data) {
         this.touchData = data;
-        this.touchTime = Date.now();
+        this.touchStartTime = Date.now();
+        this.touchMoveTime = Date.now();
         this.timeoutHandle = setTimeout(() => {
             this.store.dispatch(touchStartOnScreen(this.getTargetPoint(data)));
             this.container.mousemove = this.container.touchmove =
                 ({data}) => this.touchMove(data);
-        }, config.touchDelay)
+        }, config.touchDelay.start)
     }
 
     touchEnd(data) {
-        if (Date.now() - config.touchDelay > this.touchTime) {
+        if (Date.now() - config.touchDelay.start > this.touchStartTime) {
             this.store.dispatch(touchEndOnScreen(this.getTargetPoint(data)));
             this.container.mousemove = this.container.touchmove = () => {};
-            this.touchTime = Date.now();
+            this.touchMoveTime = null;
+            this.touchStartTime = null;
             return;
         }
         clearTimeout(this.timeoutHandle);
@@ -51,9 +54,9 @@ export default class EventManager {
     }
 
     touchMove(data) {
-        if (Date.now() - config.touchDelay > this.touchTime) {
+        if (Date.now() - config.touchDelay.move > this.touchMoveTime) {
             this.store.dispatch(touchMoveOnScreen(this.getTargetPoint(data)));
-            this.touchTime = Date.now();
+            this.touchMoveTime = Date.now();
         }
     }
 
