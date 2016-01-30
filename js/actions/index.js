@@ -6,6 +6,9 @@
  */
 
 import tapOnScreen from "./tapOnScreen";
+import touchStartOnScreen from "./touchStartOnScreen";
+import touchMoveOnScreen from "./touchMoveOnScreen";
+import touchEndOnScreen from "./touchEndOnScreen";
 import animate from "./animate";
 import update from "./update";
 import tint from "./tint";
@@ -18,8 +21,13 @@ export const
     CURRENT_TAP = Symbol("current tap placeholder for actions"),
     CURRENT_ENTITY = Symbol("current entity placeholder for actions"),
 
-    // actions that affect entities
+    // user interaction
     TAP_ON_SCREEN = Symbol("“tap on screen” action"),
+    TOUCH_START_ON_SCREEN = Symbol("“touch start on screen” action"),
+    TOUCH_MOVE_ON_SCREEN = Symbol("“touch move on screen” action"),
+    TOUCH_END_ON_SCREEN = Symbol("“touch end on screen” action"),
+
+    // actions that affect entities
     ANIMATE = Symbol("“animate” action"),
     UPDATE = Symbol("“update” action"),
     TINT = Symbol("“tint” action"),
@@ -27,9 +35,13 @@ export const
     ROTATE_TO_POINT = Symbol("“rotate to point” action"),
     ROTATE_TO_VECTOR = Symbol("“rotate to vector” action");
 
+/* eslint complexity: [2, 12] */
 export function getByType(type) {
     switch (type) {
         case TAP_ON_SCREEN: return tapOnScreen;
+        case TOUCH_START_ON_SCREEN: return touchStartOnScreen;
+        case TOUCH_MOVE_ON_SCREEN: return touchMoveOnScreen;
+        case TOUCH_END_ON_SCREEN: return touchEndOnScreen;
         case ANIMATE: return animate;
         case UPDATE: return update;
         case TINT: return tint;

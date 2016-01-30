@@ -7,7 +7,7 @@
  * @since 16 Jan 2016
  */
 
-import makePromise from "./util/makePromise";
+import makePromise from "./makePromise";
 import { call } from "redux-saga";
 
 class Sequence {

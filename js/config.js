@@ -23,5 +23,6 @@ export default {
             "siluna"
         ]
     },
-    maxTimeDelta: 100
+    maxTimeDelta: 100,
+    touchDelay: 100
 };

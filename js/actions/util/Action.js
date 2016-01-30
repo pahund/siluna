@@ -6,9 +6,9 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 16 Jan 2016
  */
-import { CURRENT_TAP, CURRENT_ENTITY, getByType } from ".";
+import { CURRENT_TAP, CURRENT_ENTITY, getByType } from "..";
 import { put } from "redux-saga";
-import makePromise from "./util/makePromise";
+import makePromise from "./makePromise";
 
 class Action {
     constructor(type, ...args) {

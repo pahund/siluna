@@ -14,5 +14,5 @@ export default target => {
     return {
         type: TAP_ON_SCREEN,
         target
-    }
+    };
 }

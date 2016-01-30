@@ -5,22 +5,14 @@
  * @since 29 Dec 2015
  */
 import PIXI from "pixi";
-import tapOnScreen from "../actions/tapOnScreen";
 import config from "../config";
-import Point from "../math/Point";
+import EventManager from "../view/EventManager";
 
-export default ({ store } = { store: null }) => {
-    const stage = new PIXI.Container();
-    stage.interactive = true;
+export default ({ store }) => {
+    const stage = new PIXI.Container(),
+        eventManager = new EventManager(store);
     stage.hitArea = new PIXI.Rectangle(0, 0, config.gameDimensions.w, config.gameDimensions.w);
-    if (store) {
-        const onTap = ({ data }) => {
-            store.dispatch(tapOnScreen(Point.fromPixiPoint(data.getLocalPosition(stage))));
-        };
-        stage.touchstart = onTap;
-        stage.click = onTap;
-    }
+    eventManager.attachContainer(stage);
     return stage;
 };
-
 

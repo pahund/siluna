@@ -11,6 +11,10 @@ import Entity from "../entities/Entity";
 import hasAnimation from "../components/hasAnimation";
 import hasSpine from "../components/hasSpine";
 import {
+    TAP_ON_SCREEN,
+    TOUCH_START_ON_SCREEN,
+    TOUCH_MOVE_ON_SCREEN,
+    TOUCH_END_ON_SCREEN,
     CURRENT_TAP,
     ANIMATE,
     ROTATE_TO_POINT,
@@ -20,14 +24,17 @@ import {
 import config from "../config";
 import Point from "../math/Point";
 import Vector from "../math/Vector";
-import Group from "../actions/Group";
-import Action from "../actions/Action";
-import Sequence from "../actions/Sequence";
-import { EASE_IN_OUT_SINE } from "../math/easing";
+import Group from "../actions/util/Group";
+import Action from "../actions/util/Action";
+import Sequence from "../actions/util/Sequence";
+import {
+    NO_EASING,
+    EASE_IN_OUT_SINE
+} from "../math/easing";
 
 export default {
     triggers: {
-        tapOnScreen: new Group(
+        [TAP_ON_SCREEN]: new Group(
             new Action(ROTATE_TO_POINT, "siluna", CURRENT_TAP, config.speed.rotation),
             new Action(ANIMATE, "siluna", "swimming"),
             new Sequence(
@@ -35,6 +42,19 @@ export default {
                 new Action(ROTATE_TO_VECTOR, "siluna", new Vector(0, -1), config.speed.rotation / 3),
                 new Action(ANIMATE, "siluna", "treading-water")
             )
+        ),
+        [TOUCH_START_ON_SCREEN]: new Group(
+            new Action(ROTATE_TO_POINT, "siluna", CURRENT_TAP, config.speed.rotation),
+            new Action(ANIMATE, "siluna", "swimming"),
+            new Action(MOVE_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, NO_EASING)
+        ),
+        [TOUCH_MOVE_ON_SCREEN]: new Group(
+            new Action(ROTATE_TO_POINT, "siluna", CURRENT_TAP, config.speed.rotation),
+            new Action(MOVE_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, NO_EASING)
+        ),
+        [TOUCH_END_ON_SCREEN]: new Group(
+            new Action(ROTATE_TO_VECTOR, "siluna", new Vector(0, -1), config.speed.rotation / 3),
+            new Action(ANIMATE, "siluna", "treading-water")
         )
     },
     entities: new Entities(
