@@ -10,8 +10,9 @@ import sagas from "../sagas";
 import initialState from "./initialState";
 import reducers from "../reducers";
 
-export default () => createStore(
-    reducers,
-    initialState,
-    applyMiddleware(sagaMiddleware(sagas))
-);
+const createStoreWithSaga = applyMiddleware(
+    sagaMiddleware(sagas)
+)(createStore);
+
+export default () => createStoreWithSaga(reducers, initialState);
+

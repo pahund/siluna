@@ -38,7 +38,7 @@ class Action {
     get callables() {
         const that = this;
         return [ function *(config) {
-            const [ promise, resolve ] = makePromise();
+            const [ promise, resolve ] = makePromise(that.type, that.args);
             yield put(that.toDispatchable(resolve, config));
             return promise;
         } ];
