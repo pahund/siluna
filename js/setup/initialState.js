@@ -19,7 +19,8 @@ import {
     ANIMATE,
     ROTATE_TO_POINT,
     ROTATE_TO_VECTOR,
-    MOVE_TO_POINT
+    MOVE_TO_POINT,
+    CHANGE_DIRECTION
 } from "../actions";
 import config from "../config";
 import Point from "../math/Point";
@@ -49,8 +50,7 @@ export default {
             new Action(MOVE_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, NO_EASING)
         ),
         [TOUCH_MOVE_ON_SCREEN]: new Group(
-            new Action(ROTATE_TO_POINT, "siluna", CURRENT_TAP, config.speed.rotation),
-            new Action(MOVE_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, NO_EASING)
+            new Action(CHANGE_DIRECTION, "siluna", CURRENT_TAP)
         ),
         [TOUCH_END_ON_SCREEN]: new Group(
             new Action(ROTATE_TO_VECTOR, "siluna", new Vector(0, -1), config.speed.rotation / 3),

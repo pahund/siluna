@@ -26,6 +26,6 @@ export default (entity, target, speed = config.speed.movement, easing = NO_EASIN
         speed,
         easing,
         callback
-    }
+    };
 }
 
