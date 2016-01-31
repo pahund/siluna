@@ -8,7 +8,7 @@
  */
 
 import makePromise from "./makePromise";
-import { call } from "redux-saga";
+import { call, SagaCancellationException } from "redux-saga";
 
 class Sequence {
     constructor(...actions) {
@@ -26,7 +26,15 @@ class Sequence {
         return [ function *(config) {
             let [ promise, resolve ] = makePromise();
             for (let child of that) {
-                const p = yield child.callables.map(callable => call(callable, config));
+                let p;
+                try {
+                    p = yield child.callables.map(callable => call(callable, config));
+                } catch (e) {
+                    /* saga cancellation exceptions are expected and OK */
+                    if (!(e instanceof SagaCancellationException)) {
+                        throw e;
+                    }
+                }
                 promise = promise.then(p);
             }
             resolve();
