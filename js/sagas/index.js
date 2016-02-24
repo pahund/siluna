@@ -6,7 +6,9 @@
  */
 import { fork } from "redux-saga";
 import triggers from "./triggers";
+import debug from "./debug";
 
 export default function *(getState) {
     yield fork(triggers, getState);
+    yield fork(debug);
 }

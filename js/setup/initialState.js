@@ -20,7 +20,7 @@ import {
     ROTATE_TO_POINT,
     ROTATE_TO_VECTOR,
     MOVE_TO_POINT,
-    CHANGE_DIRECTION
+    DEBUG
 } from "../actions";
 import config from "../config";
 import Point from "../math/Point";
@@ -29,7 +29,6 @@ import Group from "../actions/util/Group";
 import Action from "../actions/util/Action";
 import Sequence from "../actions/util/Sequence";
 import {
-    NO_EASING,
     EASE_IN_OUT_SINE
 } from "../math/easing";
 
@@ -44,18 +43,9 @@ export default {
                 new Action(ANIMATE, "siluna", "treading-water")
             )
         ),
-        [TOUCH_START_ON_SCREEN]: new Group(
-            new Action(ROTATE_TO_POINT, "siluna", CURRENT_TAP, config.speed.rotation),
-            new Action(ANIMATE, "siluna", "swimming"),
-            new Action(MOVE_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, NO_EASING)
-        ),
-        [TOUCH_MOVE_ON_SCREEN]: new Group(
-            new Action(CHANGE_DIRECTION, "siluna", CURRENT_TAP)
-        ),
-        [TOUCH_END_ON_SCREEN]: new Group(
-            new Action(ROTATE_TO_VECTOR, "siluna", new Vector(0, -1), config.speed.rotation / 3),
-            new Action(ANIMATE, "siluna", "treading-water")
-        )
+        [TOUCH_START_ON_SCREEN]: new Action(DEBUG, "touch start on screen event triggered", CURRENT_TAP),
+        [TOUCH_MOVE_ON_SCREEN]: new Action(DEBUG, "touch move on screen event triggered", CURRENT_TAP),
+        [TOUCH_END_ON_SCREEN]: new Action(DEBUG, "touch end on screen event triggered", CURRENT_TAP)
     },
     entities: new Entities(
         new Entity("siluna",

@@ -16,6 +16,7 @@ import moveToPoint from "./moveToPoint";
 import rotateToPoint from "./rotateToPoint";
 import rotateToVector from "./rotateToVector";
 import changeDirection from "./changeDirection";
+import debug from "./debug";
 
 export const
     // placeholders in instances of Action that are resolved by the triggers reducer
@@ -35,9 +36,11 @@ export const
     MOVE_TO_POINT = Symbol("“move to point” action"),
     ROTATE_TO_POINT = Symbol("“rotate to point” action"),
     ROTATE_TO_VECTOR = Symbol("“rotate to vector” action"),
-    CHANGE_DIRECTION = Symbol("“change direction” action");
+    CHANGE_DIRECTION = Symbol("“change direction” action"),
 
-/* eslint complexity: [2, 12] */
+    DEBUG = Symbol("“debug” action");
+
+/* eslint complexity: [2, 13] */
 export function getByType(type) {
     switch (type) {
         case TAP_ON_SCREEN: return tapOnScreen;
@@ -51,6 +54,7 @@ export function getByType(type) {
         case ROTATE_TO_POINT: return rotateToPoint;
         case ROTATE_TO_VECTOR: return rotateToVector;
         case CHANGE_DIRECTION: return changeDirection;
+        case DEBUG: return debug;
     }
     throw new ReferenceError(`Cannot get action of type “${type}”`);
 }
