@@ -1,0 +1,25 @@
+/**
+ * movesWithAcceleration.js
+ *
+ * @author <a href="https://github.com/pahund">Patrick Hund</a>
+ * @since 24 Feb 2016
+ */
+import Point from "../math/Point";
+import { MOVES_WITH_ACCELERATION } from ".";
+import config from "../config";
+
+export default (
+    target,
+    lerpSpeed = config.speed.lerp,
+    callback
+) => {
+    if (!(target instanceof Point)) {
+        throw new TypeError("Target argument passed to movesWithAcceleration component needs to be a point");
+    }
+    return {
+        id: MOVES_WITH_ACCELERATION,
+        target,
+        lerpSpeed,
+        callback
+    };
+}

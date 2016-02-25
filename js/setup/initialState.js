@@ -20,6 +20,7 @@ import {
     ROTATE_TO_POINT,
     ROTATE_TO_VECTOR,
     MOVE_TO_POINT,
+    START_MOVING_TO_POINT,
     DEBUG
 } from "../actions";
 import config from "../config";
@@ -43,7 +44,10 @@ export default {
                 new Action(ANIMATE, "siluna", "treading-water")
             )
         ),
-        [TOUCH_START_ON_SCREEN]: new Action(DEBUG, "touch start on screen event triggered", CURRENT_TAP),
+        [TOUCH_START_ON_SCREEN]: new Group(
+            new Action(DEBUG, "touch start on screen event triggered", CURRENT_TAP),
+            new Action(START_MOVING_TO_POINT, "siluna", CURRENT_TAP, config.speed.lerp)
+        ),
         [TOUCH_MOVE_ON_SCREEN]: new Action(DEBUG, "touch move on screen event triggered", CURRENT_TAP),
         [TOUCH_END_ON_SCREEN]: new Action(DEBUG, "touch end on screen event triggered", CURRENT_TAP)
     },

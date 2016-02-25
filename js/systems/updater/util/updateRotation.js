@@ -5,8 +5,7 @@
  * @since 14 Jan 2016
  */
 
-// additional scale to make sure that speed = 1 is equivalent to rotating the sprite by 1° per second
-const DEGREE_PER_SECOND_FACTOR = 0.000017;
+import { DEGREE_PER_SECOND_FACTOR } from "../../../constants";
 
 function angleDifference(a, b) {
     const diff = a - b;

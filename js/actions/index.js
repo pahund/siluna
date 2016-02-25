@@ -16,6 +16,7 @@ import moveToPoint from "./moveToPoint";
 import rotateToPoint from "./rotateToPoint";
 import rotateToVector from "./rotateToVector";
 import changeDirection from "./changeDirection";
+import startMovingToPoint from "./startMovingToPoint";
 import debug from "./debug";
 
 export const
@@ -37,6 +38,7 @@ export const
     ROTATE_TO_POINT = Symbol("“rotate to point” action"),
     ROTATE_TO_VECTOR = Symbol("“rotate to vector” action"),
     CHANGE_DIRECTION = Symbol("“change direction” action"),
+    START_MOVING_TO_POINT = Symbol("“start moving to point” action"),
 
     DEBUG = Symbol("“debug” action");
 
@@ -54,6 +56,7 @@ export function getByType(type) {
         case ROTATE_TO_POINT: return rotateToPoint;
         case ROTATE_TO_VECTOR: return rotateToVector;
         case CHANGE_DIRECTION: return changeDirection;
+        case START_MOVING_TO_POINT: return startMovingToPoint;
         case DEBUG: return debug;
     }
     throw new ReferenceError(`Cannot get action of type “${type}”`);

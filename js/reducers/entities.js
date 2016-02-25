@@ -10,11 +10,13 @@ import {
     ROTATE_TO_POINT,
     ROTATE_TO_VECTOR,
     MOVE_TO_POINT,
+    START_MOVING_TO_POINT,
     CHANGE_DIRECTION
 } from "../actions";
 
 import animator from "../systems/animator";
 import moverToPoint from "../systems/moverToPoint";
+import moveToPointStarter from "../systems/moveToPointStarter";
 import rotaterToPoint from "../systems/rotaterToPoint";
 import rotaterToVector from "../systems/rotaterToVector";
 import tinter from "../systems/tinter";
@@ -28,6 +30,8 @@ export default (state = {}, action = null) => {
     switch (action.type) {
         case MOVE_TO_POINT:
             return state.update(moverToPoint(getEntity(state, action), action.target, action.speed, action.easing, action.callback));
+        case START_MOVING_TO_POINT:
+            return state.update(moveToPointStarter(getEntity(state, action), action.target, action.lerpSpeed, action.callback));
         case ROTATE_TO_POINT:
             return state.update(rotaterToPoint(getEntity(state, action), action.target, action.speed, action.callback));
         case ROTATE_TO_VECTOR:

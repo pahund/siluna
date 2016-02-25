@@ -10,6 +10,7 @@ import hasSprite from "./hasSprite";
 import moves from "./moves";
 import movesBy from "./movesBy";
 import movesTo from "./movesTo";
+import movesWithAcceleration from "./movesWithAcceleration";
 import respondsToTap from "./respondsToTap";
 import rotates from "./rotates";
 import rotatesToPoint from "./rotatesToPoint";
@@ -21,6 +22,7 @@ export const HAS_ANIMATION = Symbol("component “has animation”"),
     MOVES = Symbol("component “moves”"),
     MOVES_BY = Symbol("component “moves by”"),
     MOVES_TO = Symbol("component “moves to”"),
+    MOVES_WITH_ACCELERATION = Symbol("component “moves with acceleration”"),
     RESPONDS_TO_TAP = Symbol("component “responds to tap”"),
     ROTATES = Symbol("component “rotates”"),
     ROTATES_TO_POINT = Symbol("component “rotates to point”"),
@@ -41,6 +43,8 @@ export function getByType(type) {
             return movesBy;
         case MOVES_TO:
             return movesTo;
+        case MOVES_WITH_ACCELERATION:
+            return movesWithAcceleration;
         case RESPONDS_TO_TAP:
             return respondsToTap;
         case ROTATES:
