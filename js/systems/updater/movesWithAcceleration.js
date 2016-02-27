@@ -11,8 +11,8 @@ export default (prevComponent, spriteComponent, timeDelta) => {
     let { target, velocity, targetVelocity, lerpSpeed, callback } = prevComponent,
         { position } = spriteComponent;
 
-    velocity = velocity || new Vector(0, 0);
     targetVelocity = targetVelocity || target.subtractPoint(position).normalized;
+    velocity = velocity || new Vector(0, 0);
     velocity = velocity.approach(targetVelocity, timeDelta * lerpSpeed * PIXELS_PER_SECOND_FACTOR);
     position = position.addVector(velocity.multiply(timeDelta));
 
