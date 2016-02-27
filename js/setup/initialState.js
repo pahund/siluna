@@ -10,6 +10,7 @@ import Entities from "../entities/Entities";
 import Entity from "../entities/Entity";
 import hasAnimation from "../components/hasAnimation";
 import hasSpine from "../components/hasSpine";
+import hasDebugDots from "../components/hasDebugDots";
 import {
     TAP_ON_SCREEN,
     TOUCH_START_ON_SCREEN,
@@ -58,6 +59,7 @@ export default {
                 position: new Point(config.gameDimensions.w / 2, config.gameDimensions.h / 2),
                 scale: 0.17
             }),
+            hasDebugDots(),
             hasAnimation("treading-water")
         )
     )

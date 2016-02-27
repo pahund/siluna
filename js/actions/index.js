@@ -42,22 +42,26 @@ export const
 
     DEBUG = Symbol("“debug” action");
 
-/* eslint complexity: [2, 13] */
+const mapping = {
+    [TAP_ON_SCREEN]: tapOnScreen,
+    [TOUCH_START_ON_SCREEN]: touchStartOnScreen,
+    [TOUCH_MOVE_ON_SCREEN]: touchMoveOnScreen,
+    [TOUCH_END_ON_SCREEN]: touchEndOnScreen,
+    [ANIMATE]: animate,
+    [UPDATE]: update,
+    [TINT]: tint,
+    [MOVE_TO_POINT]: moveToPoint,
+    [ROTATE_TO_POINT]: rotateToPoint,
+    [ROTATE_TO_VECTOR]: rotateToVector,
+    [CHANGE_DIRECTION]: changeDirection,
+    [START_MOVING_TO_POINT]: startMovingToPoint,
+    [DEBUG]: debug
+};
+
 export function getByType(type) {
-    switch (type) {
-        case TAP_ON_SCREEN: return tapOnScreen;
-        case TOUCH_START_ON_SCREEN: return touchStartOnScreen;
-        case TOUCH_MOVE_ON_SCREEN: return touchMoveOnScreen;
-        case TOUCH_END_ON_SCREEN: return touchEndOnScreen;
-        case ANIMATE: return animate;
-        case UPDATE: return update;
-        case TINT: return tint;
-        case MOVE_TO_POINT: return moveToPoint;
-        case ROTATE_TO_POINT: return rotateToPoint;
-        case ROTATE_TO_VECTOR: return rotateToVector;
-        case CHANGE_DIRECTION: return changeDirection;
-        case START_MOVING_TO_POINT: return startMovingToPoint;
-        case DEBUG: return debug;
+    const func = mapping[type];
+    if (func) {
+        return func;
     }
     throw new ReferenceError(`Cannot get action of type “${type}”`);
 }

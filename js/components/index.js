@@ -15,8 +15,10 @@ import respondsToTap from "./respondsToTap";
 import rotates from "./rotates";
 import rotatesToPoint from "./rotatesToPoint";
 import rotatesToVector from "./rotatesToVector";
+import hasDebugDots from "./hasDebugDots";
 
-export const HAS_ANIMATION = Symbol("component “has animation”"),
+export const
+    HAS_ANIMATION = Symbol("component “has animation”"),
     HAS_SPINE = Symbol("component “has spine”"),
     HAS_SPRITE = Symbol("component “has sprite”"),
     MOVES = Symbol("component “moves”"),
@@ -26,33 +28,29 @@ export const HAS_ANIMATION = Symbol("component “has animation”"),
     RESPONDS_TO_TAP = Symbol("component “responds to tap”"),
     ROTATES = Symbol("component “rotates”"),
     ROTATES_TO_POINT = Symbol("component “rotates to point”"),
-    ROTATES_TO_VECTOR = Symbol("component “rotates to vector”");
+    ROTATES_TO_VECTOR = Symbol("component “rotates to vector”"),
+    HAS_DEBUG_DOTS = Symbol("component “has debug dots”");
 
-/* eslint complexity: [2, 12] */
+const mapping = {
+    [HAS_ANIMATION]: hasAnimation,
+    [HAS_SPINE]: hasSpine,
+    [HAS_SPRITE]: hasSprite,
+    [MOVES]: moves,
+    [MOVES_BY]: movesBy,
+    [MOVES_TO]: movesTo,
+    [MOVES_WITH_ACCELERATION]: movesWithAcceleration,
+    [RESPONDS_TO_TAP]: respondsToTap,
+    [ROTATES]: rotates,
+    [ROTATES_TO_POINT]: rotatesToPoint,
+    [ROTATES_TO_VECTOR]: rotatesToVector,
+    [HAS_DEBUG_DOTS]: hasDebugDots
+};
+
+/* eslint complexity: [2, 666] */
 export function getByType(type) {
-    switch (type) {
-        case HAS_ANIMATION:
-            return hasAnimation;
-        case HAS_SPINE:
-            return hasSpine;
-        case HAS_SPRITE:
-            return hasSprite;
-        case MOVES:
-            return moves;
-        case MOVES_BY:
-            return movesBy;
-        case MOVES_TO:
-            return movesTo;
-        case MOVES_WITH_ACCELERATION:
-            return movesWithAcceleration;
-        case RESPONDS_TO_TAP:
-            return respondsToTap;
-        case ROTATES:
-            return rotates;
-        case ROTATES_TO_POINT:
-            return rotatesToPoint;
-        case ROTATES_TO_VECTOR:
-            return rotatesToVector;
+    const func = mapping[type];
+    if (func) {
+        return func;
     }
     throw new ReferenceError(`Cannot get component of type “${type}”`);
 }

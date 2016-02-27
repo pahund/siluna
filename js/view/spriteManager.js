@@ -7,7 +7,13 @@
 
 import Sprite from "./Sprite";
 import { getByType } from "../actions";
-import { HAS_SPRITE, HAS_SPINE, HAS_ANIMATION, RESPONDS_TO_TAP } from "../components";
+import {
+    HAS_SPRITE,
+    HAS_SPINE,
+    HAS_ANIMATION,
+    RESPONDS_TO_TAP,
+    HAS_DEBUG_DOTS
+} from "../components";
 
 let initialized = false,
     store = null,
@@ -119,12 +125,23 @@ function updateExistingSprites(state, timeDelta) {
         /* update sprite */
         const spriteOptions = entity.get(HAS_SPRITE) || entity.get(HAS_SPINE),
             animationOptions = entity.get(HAS_ANIMATION);
+
         if (spriteOptions) {
             const { position, rotation, tint } = spriteOptions;
             sprite.position = position;
             sprite.rotation = rotation;
             sprite.tint = tint;
+
+            if (entity.get(HAS_DEBUG_DOTS)) {
+                const dot = new PIXI.Graphics();
+                dot.lineStyle(0);
+                dot.beginFill(0xFF0000, 1);
+                dot.drawCircle(position.x, position.y, 3);
+                dot.endFill();
+                stage.addChild(dot);
+            }
         }
+
         if (animationOptions) {
             if (sprite.currentAnimation === animationOptions.animation) {
                 sprite.update(timeDelta);
@@ -133,6 +150,8 @@ function updateExistingSprites(state, timeDelta) {
                 sprite.currentAnimation = animationOptions.animation;
             }
         }
+
+
     }
 }
 
