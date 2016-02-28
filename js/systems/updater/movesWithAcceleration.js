@@ -5,7 +5,7 @@
  * @since 24 Feb 2016
  */
 import { PIXELS_PER_SECOND_FACTOR } from "../../constants";
-import loggerFactory from "../../utils/loggerFactory";
+import loggerFactory from "../../debugUtils/loggerFactory";
 
 let log;
 

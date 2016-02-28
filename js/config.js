@@ -8,6 +8,9 @@
  */
 
 export default {
+    debug: {
+        displayFrameRate: window.displayFrameRate || false
+    },
     speed: {
         movement: 1000, // pixels per second
         rotation: 360, // degrees per second

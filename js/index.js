@@ -13,19 +13,22 @@ import makeTimer from "./setup/makeTimer";
 import resizeManager from "./view/resizeManager";
 import spriteManager from "./view/spriteManager";
 import update from "./actions/update";
+import frameRateDisplayFactory from "./debugUtils/frameRateDisplayFactory";
 
 const loader = makeLoader(),
     renderer = makeRenderer(),
     store = makeStore(),
     stage = makeStage({ store });
 
-let timer;
+let timer,
+    frameRateDisplay;
 
 resizeManager.init({ stage, renderer });
 
 loader.load((l, resources) => {
     spriteManager.init({ store, stage, resources });
     timer = makeTimer();
+    frameRateDisplay = frameRateDisplayFactory(stage, 10, 10);
     animate();
 });
 
@@ -39,6 +42,7 @@ function animate() {
         store.dispatch(update(entity, timeDelta));
     }
     spriteManager.update(timeDelta);
+    frameRateDisplay();
     renderer.render(stage);
 }
 
