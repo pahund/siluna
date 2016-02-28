@@ -19,7 +19,8 @@ let initialized = false,
     store = null,
     stage = null,
     resources = null,
-    sprites = null;
+    sprites = null,
+    debugDots = null;
 
 function init(deps) {
     if (initialized) {
@@ -29,6 +30,8 @@ function init(deps) {
     stage = deps.stage;
     resources = deps.resources;
     sprites = new Map();
+    debugDots = new PIXI.Graphics();
+    stage.addChild(debugDots);
     update();
 }
 
@@ -133,12 +136,10 @@ function updateExistingSprites(state, timeDelta) {
             sprite.tint = tint;
 
             if (entity.get(HAS_DEBUG_DOTS)) {
-                const dot = new PIXI.Graphics();
-                dot.lineStyle(0);
-                dot.beginFill(0xFF0000, 1);
-                dot.drawCircle(position.x, position.y, 3);
-                dot.endFill();
-                stage.addChild(dot);
+                debugDots.lineStyle(0);
+                debugDots.beginFill(0xFF0000, 1);
+                debugDots.drawCircle(position.x, position.y, 3);
+                debugDots.endFill();
             }
         }
 
