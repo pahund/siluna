@@ -22,6 +22,7 @@ import {
     ROTATE_TO_VECTOR,
     MOVE_TO_POINT,
     START_MOVING_TO_POINT,
+    STOP_MOVING_TO_POINT,
     DEBUG
 } from "../actions";
 import config from "../config";
@@ -50,7 +51,10 @@ export default {
             new Action(START_MOVING_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, config.speed.lerp)
         ),
         [TOUCH_MOVE_ON_SCREEN]: new Action(DEBUG, "touch move on screen event triggered", CURRENT_TAP),
-        [TOUCH_END_ON_SCREEN]: new Action(DEBUG, "touch end on screen event triggered", CURRENT_TAP)
+        [TOUCH_END_ON_SCREEN]: new Group(
+            new Action(DEBUG, "touch end on screen event triggered", CURRENT_TAP),
+            new Action(STOP_MOVING_TO_POINT, "siluna")
+        )
     },
     entities: new Entities(
         new Entity("siluna",

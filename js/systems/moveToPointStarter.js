@@ -8,8 +8,8 @@ import movesWithAcceleration from "../components/movesWithAcceleration";
 import { MOVES_WITH_ACCELERATION } from "../components";
 
 export default (prevEntity, target, targetSpeed, lerpSpeed, callback) => {
-    let prevComponent = prevEntity.get(MOVES_WITH_ACCELERATION),
-        nextComponent;
+    const prevComponent = prevEntity.get(MOVES_WITH_ACCELERATION);
+    let nextComponent;
     if (!prevComponent) {
         nextComponent = movesWithAcceleration(target, targetSpeed, lerpSpeed, callback)
     } else {

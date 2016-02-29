@@ -17,6 +17,7 @@ import rotateToPoint from "./rotateToPoint";
 import rotateToVector from "./rotateToVector";
 import changeDirection from "./changeDirection";
 import startMovingToPoint from "./startMovingToPoint";
+import stopMovingToPoint from "./stopMovingToPoint";
 import debug from "./debug";
 
 export const
@@ -39,6 +40,7 @@ export const
     ROTATE_TO_VECTOR = Symbol("“rotate to vector” action"),
     CHANGE_DIRECTION = Symbol("“change direction” action"),
     START_MOVING_TO_POINT = Symbol("“start moving to point” action"),
+    STOP_MOVING_TO_POINT = Symbol("“stop moving to point” action"),
 
     DEBUG = Symbol("“debug” action");
 
@@ -55,6 +57,7 @@ const mapping = {
     [ROTATE_TO_VECTOR]: rotateToVector,
     [CHANGE_DIRECTION]: changeDirection,
     [START_MOVING_TO_POINT]: startMovingToPoint,
+    [STOP_MOVING_TO_POINT]: stopMovingToPoint,
     [DEBUG]: debug
 };
 
