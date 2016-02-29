@@ -31,7 +31,7 @@ export default (state = {}, action = null) => {
         case MOVE_TO_POINT:
             return state.update(moverToPoint(getEntity(state, action), action.target, action.speed, action.easing, action.callback));
         case START_MOVING_TO_POINT:
-            return state.update(moveToPointStarter(getEntity(state, action), action.target, action.lerpSpeed, action.callback));
+            return state.update(moveToPointStarter(getEntity(state, action), action.target, action.targetSpeed, action.lerpSpeed, action.callback));
         case ROTATE_TO_POINT:
             return state.update(rotaterToPoint(getEntity(state, action), action.target, action.speed, action.callback));
         case ROTATE_TO_VECTOR:

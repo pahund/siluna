@@ -47,8 +47,7 @@ export default {
         ),
         [TOUCH_START_ON_SCREEN]: new Group(
             new Action(DEBUG, "touch start on screen event triggered", CURRENT_TAP),
-            //new Action(START_MOVING_TO_POINT, "siluna", CURRENT_TAP, config.speed.lerp)
-            new Action(START_MOVING_TO_POINT, "siluna", CURRENT_TAP, 0.5)
+            new Action(START_MOVING_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, config.speed.lerp)
         ),
         [TOUCH_MOVE_ON_SCREEN]: new Action(DEBUG, "touch move on screen event triggered", CURRENT_TAP),
         [TOUCH_END_ON_SCREEN]: new Action(DEBUG, "touch end on screen event triggered", CURRENT_TAP)

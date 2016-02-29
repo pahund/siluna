@@ -14,7 +14,7 @@ export default {
     speed: {
         movement: 1000, // pixels per second
         rotation: 360, // degrees per second
-        lerp: 1 // 1: sluggish ... 10: responsive
+        lerp: 3 // 1: sluggish ... 10: responsive
     },
     margin: 250,
     gameDimensions: {

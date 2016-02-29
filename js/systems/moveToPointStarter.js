@@ -6,4 +6,4 @@
  */
 import movesWithAcceleration from "../components/movesWithAcceleration";
 
-export default (prevEntity, target, lerpSpeed, callback) => prevEntity.update(movesWithAcceleration(target, lerpSpeed, callback));
+export default (prevEntity, target, targetSpeed, lerpSpeed, callback) => prevEntity.update(movesWithAcceleration(target, targetSpeed, lerpSpeed, callback));

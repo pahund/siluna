@@ -10,6 +10,7 @@ import config from "../config";
 
 export default (
     target,
+    targetSpeed = config.speed.movement,
     lerpSpeed = config.speed.lerp,
     callback
 ) => {
@@ -19,6 +20,7 @@ export default (
     return {
         id: MOVES_WITH_ACCELERATION,
         target,
+        targetSpeed,
         lerpSpeed,
         callback
     };

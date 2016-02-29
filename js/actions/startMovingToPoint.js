@@ -11,6 +11,7 @@ import config from "../config";
 export default (
     entity,
     target,
+    targetSpeed = config.speed.movement,
     lerpSpeed = config.speed.lerp,
     callback
 ) => {
@@ -27,6 +28,7 @@ export default (
         type: START_MOVING_TO_POINT,
         entity,
         target,
+        targetSpeed,
         lerpSpeed,
         callback
     };

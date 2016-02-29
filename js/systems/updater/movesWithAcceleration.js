@@ -11,15 +11,14 @@ import approach from "../../math/approach";
 let log;
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, velocity, callback, speed, targetSpeed } = prevComponent,
+    let { target, velocity, callback, speed, lerpSpeed, targetSpeed } = prevComponent,
         { position } = spriteComponent;
 
-    if (targetSpeed === undefined) {
+    if (speed === undefined) {
         log = loggerFactory();
-        targetSpeed = 1000;
     }
 
-    speed = approach(targetSpeed, speed || 0, timeDelta);
+    speed = approach(targetSpeed, speed || 0, lerpSpeed * timeDelta);
 
     if (speed === targetSpeed) {
         log("target speed reached");
