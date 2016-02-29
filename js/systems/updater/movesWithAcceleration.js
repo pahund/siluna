@@ -6,6 +6,7 @@
  */
 import { PIXELS_PER_SECOND_FACTOR } from "../../constants";
 import loggerFactory from "../../debugUtils/loggerFactory";
+import approach from "../../math/approach";
 
 let log;
 
@@ -18,19 +19,10 @@ export default (prevComponent, spriteComponent, timeDelta) => {
         targetSpeed = 1000;
     }
 
-    speed = speed || 0;
+    speed = approach(targetSpeed, speed || 0, timeDelta);
 
-    if (targetSpeed === 0) {
-        speed -= timeDelta;
-        if (speed < 0) {
-            speed = 0;
-        }
-    } else {
-        speed += timeDelta;
-        if (speed > targetSpeed) {
-            log("target speed reached");
-            speed = targetSpeed;
-        }
+    if (speed === targetSpeed) {
+        log("target speed reached");
     }
 
     velocity = velocity || target.subtractPoint(position).normalized;
@@ -45,7 +37,7 @@ export default (prevComponent, spriteComponent, timeDelta) => {
     const isRunning = speed > 0;
 
     if (!isRunning) {
-        log("stopped")
+        log("stopped");
         callback();
     }
 

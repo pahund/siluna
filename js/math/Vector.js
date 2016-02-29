@@ -4,6 +4,8 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 08 Jan 2016
  */
+import approach from "./approach";
+
 class Vector {
     constructor(x, y) {
         this.x = x;
@@ -74,17 +76,6 @@ class Vector {
     static fromRad(radians) {
         return new Vector(Math.sin(radians), Math.cos(radians));
     }
-}
-
-function approach(goal, current, dt) {
-    const difference = goal - current;
-    if (difference > dt) {
-        return current + dt;
-    }
-    if (difference < -dt) {
-        return current - dt;
-    }
-    return goal;
 }
 
 export default Vector;

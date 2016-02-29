@@ -4,9 +4,9 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 28 Feb 2016
  */
+import PIXI from "pixi";
 
-let stage = null,
-    text = null;
+let text = null;
 
 export default (stage, x, y) => {
     text = new PIXI.Text("", {
