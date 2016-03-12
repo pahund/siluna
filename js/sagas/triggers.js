@@ -11,7 +11,8 @@ import {
     TOUCH_END_ON_SCREEN
 } from "../actions";
 import interruptable from "./util/interruptable";
-import { call, fork, SagaCancellationException } from "redux-saga";
+import { call, fork } from "redux-saga/effects";
+import { SagaCancellationException } from "redux-saga";
 
 function makeUserInteractionSaga(type) {
     return function *(action, getState) {

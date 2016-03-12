@@ -7,7 +7,7 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 20 Jan 2016
  */
-import { take, call, race } from "redux-saga";
+import { take, call, race } from "redux-saga/effects";
 
 export default function *(actionType, func, getState) {
     function *execute(action) {

@@ -8,7 +8,8 @@
  */
 
 import makePromise from "./makePromise";
-import { call, SagaCancellationException } from "redux-saga";
+import { call } from "redux-saga/effects";
+import { SagaCancellationException } from "redux-saga";
 
 class Sequence {
     constructor(...actions) {

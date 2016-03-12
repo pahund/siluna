@@ -4,7 +4,7 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 20 Jan 2016
  */
-import { fork } from "redux-saga";
+import { fork } from "redux-saga/effects";
 import triggers from "./triggers";
 import debug from "./debug";
 

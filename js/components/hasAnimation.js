@@ -7,7 +7,7 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 10 Jan 2016
  */
-import{ HAS_ANIMATION } from ".";
+import { HAS_ANIMATION } from ".";
 
 export default animation => ({
     id: HAS_ANIMATION,

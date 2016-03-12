@@ -5,7 +5,7 @@
  * @since 24 Feb 2016
  */
 import { DEBUG } from "../actions";
-import { take } from "redux-saga";
+import { take } from "redux-saga/effects";
 
 export default function *() {
     while (true) {

@@ -1,7 +1,10 @@
 {
-  "ecmaFeatures": {
-    "modules": true,
-    "experimentalObjectRestSpread": true
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   },
   "env": {
     "browser": true,
@@ -37,7 +40,7 @@
     "yoda": 2,
     // always use ES6 shorthand notation for objects
     "object-shorthand": 2,
-    "space-after-keywords": 2,
+    "keyword-spacing": 2,
     "space-before-blocks": 2,
     "space-before-function-paren": [
       2,

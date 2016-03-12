@@ -7,7 +7,7 @@
  * @since 16 Jan 2016
  */
 import { CURRENT_TAP, CURRENT_ENTITY, getByType } from "..";
-import { put } from "redux-saga";
+import { put } from "redux-saga/effects";
 import makePromise from "./makePromise";
 
 class Action {
