@@ -5,6 +5,8 @@
  * @since 24 Jan 2016
  */
 
+import Promise from "bluebird";
+
 export default (type, args) => {
     let resolve = null;
     const promise = new Promise(res => resolve = () => res("done"));

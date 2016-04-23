@@ -17,12 +17,14 @@ module.exports = {
         filename: "[name].js"
     },
     externals: {
-        pixi: "PIXI"
+        pixi: "PIXI",
+        bluebird: "Promise"
     },
     module: {
         loaders: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 loader: "babel"
             }
         ]
