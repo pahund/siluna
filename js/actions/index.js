@@ -5,6 +5,7 @@
  * @since 31 Dec 2015
  */
 
+import init from "./init";
 import tapOnScreen from "./tapOnScreen";
 import touchStartOnScreen from "./touchStartOnScreen";
 import touchMoveOnScreen from "./touchMoveOnScreen";
@@ -22,6 +23,8 @@ import delay from "./delay";
 import debug from "./debug";
 
 export const
+    INIT = Symbol("“init” action"),
+
     // placeholders in instances of Action that are resolved by the triggers reducer
     CURRENT_TAP = Symbol("current tap placeholder for actions"),
     CURRENT_ENTITY = Symbol("current entity placeholder for actions"),
@@ -47,6 +50,7 @@ export const
     DEBUG = Symbol("“debug” action");
 
 const mapping = {
+    [INIT]: init,
     [TAP_ON_SCREEN]: tapOnScreen,
     [TOUCH_START_ON_SCREEN]: touchStartOnScreen,
     [TOUCH_MOVE_ON_SCREEN]: touchMoveOnScreen,
@@ -70,4 +74,13 @@ export function getByType(type) {
         return func;
     }
     throw new ReferenceError(`Cannot get action of type “${type}”`);
+}
+
+export function getTriggerActions() {
+    return new Set([
+        TAP_ON_SCREEN,
+        TOUCH_START_ON_SCREEN,
+        TOUCH_MOVE_ON_SCREEN,
+        TOUCH_END_ON_SCREEN
+    ]);
 }

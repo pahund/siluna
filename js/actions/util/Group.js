@@ -7,6 +7,8 @@
  * @since 16 Jan 2016
  */
 
+import Promise from "bluebird";
+
 class Group {
     constructor(...actions) {
         this.actions = actions;
@@ -18,12 +20,12 @@ class Group {
         }
     }
 
-    get callables() {
-        let callables = [];
-        for (let child of this) {
-            callables = callables.concat(child.callables);
-        }
-        return callables;
+    add(action) {
+        this.actions.push(action);
+    }
+
+    execute(config) {
+        return Promise.all(this.actions.map(curr => curr.execute(config)));
     }
 }
 

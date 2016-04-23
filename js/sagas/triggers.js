@@ -11,7 +11,7 @@ import {
     TOUCH_END_ON_SCREEN
 } from "../actions";
 import interruptable from "./util/interruptable";
-import { call, fork } from "redux-saga/effects";
+import { fork } from "redux-saga/effects";
 import { SagaCancellationException } from "redux-saga";
 
 function makeUserInteractionSaga(type) {
@@ -20,7 +20,7 @@ function makeUserInteractionSaga(type) {
             currentTap = action.target;
 
         try {
-            yield node.callables.map(callable => call(callable, { currentTap }));
+            yield node.execute({ currentTap });
         } catch (e) {
             /* saga cancellation exceptions are expected and OK */
             if (!(e instanceof SagaCancellationException)) {

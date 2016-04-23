@@ -7,9 +7,7 @@
  * @since 16 Jan 2016
  */
 
-import makePromise from "./makePromise";
-import { call } from "redux-saga/effects";
-import { SagaCancellationException } from "redux-saga";
+import Promise from "bluebird";
 
 class Sequence {
     constructor(...actions) {
@@ -22,25 +20,12 @@ class Sequence {
         }
     }
 
-    get callables() {
-        const that = this;
-        return [ function *(config) {
-            let [ promise, resolve ] = makePromise();
-            for (let child of that) {
-                let p;
-                try {
-                    p = yield child.callables.map(callable => call(callable, config));
-                } catch (e) {
-                    /* saga cancellation exceptions are expected and OK */
-                    if (!(e instanceof SagaCancellationException)) {
-                        throw e;
-                    }
-                }
-                promise = promise.then(p);
-            }
-            resolve();
-            return promise;
-        } ];
+    add(action) {
+        this.actions.push(action);
+    }
+
+    execute(config) {
+        return Promise.reduce(this.actions, (seq, curr) => curr.execute(config), this.actions[0]);
     }
 }
 

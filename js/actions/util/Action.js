@@ -12,6 +12,10 @@ import makePromise from "./makePromise";
 
 class Action {
     constructor(type, ...args) {
+        this.dispatch = () => {
+            throw new Error(`dispatch method has not been set on action of type ${type}, ` +
+                    `args ${args} – did you fire the “init” action?`);
+        };
         this.type = type;
         this.args = args;
     }
@@ -35,13 +39,10 @@ class Action {
         return getByType(this.type)(...args, resolve);
     }
 
-    get callables() {
-        const that = this;
-        return [ function *(config) {
-            const [ promise, resolve ] = makePromise(that.type, that.args);
-            yield put(that.toDispatchable(resolve, config));
-            return promise;
-        } ];
+    execute(config) {
+        const [ promise, resolve ] = makePromise(this.type, this.args);
+        this.dispatch(this.toDispatchable(resolve, config));
+        return promise;
     }
 }
 
