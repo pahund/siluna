@@ -1,5 +1,3 @@
-const babel = require("babel");
-
 module.exports = wallaby => {
     return {
         files: [
@@ -13,10 +11,10 @@ module.exports = wallaby => {
             type: "node"
         },
         compilers: {
-            "**/*.js": wallaby.compilers.babel({
-                babel,
-                stage: 0
-            })
+            "**/*.js": wallaby.compilers.babel()
+        },
+        setup: function () {
+            require("jsdom-global")();
         }
     };
 };

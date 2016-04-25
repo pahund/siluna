@@ -1,5 +1,5 @@
 /**
- * frameRateDisplayFactory.js
+ * debugDisplayFactory.js
  *
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 28 Feb 2016
