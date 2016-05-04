@@ -45,7 +45,7 @@ export default (state = {}, action = null) => {
         case ANIMATE:
             return state.update(animator(getEntity(state, action), action.animation, action.callback));
         case CHANGE_DIRECTION:
-            return state.update(directionChanger(getEntity(state, action), action.target, action.callback));
+            return state.update(directionChanger(getEntity(state, action), action.target, action.rotationSpeed, action.movementSpeed, action.callback));
     }
     return state;
 };

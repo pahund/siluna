@@ -6,8 +6,14 @@
  */
 import { CHANGE_DIRECTION } from ".";
 import Point from "../math/Point";
+import config from "../config";
 
-export default (entity, target, callback) => {
+export default (
+    entity, target,
+    rotationSpeed = config.speed.rotation,
+    movementSpeed = config.speed.movement,
+    callback
+) => {
     if (!entity) {
         throw new ReferenceError("Entity argument must be provided to changeDirection action");
     }
@@ -21,6 +27,8 @@ export default (entity, target, callback) => {
         type: CHANGE_DIRECTION,
         entity,
         target,
+        rotationSpeed,
+        movementSpeed,
         callback
     };
 }

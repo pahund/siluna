@@ -51,7 +51,7 @@ export default {
             new Action(START_MOVING_TO_POINT, "siluna", CURRENT_TAP, config.speed.movement, config.speed.lerp),
             new Action(ANIMATE, "siluna", "swimming")
         ),
-        [TOUCH_MOVE_ON_SCREEN]: new Action(CHANGE_DIRECTION, CURRENT_TAP),
+        [TOUCH_MOVE_ON_SCREEN]: new Action(CHANGE_DIRECTION, "siluna", CURRENT_TAP, config.speed.rotation, config.speed.movement),
         [TOUCH_END_ON_SCREEN]: new Group(
             new Action(STOP_MOVING_TO_POINT, "siluna"),
             new Action(ANIMATE, "siluna", "treading-water"),

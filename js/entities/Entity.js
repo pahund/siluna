@@ -38,9 +38,13 @@ export default class Entity {
         return this.componentMap.values();
     }
 
-    update(component) {
+    update(...components) {
         const newComponents = new Map([ ...this.componentMap ]);
-        newComponents.set(component.id, component);
+        components.forEach(component => newComponents.set(component.id, component));
         return new Entity(this.id, ...newComponents.values());
+    }
+
+    toString() {
+        return `entity ${this.id}`;
     }
 }

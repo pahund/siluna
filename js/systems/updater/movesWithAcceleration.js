@@ -11,7 +11,14 @@ import approach from "../../math/approach";
 let log;
 
 export default (prevComponent, spriteComponent, timeDelta) => {
-    let { target, velocity, callback, speed, lerpSpeed, targetSpeed } = prevComponent,
+    let {
+        target,
+        velocity,
+        callback,
+        speed,
+        lerpSpeed,
+        targetSpeed
+    } = prevComponent,
         { position } = spriteComponent;
 
     if (speed === undefined) {
