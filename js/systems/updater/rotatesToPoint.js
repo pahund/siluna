@@ -5,6 +5,7 @@
  * @since 13 Jan 2016
  */
 import updateRotation from "./util/updateRotation";
+import calculateRotationDirection from "../../math/calculateRotationDirection";
 
 export default (prevComponent, spriteComponent, timeDelta) => {
     let { target, velocity, speed, direction, callback } = prevComponent,
@@ -15,7 +16,7 @@ export default (prevComponent, spriteComponent, timeDelta) => {
     }
 
     if (!direction) {
-        direction = Math.sin(rotation - velocity.rad) < 0 ? "cw" : "ccw";
+        direction = calculateRotationDirection(velocity.rad, rotation);
     }
 
     rotation = updateRotation(velocity, speed, timeDelta, rotation, direction);

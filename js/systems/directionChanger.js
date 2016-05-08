@@ -12,6 +12,7 @@ import {
     MOVES_WITH_ACCELERATION
 } from "../components";
 import rotatesToPoint from "../components/rotatesToPoint";
+import calculateRotationDirection from "../math/calculateRotationDirection";
 
 export default (entity, target, rotationSpeed, movementSpeed, callback) => {
     const rotatesToPointComponent = entity.get(ROTATES_TO_POINT),
@@ -25,7 +26,7 @@ export default (entity, target, rotationSpeed, movementSpeed, callback) => {
     if (rotatesToPointComponent) {
         const { rotation, position } = spriteComponent,
             velocity = target.subtractPoint(position),
-            direction = Math.sin(rotation - velocity.rad) < 0 ? "cw" : "ccw";
+            direction = calculateRotationDirection(velocity.rad, rotation);
         nextComponents.push({
             ...rotatesToPointComponent,
             target,

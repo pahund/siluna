@@ -13,7 +13,7 @@ module.exports = wallaby => {
         compilers: {
             "**/*.js": wallaby.compilers.babel()
         },
-        setup: function () {
+        setup() {
             require("jsdom-global")();
         }
     };
