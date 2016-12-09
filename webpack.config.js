@@ -4,27 +4,27 @@
  * @author <a href="https://github.com/pahund">Patrick Hund</a>
  * @since 29 Dec 2015
  */
-const path = require("path"),
-    webpack = require("webpack");
+const path = require('path'),
+    webpack = require('webpack');
 
 module.exports = {
-    context: path.resolve(__dirname, "js"),
+    context: path.resolve(__dirname, 'js'),
     entry: {
-        index: "./index"
+        index: './index'
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "[name].js"
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js'
     },
     externals: {
-        phaser: "Phaser"
+        phaser: 'Phaser'
     },
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel"
+                loader: 'babel'
             }
         ]
     },
@@ -35,7 +35,7 @@ module.exports = {
             }
         }),
         new webpack.DefinePlugin({
-            "process.env.NODE_ENV": "\"production\""
+            'process.env.NODE_ENV': '"production"'
         })
     ]
 };
