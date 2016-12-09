@@ -21,8 +21,7 @@ module.exports = {
         filename: "[name].js"
     },
     externals: {
-        pixi: "PIXI",
-        bluebird: "Promise"
+        phaser: "Phaser"
     },
     module: {
         loaders: [

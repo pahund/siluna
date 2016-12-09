@@ -17,8 +17,7 @@ module.exports = {
         filename: "[name].js"
     },
     externals: {
-        pixi: "PIXI",
-        bluebird: "Promise"
+        phaser: "Phaser"
     },
     module: {
         loaders: [
@@ -35,8 +34,6 @@ module.exports = {
                 warnings: false
             }
         }),
-
-        // make Redux run in production mode
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": "\"production\""
         })
