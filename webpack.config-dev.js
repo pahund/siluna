@@ -8,7 +8,7 @@ const path = require('path'),
     webpack = require('webpack');
 
 module.exports = {
-    context: path.resolve(__dirname, 'js'),
+    context: path.resolve(__dirname, 'src'),
     entry: {
         index: [
             'webpack/hot/dev-server',
@@ -18,7 +18,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/dist/',
-        filename: '[name].js'
+        filename: 'silunas-weiter-weg.js'
     },
     externals: {
         phaser: 'Phaser'
