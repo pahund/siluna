@@ -5,6 +5,7 @@ Mermaid video game
 ## Installation
 
     npm install
+    npm run build
     
 Installs node modules and does a webpack build as a post install script, which updates the bundle in the dist folder.
 
