@@ -6,6 +6,6 @@
  */
 export default function () {
     this.game.add.plugin(Fabrique.Plugins.Spine);
-    this.game.load.spine('siluna', 'assets/siluna.json');
+    this.game.load.spritesheet('feliz', 'assets/feliz.png', 331, 510);
     this.game.load.image('background', 'assets/background.png');
 }
