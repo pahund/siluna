@@ -10,6 +10,10 @@
     "browser": true,
     "es6": true
   },
+  "globals": {
+    "Phaser": true,
+    "Fabrique": true
+  },
   "rules": {
     // use double quotes
     "quotes": [
