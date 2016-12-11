@@ -14,12 +14,12 @@ function createFeliz(game) {
 }
 
 function createLimo(game) {
-    const limo = game.add.sprite(0, 100, 'limo');
+    const limo = game.add.sprite(-275, 100, 'limo');
     limo.scale.setTo(0.5, 0.5);
     game.physics.arcade.enable(limo);
     limo.animations.add('moving', [ 1, 0, 1, 2 ], 3, true);
     limo.animations.play('moving');
-    limo.body.velocity.setTo(50, 0);
+    limo.body.velocity.setTo(100, 0);
     game.add.tween(limo).to({ y: 150 }, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
     return limo;
 }
@@ -33,11 +33,12 @@ function createBackground(game) {
 
 export default function () {
     const { game, scale } = this;
+    game.world.setBounds(0, 0, 2000, 2000);
     scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     scale.pageAlignVertically = true;
     scale.pageAlignHorizontally = true;
     game.physics.startSystem(Phaser.Physics.ARCADE);
     createBackground(game);
-    this.feliz = createFeliz(game);
     this.limo = createLimo(game);
+    this.feliz = createFeliz(game);
 }
