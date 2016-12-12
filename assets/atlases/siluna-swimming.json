@@ -1,0 +1,92 @@
+{
+  "frames": [
+    {
+      "filename": "siluna-swimming_0",
+      "frame": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_1",
+      "frame": { "x": 356, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_2",
+      "frame": { "x": 710, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_3",
+      "frame": { "x": 1064, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_4",
+      "frame": { "x": 1418, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_5",
+      "frame": { "x": 1772, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_6",
+      "frame": { "x": 2126, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_7",
+      "frame": { "x": 2480, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_8",
+      "frame": { "x": 2834, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_9",
+      "frame": { "x": 3188, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    },
+    {
+      "filename": "siluna-swimming_10",
+      "frame": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 2, "y": 2, "w": 352, "h": 641 },
+      "sourceSize": { "w": 352, "h": 642 }
+    }
+  ]
+}

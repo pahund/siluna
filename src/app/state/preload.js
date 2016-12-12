@@ -9,4 +9,9 @@ export default function () {
     game.load.spritesheet('feliz', 'assets/spritesheets/feliz.png', 331, 510);
     game.load.spritesheet('limo', 'assets/spritesheets/limo.png', 550, 254);
     game.load.image('background', 'assets/images/background.png');
+    game.load.atlas(
+        'siluna',
+        'assets/atlases/siluna-swimming.png',
+        'assets/atlases/siluna-swimming.json'
+    );
 }
