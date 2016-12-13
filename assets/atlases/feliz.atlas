@@ -1,0 +1,27 @@
+
+feliz.png
+size: 809,503
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+feliz01
+  rotate: false
+  xy: 627, 0
+  size: 182, 503
+  orig: 331, 510
+  offset: 5, 4
+  index: -1
+feliz02
+  rotate: false
+  xy: 0, 88
+  size: 306, 415
+  orig: 331, 510
+  offset: 5, 92
+  index: -1
+feliz03
+  rotate: false
+  xy: 306, 167
+  size: 321, 336
+  orig: 331, 510
+  offset: 5, 171
+  index: -1

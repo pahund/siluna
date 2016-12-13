@@ -22,6 +22,15 @@ function createSiluna(game) {
     return siluna;
 }
 
+function createJamun(game) {
+    const jamun = game.add.sprite(600, 800, 'jamun');
+    game.physics.arcade.enable(jamun);
+    jamun.animations.add('moving', [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ], 15, true);
+    jamun.animations.play('moving');
+    jamun.anchor.setTo(0.5, 0.5);
+    return jamun;
+}
+
 function createLimo(game) {
     const limo = game.add.sprite(-275, 100, 'limo');
     limo.scale.setTo(0.5, 0.5);
@@ -51,4 +60,5 @@ export default function () {
     this.limo = createLimo(game);
     this.feliz = createFeliz(game);
     createSiluna(game);
+    createJamun(game);
 }

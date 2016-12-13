@@ -1,0 +1,229 @@
+{
+  "frames": [
+    {
+      "filename": "jamun-moves_00000",
+      "frame": {
+        "x": 0,
+        "y": 1332,
+        "w": 670,
+        "h": 107
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 17
+      }
+    },
+    {
+      "filename": "jamun-moves_00001",
+      "frame": {
+        "x": 0,
+        "y": 1225,
+        "w": 670,
+        "h": 107
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 15
+      }
+    },
+    {
+      "filename": "jamun-moves_00002",
+      "frame": {
+        "x": 0,
+        "y": 1119,
+        "w": 670,
+        "h": 106
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 14
+      }
+    },
+    {
+      "filename": "jamun-moves_00003",
+      "frame": {
+        "x": 0,
+        "y": 1439,
+        "w": 670,
+        "h": 109
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 15
+      }
+    },
+    {
+      "filename": "jamun-moves_00004",
+      "frame": {
+        "x": 0,
+        "y": 1013,
+        "w": 670,
+        "h": 106
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 19
+      }
+    },
+    {
+      "filename": "jamun-moves_00005",
+      "frame": {
+        "x": 0,
+        "y": 285,
+        "w": 670,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 25
+      }
+    },
+    {
+      "filename": "jamun-moves_00006",
+      "frame": {
+        "x": 0,
+        "y": 907,
+        "w": 670,
+        "h": 106
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 19
+      }
+    },
+    {
+      "filename": "jamun-moves_00007",
+      "frame": {
+        "x": 0,
+        "y": 802,
+        "w": 670,
+        "h": 105
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 20
+      }
+    },
+    {
+      "filename": "jamun-moves_00008",
+      "frame": {
+        "x": 0,
+        "y": 593,
+        "w": 670,
+        "h": 104
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 21
+      }
+    },
+    {
+      "filename": "jamun-moves_00009",
+      "frame": {
+        "x": 0,
+        "y": 489,
+        "w": 670,
+        "h": 104
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 22
+      }
+    },
+    {
+      "filename": "jamun-moves_00010",
+      "frame": {
+        "x": 0,
+        "y": 697,
+        "w": 670,
+        "h": 105
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 21
+      }
+    },
+    {
+      "filename": "jamun-moves_00011",
+      "frame": {
+        "x": 0,
+        "y": 385,
+        "w": 670,
+        "h": 104
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 20
+      }
+    },
+    {
+      "filename": "jamun-moves_00012",
+      "frame": {
+        "x": 0,
+        "y": 188,
+        "w": 670,
+        "h": 97
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 21
+      }
+    },
+    {
+      "filename": "jamun-moves_00013",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 670,
+        "h": 91
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 23
+      }
+    },
+    {
+      "filename": "jamun-moves_00014",
+      "frame": {
+        "x": 0,
+        "y": 91,
+        "w": 670,
+        "h": 97
+      },
+      "spriteSourceSize": {
+        "x": 700,
+        "y": 150,
+        "w": 10,
+        "h": 23
+      }
+    }
+  ]
+}

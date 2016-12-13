@@ -1,0 +1,111 @@
+
+jamun.png
+size: 670,1548
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+jamun-moves_00000
+  rotate: false
+  xy: 0, 1332
+  size: 670, 107
+  orig: 700, 150
+  offset: 10, 17
+  index: -1
+jamun-moves_00001
+  rotate: false
+  xy: 0, 1225
+  size: 670, 107
+  orig: 700, 150
+  offset: 10, 15
+  index: -1
+jamun-moves_00002
+  rotate: false
+  xy: 0, 1119
+  size: 670, 106
+  orig: 700, 150
+  offset: 10, 14
+  index: -1
+jamun-moves_00003
+  rotate: false
+  xy: 0, 1439
+  size: 670, 109
+  orig: 700, 150
+  offset: 10, 15
+  index: -1
+jamun-moves_00004
+  rotate: false
+  xy: 0, 1013
+  size: 670, 106
+  orig: 700, 150
+  offset: 10, 19
+  index: -1
+jamun-moves_00005
+  rotate: false
+  xy: 0, 285
+  size: 670, 100
+  orig: 700, 150
+  offset: 10, 25
+  index: -1
+jamun-moves_00006
+  rotate: false
+  xy: 0, 907
+  size: 670, 106
+  orig: 700, 150
+  offset: 10, 19
+  index: -1
+jamun-moves_00007
+  rotate: false
+  xy: 0, 802
+  size: 670, 105
+  orig: 700, 150
+  offset: 10, 20
+  index: -1
+jamun-moves_00008
+  rotate: false
+  xy: 0, 593
+  size: 670, 104
+  orig: 700, 150
+  offset: 10, 21
+  index: -1
+jamun-moves_00009
+  rotate: false
+  xy: 0, 489
+  size: 670, 104
+  orig: 700, 150
+  offset: 10, 22
+  index: -1
+jamun-moves_00010
+  rotate: false
+  xy: 0, 697
+  size: 670, 105
+  orig: 700, 150
+  offset: 10, 21
+  index: -1
+jamun-moves_00011
+  rotate: false
+  xy: 0, 385
+  size: 670, 104
+  orig: 700, 150
+  offset: 10, 20
+  index: -1
+jamun-moves_00012
+  rotate: false
+  xy: 0, 188
+  size: 670, 97
+  orig: 700, 150
+  offset: 10, 21
+  index: -1
+jamun-moves_00013
+  rotate: false
+  xy: 0, 0
+  size: 670, 91
+  orig: 700, 150
+  offset: 10, 23
+  index: -1
+jamun-moves_00014
+  rotate: false
+  xy: 0, 91
+  size: 670, 97
+  orig: 700, 150
+  offset: 10, 23
+  index: -1

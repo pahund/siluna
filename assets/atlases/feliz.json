@@ -1,0 +1,49 @@
+{
+  "frames": [
+    {
+      "filename": "feliz01",
+      "frame": {
+        "x": 627,
+        "y": 0,
+        "w": 182,
+        "h": 503
+      },
+      "spriteSourceSize": {
+        "x": 331,
+        "y": 510,
+        "w": 5,
+        "h": 4
+      }
+    },
+    {
+      "filename": "feliz02",
+      "frame": {
+        "x": 0,
+        "y": 88,
+        "w": 306,
+        "h": 415
+      },
+      "spriteSourceSize": {
+        "x": 331,
+        "y": 510,
+        "w": 5,
+        "h": 92
+      }
+    },
+    {
+      "filename": "feliz03",
+      "frame": {
+        "x": 306,
+        "y": 167,
+        "w": 321,
+        "h": 336
+      },
+      "spriteSourceSize": {
+        "x": 331,
+        "y": 510,
+        "w": 5,
+        "h": 171
+      }
+    }
+  ]
+}
